@@ -323,6 +323,132 @@ html[lang="ar"] .lang-ar {
   transform: translateY(0);
 }
 
+/* ─── Blog Language Sections ─── */
+.blog-lang-en,
+.blog-lang-ar {
+  display: none;
+}
+
+html[lang="en"] .blog-lang-en,
+html[lang="ar"] .blog-lang-ar,
+.blog-lang-shared {
+  display: block;
+}
+
+/* ─── Blog Content Prose ─── */
+.blog-content h2 {
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.blog-content h3 {
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.blog-content p {
+  color: #999999;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  color: #999999;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  padding-inline-start: 1.5rem;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+}
+
+.blog-content li {
+  margin-bottom: 0.4rem;
+}
+
+.blog-content li::marker {
+  color: #6E6E6E;
+}
+
+.blog-content a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: #6E6E6E;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.blog-content a:hover {
+  text-decoration-color: #FFFFFF;
+}
+
+.blog-content strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.blog-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+.blog-content img {
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-content blockquote {
+  border-inline-start: 3px solid var(--border);
+  padding-inline-start: 1rem;
+  margin: 1.5rem 0;
+  color: #6E6E6E;
+  font-style: italic;
+}
+
+.blog-content code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.875em;
+}
+
+.blog-content pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -1,8 +1,10 @@
 ---
 import { getUpcomingEvents, getPastEvents } from "@/utils/events";
+import { getEventIdsWithBlog, eventBlogSlug } from "@/utils/blog";
 
 const upcoming = await getUpcomingEvents();
 const past = await getPastEvents();
+const blogEventIds = await getEventIdsWithBlog();
 
 function formatMonth(date: Date) {
   return date.toLocaleDateString("en-US", { month: "short" });
@@ -96,11 +98,19 @@ function typeLabel(type: string) {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               {event.data.location}{event.data.place && <span class="text-[#6E6E6E]"> · {event.data.place}</span>}
             </div>
-            {event.data.slides && event.data.slides.length > 0 && (
-              <a href={event.data.slides[0]} target="_blank" rel="noreferrer" class="text-[10px] text-[#999999] hover:text-white hover:underline transition-colors">
-                <span class="lang-en">Slides</span><span class="lang-ar">العرض</span>
-              </a>
-            )}
+            <div class="flex items-center gap-3">
+              {event.data.slides && event.data.slides.length > 0 && (
+                <a href={event.data.slides[0]} target="_blank" rel="noreferrer" class="text-[10px] text-[#999999] hover:text-white hover:underline transition-colors">
+                  <span class="lang-en">Slides</span><span class="lang-ar">العرض</span>
+                </a>
+              )}
+              {blogEventIds.has(event.id) && (
+                <a href={`/blog/${eventBlogSlug(event.id)}`} class="text-[10px] text-[#999999] hover:text-white hover:underline transition-colors flex items-center gap-1">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
+                  <span class="lang-en">Read Recap</span><span class="lang-ar">اقرأ الملخص</span>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       ))}

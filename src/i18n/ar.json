@@ -32,6 +32,12 @@
   "albums.subtitle": "صور من فعالياتنا السابقة",
   "albums.back": "العودة للألبومات",
   "albums.photos": "صور",
-  "albums.empty": "لا توجد ألبومات صور حالياً"
+  "albums.empty": "لا توجد ألبومات صور حالياً",
+  "blog.back": "العودة للمدونة",
+  "blog.readMore": "اقرأ المزيد",
+  "blog.eventRecap": "ملخص فعالية",
+  "blog.article": "مقال",
+  "blog.by": "بواسطة",
+  "blog.empty": "لا توجد مقالات حالياً"
 }
 

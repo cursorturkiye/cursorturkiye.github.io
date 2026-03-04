@@ -1,0 +1,225 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getAllBlogPosts } from "@/utils/blog";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getAllBlogPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post.entry);
+
+const dateStr = post.date.toLocaleDateString("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+
+const typeLabels: Record<string, { en: string; ar: string }> = {
+  meetup: { en: "Meetup", ar: "لقاء" },
+  hackathon: { en: "Hackathon", ar: "هاكاثون" },
+  workshop: { en: "Workshop", ar: "ورشة عمل" },
+};
+---
+
+<Layout title={`${post.title} — Cursor Saudi`} description={post.description}>
+  <Header isSubPage={true} />
+
+  <main class="flex-grow pt-[72px] relative z-10">
+    <article class="max-w-3xl mx-auto px-6 md:px-10 py-12 md:py-20">
+      <!-- Back link -->
+      <a href="/#blog" class="inline-flex items-center gap-2 text-sm text-[#6E6E6E] hover:text-white transition-colors mb-8">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 12L6 8l4-4"/>
+        </svg>
+        <span class="lang-en">Back to Blog</span>
+        <span class="lang-ar">العودة للمدونة</span>
+      </a>
+
+      <!-- Cover image -->
+      {post.coverImage && (
+        <div class="rounded-2xl overflow-hidden border border-[#252525] mb-8">
+          <img src={post.coverImage} alt={post.title} class="w-full" loading="eager" />
+        </div>
+      )}
+
+      <!-- Header -->
+      <header class="mb-10">
+        <!-- Badges -->
+        <div class="flex items-center gap-2 mb-4">
+          {post.source === "event" ? (
+            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <span class="lang-en">Event Recap</span>
+              <span class="lang-ar">ملخص فعالية</span>
+            </span>
+          ) : (
+            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span class="lang-en">Article</span>
+              <span class="lang-ar">مقال</span>
+            </span>
+          )}
+          {post.eventType && (
+            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-[#999] border border-[#252525] capitalize">
+              {typeLabels[post.eventType]?.en ?? post.eventType}
+            </span>
+          )}
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+          <span class="lang-ar">{post.titleAr ?? post.title}</span>
+          <span class="lang-en">{post.title}</span>
+        </h1>
+
+        <!-- Meta -->
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#6E6E6E]">
+          <time>{dateStr}</time>
+          {post.author && (
+            <span>
+              <span class="lang-en">by</span>
+              <span class="lang-ar">بواسطة</span>
+              {" "}{post.author}
+            </span>
+          )}
+          {post.eventLocation && (
+            <span>
+              <span class="lang-ar">{post.eventLocationAr ?? post.eventLocation}</span>
+              <span class="lang-en">{post.eventLocation}</span>
+            </span>
+          )}
+        </div>
+
+        {post.tags && post.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-4">
+            {post.tags.map((tag) => (
+              <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-[#999] border border-[#252525]">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <!-- Content -->
+      <div class="blog-content" id="blog-content">
+        <Content />
+      </div>
+
+      <script is:inline>
+        (function () {
+          var container = document.getElementById('blog-content');
+          if (!container) return;
+
+          var children = Array.from(container.childNodes);
+          var sections = [];
+          var current = [];
+
+          // Split child nodes into groups at <hr> elements
+          children.forEach(function (node) {
+            if (node.nodeType === 1 && node.tagName === 'HR') {
+              if (current.length > 0) sections.push(current);
+              current = [];
+            } else {
+              current.push(node);
+            }
+          });
+          if (current.length > 0) sections.push(current);
+
+          // Single section or no HRs — leave content as-is (no splitting needed)
+          if (sections.length <= 1) return;
+
+          // Detect Arabic by checking Unicode character ratio
+          function isArabic(text) {
+            var arabicChars = (text.match(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g) || []).length;
+            var total = text.replace(/\s+/g, '').length;
+            if (total === 0) return false;
+            return arabicChars / total > 0.3;
+          }
+
+          // Check if a section is mostly images (Gallery)
+          function isImageSection(nodes) {
+            var imgCount = 0;
+            var textLen = 0;
+            nodes.forEach(function (n) {
+              if (n.nodeType === 1) {
+                if (n.tagName === 'IMG') imgCount++;
+                if (n.querySelectorAll) imgCount += n.querySelectorAll('img').length;
+                // Count meaningful text (exclude image alt text)
+                var t = (n.textContent || '').replace(/\s+/g, '');
+                textLen += t.length;
+              }
+            });
+            return imgCount > 0 && textLen < 50;
+          }
+
+          // Clear and rebuild with language wrappers
+          container.innerHTML = '';
+
+          sections.forEach(function (nodes) {
+            var wrapper = document.createElement('div');
+            var text = nodes.map(function (n) { return n.textContent || ''; }).join('');
+
+            if (isImageSection(nodes)) {
+              wrapper.className = 'blog-lang-shared';
+            } else if (isArabic(text)) {
+              wrapper.className = 'blog-lang-ar';
+              wrapper.setAttribute('dir', 'rtl');
+            } else {
+              wrapper.className = 'blog-lang-en';
+            }
+
+            nodes.forEach(function (n) { wrapper.appendChild(n); });
+            container.appendChild(wrapper);
+          });
+        })();
+      </script>
+
+      <!-- Slides link for events -->
+      {post.eventSlides && post.eventSlides.length > 0 && (
+        <div class="mt-10 pt-6 border-t border-[#252525]">
+          <h3 class="text-sm font-semibold text-[#999] mb-3">
+            <span class="lang-en">Slides</span>
+            <span class="lang-ar">العروض</span>
+          </h3>
+          <div class="flex flex-wrap gap-3">
+            {post.eventSlides.map((slide, i) => (
+              <a
+                href={slide}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-[#252525] text-sm text-white hover:bg-white/10 hover:border-[#444] transition-colors"
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 12l8-8m0 0H5m7 0v7"/>
+                </svg>
+                <span class="lang-en">Slide {i + 1}</span>
+                <span class="lang-ar">عرض {i + 1}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Back link bottom -->
+      <div class="mt-12 pt-6 border-t border-[#252525]">
+        <a href="/#blog" class="inline-flex items-center gap-2 text-sm text-[#6E6E6E] hover:text-white transition-colors">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 12L6 8l4-4"/>
+          </svg>
+          <span class="lang-en">Back to Blog</span>
+          <span class="lang-ar">العودة للمدونة</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

@@ -63,7 +63,8 @@ import Footer from "@/components/Footer.astro";
         });
       });
 
-      switchPage('home');
+      var hash = window.location.hash.replace('#', '');
+      switchPage(hash || 'home');
     });
   </script>
 </Layout>

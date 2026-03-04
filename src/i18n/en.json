@@ -32,6 +32,12 @@
   "albums.subtitle": "Photos from our past events",
   "albums.back": "Back to Albums",
   "albums.photos": "photos",
-  "albums.empty": "No photo albums yet"
+  "albums.empty": "No photo albums yet",
+  "blog.back": "Back to Blog",
+  "blog.readMore": "Read more",
+  "blog.eventRecap": "Event Recap",
+  "blog.article": "Article",
+  "blog.by": "by",
+  "blog.empty": "No blog posts yet"
 }
 
