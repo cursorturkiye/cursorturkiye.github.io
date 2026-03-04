@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * Syncs event files from the Obsidian vault (cursorsaudi/events/) to the Astro site (src/data/events/).
+ * Syncs event files from the Obsidian vault (cursorsaudi/events/) to the Astro site.
  *
  * - Reads all .md files in VAULT_EVENTS_DIR (skips _ prefixed files)
  * - Parses frontmatter with gray-matter
  * - Strips Obsidian-only fields, keeps Astro-required fields
+ * - Extracts ![[image]] wikilinks → populates `photos` frontmatter + copies images
  * - Writes clean events to src/data/events/
  *
  * Usage: node scripts/sync-vault-events.mjs [--vault-path /path/to/vault]
@@ -28,7 +29,13 @@ if (!VAULT_PATH) {
 }
 
 const VAULT_EVENTS_DIR = path.join(VAULT_PATH, "cursorsaudi", "events");
+const VAULT_MEDIA_DIR = path.join(VAULT_PATH, "__media");
 const EVENTS_OUTPUT_DIR = path.resolve("src/data/events");
+const PHOTOS_OUTPUT_DIR = path.resolve("public/events");
+
+// Media extensions
+const IMAGE_EXTS = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif", ".svg"]);
+const VIDEO_EXTS = new Set([".mp4", ".webm", ".mov", ".ogg"]);
 
 // Obsidian-only fields to strip from final frontmatter
 // Note: "type" and "status" are Astro-required fields for events, NOT Obsidian metadata
@@ -39,6 +46,21 @@ const OBSIDIAN_FIELDS = ["created", "modified", "status_obs", "published"];
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+function cleanDir(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      cleanDir(fullPath);
+      if (fs.readdirSync(fullPath).length === 0) {
+        fs.rmdirSync(fullPath);
+      }
+    } else if (entry.name !== ".gitkeep") {
+      fs.unlinkSync(fullPath);
+    }
   }
 }
 
@@ -77,14 +99,16 @@ function serializeEvent(fm, content) {
 
 function syncEvents() {
   ensureDir(EVENTS_OUTPUT_DIR);
+  ensureDir(PHOTOS_OUTPUT_DIR);
 
-  // Clean existing events (full replace)
+  // Clean existing events and photos (full replace)
   for (const entry of fs.readdirSync(EVENTS_OUTPUT_DIR, { withFileTypes: true })) {
     const fullPath = path.join(EVENTS_OUTPUT_DIR, entry.name);
     if (entry.isFile() && entry.name.endsWith(".md")) {
       fs.unlinkSync(fullPath);
     }
   }
+  cleanDir(PHOTOS_OUTPUT_DIR);
 
   if (!fs.existsSync(VAULT_EVENTS_DIR)) {
     process.stdout.write("No vault events directory found, nothing to sync.\n");
@@ -97,6 +121,7 @@ function syncEvents() {
 
   let synced = 0;
   let skipped = 0;
+  let mediaCopied = 0;
 
   for (const file of eventFiles) {
     const filepath = path.join(VAULT_EVENTS_DIR, file);
@@ -109,6 +134,8 @@ function syncEvents() {
       continue;
     }
 
+    const eventSlug = path.basename(file, ".md");
+
     // Build clean Astro frontmatter (strip Obsidian-only fields)
     const astroFm = {};
     for (const [key, val] of Object.entries(fm)) {
@@ -116,13 +143,62 @@ function syncEvents() {
       astroFm[key] = val;
     }
 
+    // Extract ![[filename]] wikilinks from content and process media
+    const photos = [];
+    const videos = [];
+    let processedContent = content;
+
+    processedContent = processedContent.replace(
+      /!\[\[([^\]]+)\]\]/g,
+      (_match, mediaName) => {
+        const ext = path.extname(mediaName).toLowerCase();
+        const isImage = IMAGE_EXTS.has(ext);
+        const isVideo = VIDEO_EXTS.has(ext);
+
+        if (!isImage && !isVideo) return "";
+
+        const srcPath = path.join(VAULT_MEDIA_DIR, mediaName);
+        if (fs.existsSync(srcPath)) {
+          const eventMediaDir = path.join(PHOTOS_OUTPUT_DIR, eventSlug);
+          ensureDir(eventMediaDir);
+
+          const destPath = path.join(eventMediaDir, mediaName);
+          if (!fs.existsSync(destPath)) {
+            fs.copyFileSync(srcPath, destPath);
+            mediaCopied++;
+          }
+
+          if (isImage) {
+            photos.push(mediaName);
+            return `![](/events/${eventSlug}/${encodeURIComponent(mediaName)})`;
+          } else {
+            videos.push(mediaName);
+            return ""; // Videos are rendered via frontmatter, not inline
+          }
+        }
+
+        return isImage ? `![](${mediaName})` : "";
+      }
+    );
+
+    // Set media arrays in frontmatter
+    if (photos.length > 0) {
+      astroFm.photos = photos;
+      if (!astroFm.coverPhoto) {
+        astroFm.coverPhoto = photos[0];
+      }
+    }
+    if (videos.length > 0) {
+      astroFm.videos = videos;
+    }
+
     // Write transformed event
-    const outputContent = serializeEvent(astroFm, content);
+    const outputContent = serializeEvent(astroFm, processedContent);
     fs.writeFileSync(path.join(EVENTS_OUTPUT_DIR, file), outputContent);
     synced++;
   }
 
-  const summary = `Synced ${synced} events, skipped ${skipped}.`;
+  const summary = `Synced ${synced} events, skipped ${skipped}, copied ${mediaCopied} media files.`;
   process.stdout.write(summary + "\n");
 }
 

@@ -25,8 +25,17 @@ export async function getEventsByStatus(status: EventStatus) {
 
 export async function getEventsWithAlbums() {
   return (await getPastEvents()).filter(
-    (event) => event.data.photos && event.data.photos.length > 0
+    (event) =>
+      (event.data.photos && event.data.photos.length > 0) ||
+      (event.data.videos && event.data.videos.length > 0)
   );
+}
+
+const VIDEO_EXTS = new Set([".mp4", ".webm", ".mov", ".ogg"]);
+
+export function isVideo(filename: string) {
+  const ext = filename.slice(filename.lastIndexOf(".")).toLowerCase();
+  return VIDEO_EXTS.has(ext);
 }
 
 export function getEventCoverUrl(event: { id: string; data: { coverPhoto?: string; photos?: string[] } }) {

@@ -18,6 +18,7 @@ const events = defineCollection({
     slides: z.array(z.string()).optional(),
     place: z.string().optional(),
     photos: z.array(z.string()).optional(),
+    videos: z.array(z.string()).optional(),
     coverPhoto: z.string().optional(),
   }),
 });
