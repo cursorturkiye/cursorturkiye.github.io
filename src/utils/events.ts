@@ -22,3 +22,18 @@ export async function getPastEvents() {
 export async function getEventsByStatus(status: EventStatus) {
   return (await getSortedEvents()).filter((event) => event.data.status === status);
 }
+
+export async function getEventsWithAlbums() {
+  return (await getPastEvents()).filter(
+    (event) => event.data.photos && event.data.photos.length > 0
+  );
+}
+
+export function getEventCoverUrl(event: { id: string; data: { coverPhoto?: string; photos?: string[] } }) {
+  const filename = event.data.coverPhoto || event.data.photos?.[0];
+  return filename ? `/events/${event.id}/${filename}` : null;
+}
+
+export function getEventImageUrl(eventId: string, filename: string) {
+  return `/events/${eventId}/${filename}`;
+}

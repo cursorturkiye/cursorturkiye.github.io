@@ -27,6 +27,11 @@
   "thankyou.speakers.subtitle": "الأصوات خلف فعالياتنا",
   "thankyou.supporters": "الداعمون",
   "thankyou.supporters.subtitle": "المؤسسات التي جعلت كل هذا ممكناً",
-  "thankyou.events": "فعاليات"
+  "thankyou.events": "فعاليات",
+  "albums.title": "ألبومات",
+  "albums.subtitle": "صور من فعالياتنا السابقة",
+  "albums.back": "العودة للألبومات",
+  "albums.photos": "صور",
+  "albums.empty": "لا توجد ألبومات صور حالياً"
 }
 

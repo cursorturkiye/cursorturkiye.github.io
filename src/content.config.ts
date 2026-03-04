@@ -17,6 +17,8 @@ const events = defineCollection({
     speakers: z.array(z.string()).optional(),
     slides: z.array(z.string()).optional(),
     place: z.string().optional(),
+    photos: z.array(z.string()).optional(),
+    coverPhoto: z.string().optional(),
   }),
 });
 

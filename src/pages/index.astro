@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import HomePage from "@/components/HomePage.astro";
 import EventsPage from "@/components/EventsPage.astro";
+import AlbumsPage from "@/components/AlbumsPage.astro";
 import BlogPage from "@/components/BlogPage.astro";
 import AboutPage from "@/components/AboutPage.astro";
 import ThankYouPage from "@/components/ThankYouPage.astro";
@@ -15,6 +16,7 @@ import Footer from "@/components/Footer.astro";
   <main class="flex-grow pt-[72px] relative z-10">
     <HomePage />
     <EventsPage />
+    <AlbumsPage />
     <BlogPage />
     <AboutPage />
     <ThankYouPage />
@@ -40,6 +42,11 @@ import Footer from "@/components/Footer.astro";
       var selectedSection = document.getElementById(pageId);
       if (selectedSection) {
         selectedSection.classList.add('active');
+      }
+
+      // Reset albums to list view when navigating to albums page
+      if (pageId === 'albums' && typeof window.__albumsResetToList === 'function') {
+        window.__albumsResetToList();
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });

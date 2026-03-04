@@ -27,6 +27,11 @@
   "thankyou.speakers.subtitle": "The voices behind our events",
   "thankyou.supporters": "Our Supporters",
   "thankyou.supporters.subtitle": "Organizations that made it all possible",
-  "thankyou.events": "events"
+  "thankyou.events": "events",
+  "albums.title": "Albums",
+  "albums.subtitle": "Photos from our past events",
+  "albums.back": "Back to Albums",
+  "albums.photos": "photos",
+  "albums.empty": "No photo albums yet"
 }
 
