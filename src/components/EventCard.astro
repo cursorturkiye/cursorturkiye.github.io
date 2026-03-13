@@ -8,11 +8,11 @@ interface EventData {
   lumaUrl?: string;
   description: string;
   descriptionAr?: string;
-  type: "meetup" | "hackathon" | "workshop";
-  status: "planned" | "venue-pending" | "register-open" | "register-closed" | "completed" | "canceled";
+  type: "meetup" | "hackathon" | "workshop" | "build";
+  status: "backlog" | "informed" | "venue-pending" | "register-open" | "register-closed" | "concluded" | "canceled";
   speakers?: string[];
   slides?: string[];
-  place?: string;
+  venue?: string;
 }
 
 interface Props {
@@ -22,28 +22,33 @@ interface Props {
 const { event } = Astro.props;
 
 const day = event.date.getDate();
+const dayAr = event.date.getDate().toLocaleString("ar-SA");
 const monthShort = event.date.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
-const monthLong = event.date.toLocaleDateString("en-US", { month: "long" });
+const monthShortAr = event.date.toLocaleDateString("ar-SA", { month: "short" });
 const year = event.date.getFullYear();
+const yearAr = event.date.getFullYear().toLocaleString("ar-SA");
 const weekday = event.date.toLocaleDateString("en-US", { weekday: "long" });
+const weekdayAr = event.date.toLocaleDateString("ar-SA", { weekday: "long" });
 
 const slides = event.slides ?? [];
 const isCanceled = event.status === "canceled";
 
 const statusLabels: Record<string, { en: string; ar: string }> = {
-  planned: { en: "Planned", ar: "مخطط" },
+  backlog: { en: "Backlog", ar: "قيد التخطيط" },
+  informed: { en: "Informed", ar: "تم الإبلاغ" },
   "venue-pending": { en: "Venue Pending", ar: "بانتظار المكان" },
   "register-open": { en: "Register Open", ar: "التسجيل مفتوح" },
   "register-closed": { en: "Registration Closed", ar: "التسجيل مغلق" },
-  completed: { en: "Completed", ar: "منتهي" },
+  concluded: { en: "Concluded", ar: "انتهت" },
   canceled: { en: "Canceled", ar: "ملغي" },
 };
-const statusLabel = statusLabels[event.status] ?? statusLabels.planned;
+const statusLabel = statusLabels[event.status] ?? statusLabels.backlog;
 
-const typeAccent: Record<string, { rgb: string; label: string }> = {
-  meetup: { rgb: "59, 130, 246", label: "Meetup" },
-  hackathon: { rgb: "245, 158, 11", label: "Hackathon" },
-  workshop: { rgb: "16, 185, 129", label: "Workshop" },
+const typeAccent: Record<string, { rgb: string; labelEn: string; labelAr: string }> = {
+  meetup: { rgb: "59, 130, 246", labelEn: "Meetup", labelAr: "لقاء" },
+  hackathon: { rgb: "245, 158, 11", labelEn: "Hackathon", labelAr: "هاكاثون" },
+  workshop: { rgb: "16, 185, 129", labelEn: "Workshop", labelAr: "ورشة عمل" },
+  build: { rgb: "168, 85, 247", labelEn: "Build", labelAr: "بناء" },
 };
 const accent = typeAccent[event.type] ?? typeAccent.meetup;
 ---
@@ -55,14 +60,26 @@ const accent = typeAccent[event.type] ?? typeAccent.meetup;
   <!-- Date strip -->
   <div class="date-strip">
     <div class="date-main">
-      <span class="date-day">{day}</span>
+      <span class="date-day">
+        <span class="lang-en">{day}</span>
+        <span class="lang-ar">{dayAr}</span>
+      </span>
       <div class="date-details">
-        <span class="date-month-year">{monthShort} {year}</span>
-        <span class="date-weekday">{weekday}</span>
+        <span class="date-month-year">
+          <span class="lang-en">{monthShort} {year}</span>
+          <span class="lang-ar">{monthShortAr} {yearAr}</span>
+        </span>
+        <span class="date-weekday">
+          <span class="lang-en">{weekday}</span>
+          <span class="lang-ar">{weekdayAr}</span>
+        </span>
       </div>
     </div>
     <div class="date-badges">
-      <span class={`badge badge-${event.type}`}>{accent.label}</span>
+      <span class={`badge badge-${event.type}`}>
+        <span class="lang-en">{accent.labelEn}</span>
+        <span class="lang-ar">{accent.labelAr}</span>
+      </span>
       <span class={`badge badge-status-${event.status}`}>
         <span class="lang-ar">{statusLabel.ar}</span>
         <span class="lang-en">{statusLabel.en}</span>
@@ -85,7 +102,7 @@ const accent = typeAccent[event.type] ?? typeAccent.meetup;
         </svg>
         <span class="lang-ar">{event.locationAr ?? event.location}</span>
         <span class="lang-en">{event.location}</span>
-        {event.place && <span class="event-place">· {event.place}</span>}
+        {event.venue && <span class="event-venue">· {event.venue}</span>}
       </span>
       {
         event.speakers && event.speakers.length > 0 && (
@@ -286,7 +303,7 @@ const accent = typeAccent[event.type] ?? typeAccent.meetup;
     color: var(--text-tertiary);
   }
 
-  .event-place {
+  .event-venue {
     color: var(--text-tertiary);
   }
 

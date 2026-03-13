@@ -1,7 +1,65 @@
 ---
 import { config } from "@/config";
+import { getSortedEvents } from "@/utils/events";
 
 const roleOrder = ["official", "community-partner", "venue-host", "past-community-partner"] as const;
+
+// Build speakers from event data, enriched by config (exclude ambassadors)
+const events = await getSortedEvents();
+const ambassadorNames = new Set(
+  (config.ambassadors as readonly { name: string }[]).map((a) => a.name.toLowerCase().trim())
+);
+const speakerMap = new Map<string, { en: string; ar?: string }[]>();
+
+for (const event of events) {
+  const speakerNames = event.data.speakers ?? [];
+  const eventTitle = { en: event.data.title, ar: event.data.titleAr };
+  for (const name of speakerNames) {
+    const trimmed = name.trim();
+    if (!trimmed || ambassadorNames.has(trimmed.toLowerCase())) continue;
+    const existing = speakerMap.get(trimmed) ?? [];
+    const alreadyHas = existing.some((t) => t.en === eventTitle.en);
+    if (!alreadyHas) {
+      existing.push(eventTitle);
+    }
+    speakerMap.set(trimmed, existing);
+  }
+}
+
+const configSpeakers = config.speakers as readonly { name: string; nameAr?: string; initials: string; twitter?: string; linkedin?: string; events: string[] }[];
+const configByName = new Map(configSpeakers.map((s) => [s.name.toLowerCase().trim(), s]));
+
+interface Speaker {
+  name: string;
+  nameAr?: string;
+  initials: string;
+  events: { en: string; ar?: string }[];
+  twitter?: string;
+  linkedin?: string;
+}
+
+function getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+  return name.slice(0, 2).toUpperCase();
+}
+
+const speakers: Speaker[] = Array.from(speakerMap.entries())
+  .map(([name, events]) => {
+    const key = name.toLowerCase().trim();
+    const enrichment = configByName.get(key);
+    return {
+      name,
+      nameAr: enrichment?.nameAr,
+      initials: enrichment?.initials ?? getInitials(name),
+      events,
+      twitter: enrichment?.twitter,
+      linkedin: enrichment?.linkedin,
+    };
+  })
+  .sort((a, b) => b.events.length - a.events.length);
 
 const roleLabelEn: Record<string, string> = {
   "official": "Official",
@@ -38,8 +96,6 @@ const grouped = roleOrder
   }))
   .filter((g) => g.partners.length > 0);
 
-const speakers = config.speakers;
-
 const avatarColors = [
   "from-blue-500/20 to-blue-600/10 text-blue-400",
   "from-purple-500/20 to-purple-600/10 text-purple-400",
@@ -52,9 +108,9 @@ const avatarColors = [
 ---
 
 <section id="thankyou" class="page-content">
-  <div class="max-w-5xl mx-auto px-6 md:px-10 py-12 md:py-20">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-20">
     <!-- Hero -->
-    <div class="max-w-3xl mx-auto text-center mb-20">
+    <div class="max-w-4xl mx-auto text-center mb-20">
       <h1 class="text-4xl md:text-5xl font-semibold text-white mb-6">
         <span class="lang-en">Thank You</span>
         <span class="lang-ar">شكراً لكم</span>
@@ -88,7 +144,7 @@ const avatarColors = [
               <div class="min-w-0">
                 <h3 class="text-lg font-semibold text-white truncate">
                   <span class="lang-en">{speaker.name}</span>
-                  <span class="lang-ar">{speaker.nameAr}</span>
+                  <span class="lang-ar">{speaker.nameAr ?? speaker.name}</span>
                 </h3>
                 <div class="text-xs text-[#999999]">
                   <span class="lang-en">{speaker.events.length} {speaker.events.length === 1 ? "event" : "events"}</span>
@@ -98,9 +154,10 @@ const avatarColors = [
             </div>
 
             <div class="flex flex-wrap gap-1.5 mb-4">
-              {speaker.events.map((event) => (
+              {speaker.events.map((ev) => (
                 <span class="text-[11px] text-[#8A8A8A] bg-white/5 border border-white/5 px-2 py-0.5 rounded-md">
-                  {event}
+                  <span class="lang-en">{ev.en}</span>
+                  <span class="lang-ar">{ev.ar ?? ev.en}</span>
                 </span>
               ))}
             </div>

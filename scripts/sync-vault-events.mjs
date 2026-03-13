@@ -37,6 +37,10 @@ const PHOTOS_OUTPUT_DIR = path.resolve("public/events");
 const IMAGE_EXTS = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif", ".svg"]);
 const VIDEO_EXTS = new Set([".mp4", ".webm", ".mov", ".ogg"]);
 
+// Valid enum values (must match src/content.config.ts schema)
+const VALID_TYPES = new Set(["meetup", "hackathon", "workshop", "build"]);
+const VALID_STATUSES = new Set(["backlog", "informed", "venue-pending", "register-open", "register-closed", "concluded", "canceled"]);
+
 // Obsidian-only fields to strip from final frontmatter
 // Note: "type" and "status" are Astro-required fields for events, NOT Obsidian metadata
 const OBSIDIAN_FIELDS = ["created", "modified", "status_obs", "published"];
@@ -143,6 +147,46 @@ function syncEvents() {
       astroFm[key] = val;
     }
 
+    // Validate date — if missing or not a Date, try extracting from filename (YYYY-MM-DD prefix)
+    if (!(astroFm.date instanceof Date) || isNaN(astroFm.date.getTime())) {
+      const dateMatch = eventSlug.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (dateMatch) {
+        process.stderr.write(`[warn] ${file}: invalid date "${astroFm.date}", using filename date ${dateMatch[1]}\n`);
+        astroFm.date = new Date(dateMatch[1] + "T00:00:00.000Z");
+      } else {
+        process.stderr.write(`[error] ${file}: invalid date and no date in filename, skipping\n`);
+        skipped++;
+        continue;
+      }
+    }
+
+    // Validate enum fields against Astro schema, fallback with warning
+    if (!VALID_TYPES.has(astroFm.type)) {
+      process.stderr.write(`[warn] ${file}: invalid type "${astroFm.type || ""}", falling back to "meetup"\n`);
+      astroFm.type = "meetup";
+    }
+    if (!VALID_STATUSES.has(astroFm.status)) {
+      process.stderr.write(`[warn] ${file}: invalid status "${astroFm.status || ""}", falling back to "backlog"\n`);
+      astroFm.status = "backlog";
+    }
+
+    // Ensure required title — derive from slug if missing
+    if (!astroFm.title) {
+      const slugWithoutDate = eventSlug.replace(/^\d{4}-\d{2}-\d{2}-/, "");
+      const derived = slugWithoutDate
+        .split("-")
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
+      process.stderr.write(`[warn] ${file}: missing title, derived "${derived}" from filename\n`);
+      astroFm.title = derived;
+    }
+
+    // Ensure required string fields have values
+    if (!astroFm.description) {
+      astroFm.description = astroFm.title || "TBD";
+      process.stderr.write(`[warn] ${file}: empty description, using "${astroFm.description}"\n`);
+    }
+
     // Extract ![[filename]] wikilinks from content and process media
     const photos = [];
     const videos = [];
@@ -192,8 +236,17 @@ function syncEvents() {
       astroFm.videos = videos;
     }
 
+    // Reorder frontmatter: title first, then date, then rest
+    const ordered = {};
+    if (astroFm.title) ordered.title = astroFm.title;
+    if (astroFm.titleAr) ordered.titleAr = astroFm.titleAr;
+    if (astroFm.date) ordered.date = astroFm.date;
+    for (const [k, v] of Object.entries(astroFm)) {
+      if (!(k in ordered)) ordered[k] = v;
+    }
+
     // Write transformed event
-    const outputContent = serializeEvent(astroFm, processedContent);
+    const outputContent = serializeEvent(ordered, processedContent);
     fs.writeFileSync(path.join(EVENTS_OUTPUT_DIR, file), outputContent);
     synced++;
   }

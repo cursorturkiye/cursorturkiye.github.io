@@ -12,7 +12,7 @@ export interface BlogPost {
   tags?: string[];
   coverImage?: string;
   // Event-specific fields
-  eventType?: "meetup" | "hackathon" | "workshop";
+  eventType?: "meetup" | "hackathon" | "workshop" | "build";
   eventLocation?: string;
   eventLocationAr?: string;
   eventSlides?: string[];
@@ -25,7 +25,7 @@ export async function getEventBlogPosts(): Promise<BlogPost[]> {
   const posts: BlogPost[] = [];
 
   for (const event of events) {
-    if (event.data.status !== "completed") continue;
+    if (event.data.status !== "concluded") continue;
     const { Content } = await render(event);
     // Check if body content is substantial
     if (!event.body || event.body.length <= 100) continue;
@@ -75,12 +75,12 @@ export async function getStandaloneBlogPosts(): Promise<BlogPost[]> {
     }));
 }
 
-/** Returns a Set of event IDs that have a blog post (completed + body > 100 chars). */
+/** Returns a Set of event IDs that have a blog post (concluded + body > 100 chars). */
 export async function getEventIdsWithBlog(): Promise<Set<string>> {
   const events = await getCollection("events");
   const ids = new Set<string>();
   for (const event of events) {
-    if (event.data.status === "completed" && event.body && event.body.length > 100) {
+    if (event.data.status === "concluded" && event.body && event.body.length > 100) {
       ids.add(event.id);
     }
   }

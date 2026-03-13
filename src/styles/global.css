@@ -284,6 +284,24 @@ html[lang="ar"] .lang-ar {
   display: inline;
 }
 
+/* SVG text elements need block display for proper visibility toggling */
+svg text.lang-en {
+  display: none;
+}
+
+html[lang="en"] svg text.lang-en {
+  display: block;
+}
+
+html[lang="en"] svg text.lang-ar {
+  display: none;
+}
+
+html[lang="ar"] svg text.lang-ar {
+  display: block;
+  font-family: "Noto Kufi Arabic", "IBM Plex Arabic", system-ui, sans-serif;
+}
+
 /* ─── Cursor Logo Animation ─── */
 .logo-cursor {
   transition: filter 0.3s ease;

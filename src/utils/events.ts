@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 
-export type EventStatus = "planned" | "venue-pending" | "register-open" | "register-closed" | "completed" | "canceled";
+export type EventStatus = "backlog" | "informed" | "venue-pending" | "register-open" | "register-closed" | "concluded" | "canceled";
 
 export async function getSortedEvents() {
   const events = await getCollection("events");

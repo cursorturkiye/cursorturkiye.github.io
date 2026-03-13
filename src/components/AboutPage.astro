@@ -7,6 +7,7 @@ type EventEntry = CollectionEntry<"events">;
 
 interface Ambassador {
   name: string;
+  nameAr?: string;
   role: string;
   roleAr: string;
   city: string;
@@ -33,7 +34,7 @@ const nextMecca = upcoming.find((e: EventEntry) => e.data.location === "Mecca");
 
 const riyadhAmbassador = ambassadors.find((a) => a.city === "Riyadh")!;
 const khobarAmbassador = ambassadors.find((a) => a.city === "Khobar")!;
-const meccaAmbassador = ambassadors.find((a) => a.city === "Mecca")!;
+const meccaAmbassador = ambassadors.find((a) => a.city === "Mecca");
 
 const riyadhPartners = config.partners.filter((p) => (p.cities as readonly string[]).includes("Riyadh") && p.role !== "past-community-partner");
 const khobarPartners = config.partners.filter((p) => (p.cities as readonly string[]).includes("Khobar"));
@@ -45,9 +46,9 @@ function formatShortDate(date: Date) {
 ---
 
 <section id="about" class="page-content">
-  <div class="max-w-5xl mx-auto px-6 md:px-10 py-12 md:py-20">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-20">
     <!-- Mission Statement -->
-    <div class="max-w-3xl mx-auto text-center mb-20">
+    <div class="max-w-4xl mx-auto text-center mb-20">
       <h1 class="text-4xl md:text-5xl font-semibold text-white mb-8">
         <span class="lang-en">Empowering the Kingdom's<br>Next Generation of Builders.</span>
         <span class="lang-ar">تمكين الجيل القادم<br>من البناة في المملكة.</span>
@@ -85,7 +86,8 @@ function formatShortDate(date: Date) {
           <div class="flex items-center gap-2 text-xs text-[#999999] mb-4">
             <span class="lang-en">{riyadhAmbassador.role}:</span><span class="lang-ar">{riyadhAmbassador.roleAr}:</span>
             <div class="flex items-center gap-2">
-              <span class="text-white font-medium">{riyadhAmbassador.name}</span>
+              <span class="lang-en text-white font-medium">{riyadhAmbassador.name}</span>
+                <span class="lang-ar text-white font-medium">{riyadhAmbassador.nameAr ?? riyadhAmbassador.name}</span>
               {riyadhAmbassador.twitter && (
                 <a href={riyadhAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -138,7 +140,8 @@ function formatShortDate(date: Date) {
           <div class="flex items-center gap-2 text-xs text-[#999999] mb-4">
             <span class="lang-en">{khobarAmbassador.role}:</span><span class="lang-ar">{khobarAmbassador.roleAr}:</span>
             <div class="flex items-center gap-2">
-              <span class="text-white font-medium">{khobarAmbassador.name}</span>
+              <span class="lang-en text-white font-medium">{khobarAmbassador.name}</span>
+                <span class="lang-ar text-white font-medium">{khobarAmbassador.nameAr ?? khobarAmbassador.name}</span>
               {khobarAmbassador.twitter && (
                 <a href={khobarAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -194,20 +197,29 @@ function formatShortDate(date: Date) {
             </div>
             <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Expanding to the Holy City to serve the growing tech community in the Mecca region. Stay tuned for our first events.</span><span class="lang-ar">نتوسع إلى مكة المكرمة لخدمة مجتمع التقنية المتنامي في منطقة مكة. ترقبوا فعالياتنا الأولى.</span></p>
             <div class="flex items-center gap-2 text-xs text-[#999999] mb-4">
-              <span class="lang-en">{meccaAmbassador.role}:</span><span class="lang-ar">{meccaAmbassador.roleAr}:</span>
-              <div class="flex items-center gap-2">
-                <span class="text-white font-medium">{meccaAmbassador.name}</span>
-                {meccaAmbassador.twitter && (
-                  <a href={meccaAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                  </a>
-                )}
-                {meccaAmbassador.linkedin && (
-                  <a href={meccaAmbassador.linkedin} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="LinkedIn">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  </a>
-                )}
-              </div>
+              {meccaAmbassador ? (
+                <>
+                  <span class="lang-en">{meccaAmbassador.role}:</span><span class="lang-ar">{meccaAmbassador.roleAr}:</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-white font-medium">{meccaAmbassador.name}</span>
+                    {meccaAmbassador.twitter && (
+                      <a href={meccaAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                      </a>
+                    )}
+                    {meccaAmbassador.linkedin && (
+                      <a href={meccaAmbassador.linkedin} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="LinkedIn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      </a>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <span class="text-white font-medium">
+                  <span class="lang-en">To Be Announced</span>
+                  <span class="lang-ar">سيتم الإعلان قريباً</span>
+                </span>
+              )}
             </div>
             {(meccaPast > 0 || meccaUpcoming > 0) && (
               <div class="flex gap-4 mb-6">
@@ -251,12 +263,15 @@ function formatShortDate(date: Date) {
                 <span class="lang-en">{ambassador.role} · {ambassador.city}</span>
                 <span class="lang-ar">{ambassador.roleAr} · {ambassador.cityAr}</span>
               </div>
-              <h2 class="text-2xl font-bold text-white mb-4">{ambassador.name}</h2>
+              <h2 class="text-2xl font-bold text-white mb-4">
+                <span class="lang-en">{ambassador.name}</span>
+                <span class="lang-ar">{ambassador.nameAr ?? ambassador.name}</span>
+              </h2>
               <div class="flex gap-4">
                 {ambassador.twitter && (
                   <a href={ambassador.twitter} target="_blank" rel="noreferrer" class="text-[#999999] hover:text-white transition-colors text-sm flex items-center gap-1.5">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    X / Twitter
+                    X
                   </a>
                 )}
                 {ambassador.linkedin && (
@@ -309,7 +324,7 @@ function formatShortDate(date: Date) {
     <div class="text-center">
       <div class="inline-flex gap-6 text-sm">
         <a href={config.social.luma} target="_blank" rel="noreferrer" class="text-[#999999] hover:text-white transition-colors">Luma</a>
-        <a href={config.social.twitter} target="_blank" rel="noreferrer" class="text-[#999999] hover:text-white transition-colors">Twitter / X</a>
+        <a href={config.social.twitter} target="_blank" rel="noreferrer" class="text-[#999999] hover:text-white transition-colors">X</a>
       </div>
     </div>
   </div>

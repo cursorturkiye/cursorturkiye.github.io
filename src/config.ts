@@ -42,6 +42,7 @@ export const config = {
   ambassadors: [
     {
       name: "Mazen Alotaibi",
+      nameAr: "مازن العتيبي",
       role: "Saudi Arabia Leader",
       roleAr: "قائد المجتمع في السعودية",
       city: "Riyadh",
@@ -51,20 +52,13 @@ export const config = {
     },
     {
       name: "Abdulhakeem Almidan",
+      nameAr: "عبدالحكيم الميدان",
       role: "Ambassador",
       roleAr: "سفير",
       city: "Khobar",
       cityAr: "الخبر",
       twitter: "https://x.com/abdulhakeem_mdn",
       linkedin: "https://www.linkedin.com/in/abdulhakeem-almidan/",
-    },
-    {
-      name: "Yazan Alkamal",
-      role: "Ambassador",
-      roleAr: "سفير",
-      city: "Mecca",
-      cityAr: "مكة المكرمة",
-      linkedin: "https://www.linkedin.com/in/yazanalkamal/",
     },
   ],
   social: {
@@ -98,18 +92,6 @@ export const config = {
       descriptionAr:
         "جمعية غير ربحية سعودية تمكّن المهتمين بعلوم البيانات والذكاء الاصطناعي من خلال برامج عملية وداتاثونات. مدعومة وممولة من مؤسسة مسك وسدايا.",
       cities: ["Riyadh"],
-    },
-    {
-      name: "Synapse",
-      nameAr: "سِنابس",
-      role: "community-partner",
-      logo: "/logos/synapse.jpeg",
-      url: "https://www.linkedin.com/company/synapseksa/",
-      description:
-        "A nonprofit tech organization building innovation communities in AI and data analytics across Saudi Arabia. Supported and funded by SDAIA.",
-      descriptionAr:
-        "منظمة تقنية غير ربحية تبني مجتمعات الابتكار في الذكاء الاصطناعي وتحليل البيانات في السعودية. مدعومة وممولة من سدايا.",
-      cities: ["Mecca"],
     },
     {
       name: "Mozn",

@@ -7,13 +7,17 @@ function formatDate(date: Date) {
   return date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 }
 
+function formatDateAr(date: Date) {
+  return date.toLocaleDateString("ar-SA", { year: "numeric", month: "short", day: "numeric" });
+}
+
 function getAllMedia(event: { data: { photos?: string[]; videos?: string[] } }) {
   return [...(event.data.photos ?? []), ...(event.data.videos ?? [])];
 }
 ---
 
 <section id="albums" class="page-content">
-  <div class="max-w-5xl mx-auto px-6 md:px-10 py-12 md:py-20">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-20">
 
     <!-- List View -->
     <div id="albums-list">
@@ -76,18 +80,31 @@ function getAllMedia(event: { data: { photos?: string[]; videos?: string[] } }) 
                     <span class="lang-ar">{event.data.titleAr || event.data.title}</span>
                   </h3>
                   <div class="flex items-center gap-3 text-xs text-[#999999]">
-                    <span>{formatDate(event.data.date)}</span>
+                    <span>
+                      <span class="lang-en">{formatDate(event.data.date)}</span>
+                      <span class="lang-ar">{formatDateAr(event.data.date)}</span>
+                    </span>
                     <span class="text-[#555]">·</span>
                     <span>
-                      {photoCount > 0 && <>{photoCount} <span class="lang-en">photos</span><span class="lang-ar">صور</span></>}
+                      {photoCount > 0 && (
+                        <>
+                          <span class="lang-en">{photoCount} photos</span>
+                          <span class="lang-ar">{photoCount.toLocaleString("ar-SA")} صور</span>
+                        </>
+                      )}
                       {photoCount > 0 && videoCount > 0 && <span class="text-[#555]"> · </span>}
-                      {videoCount > 0 && <>{videoCount} <span class="lang-en">{videoCount === 1 ? 'video' : 'videos'}</span><span class="lang-ar">{videoCount === 1 ? 'فيديو' : 'فيديوهات'}</span></>}
+                      {videoCount > 0 && (
+                        <>
+                          <span class="lang-en">{videoCount} {videoCount === 1 ? 'video' : 'videos'}</span>
+                          <span class="lang-ar">{videoCount.toLocaleString("ar-SA")} {videoCount === 1 ? 'فيديو' : 'فيديوهات'}</span>
+                        </>
+                      )}
                     </span>
                   </div>
                   <div class="flex items-center gap-1.5 text-xs text-[#6E6E6E] mt-2">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span class="lang-en">{event.data.location}{event.data.place ? ` · ${event.data.place}` : ''}</span>
-                    <span class="lang-ar">{event.data.locationAr || event.data.location}{event.data.place ? ` · ${event.data.place}` : ''}</span>
+                    <span class="lang-en">{event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
+                    <span class="lang-ar">{event.data.locationAr || event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
                   </div>
                 </div>
               </button>
@@ -118,12 +135,13 @@ function getAllMedia(event: { data: { photos?: string[]; videos?: string[] } }) 
             <div class="flex flex-wrap items-center gap-4 text-sm text-[#999999] mb-4">
               <span class="flex items-center gap-1.5">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                {formatDate(event.data.date)}
+                <span class="lang-en">{formatDate(event.data.date)}</span>
+                <span class="lang-ar">{formatDateAr(event.data.date)}</span>
               </span>
               <span class="flex items-center gap-1.5">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span class="lang-en">{event.data.location}{event.data.place ? ` · ${event.data.place}` : ''}</span>
-                <span class="lang-ar">{event.data.locationAr || event.data.location}{event.data.place ? ` · ${event.data.place}` : ''}</span>
+                <span class="lang-en">{event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
+                <span class="lang-ar">{event.data.locationAr || event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
               </span>
             </div>
             <p class="text-[#999999] max-w-2xl">

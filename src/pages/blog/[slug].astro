@@ -23,10 +23,18 @@ const dateStr = post.date.toLocaleDateString("en-US", {
   year: "numeric",
 });
 
+const dateStrAr = post.date.toLocaleDateString("ar-SA", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+
 const typeLabels: Record<string, { en: string; ar: string }> = {
   meetup: { en: "Meetup", ar: "لقاء" },
   hackathon: { en: "Hackathon", ar: "هاكاثون" },
   workshop: { en: "Workshop", ar: "ورشة عمل" },
+  build: { en: "Build", ar: "بناء" },
 };
 ---
 
@@ -34,7 +42,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
   <Header isSubPage={true} />
 
   <main class="flex-grow pt-[72px] relative z-10">
-    <article class="max-w-3xl mx-auto px-6 md:px-10 py-12 md:py-20">
+    <article class="max-w-4xl mx-auto px-6 md:px-10 py-12 md:py-20">
       <!-- Back link -->
       <a href="/#blog" class="inline-flex items-center gap-2 text-sm text-[#6E6E6E] hover:text-white transition-colors mb-8">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -68,7 +76,8 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
           )}
           {post.eventType && (
             <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-[#999] border border-[#252525] capitalize">
-              {typeLabels[post.eventType]?.en ?? post.eventType}
+              <span class="lang-en">{typeLabels[post.eventType]?.en ?? post.eventType}</span>
+              <span class="lang-ar">{typeLabels[post.eventType]?.ar ?? post.eventType}</span>
             </span>
           )}
         </div>
@@ -81,7 +90,10 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
 
         <!-- Meta -->
         <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#6E6E6E]">
-          <time>{dateStr}</time>
+          <time>
+            <span class="lang-en">{dateStr}</span>
+            <span class="lang-ar">{dateStrAr}</span>
+          </time>
           {post.author && (
             <span>
               <span class="lang-en">by</span>
