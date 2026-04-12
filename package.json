@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node scripts/sync-vault-events.mjs --vault-path ~/Vault && astro dev",
-    "sync-events": "node scripts/sync-vault-events.mjs --vault-path ~/Vault",
+    "sync-events": "node scripts/sync-events.mjs",
+    "dev": "node scripts/sync-events.mjs --soft && astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },

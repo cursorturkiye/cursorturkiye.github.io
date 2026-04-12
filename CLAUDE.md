@@ -4,10 +4,13 @@
 
 ```bash
 pnpm install          # Install dependencies
-npx astro dev         # Dev server (localhost:4321)
-npx astro build       # Production build → ./dist
-npx astro preview     # Preview production build
+pnpm dev              # Sync events from ~/Vault (soft) → astro dev on localhost:4321
+pnpm sync-events      # Manually run the bidirectional Vault ↔ repo sync
+pnpm build            # Production build → ./dist (no sync; uses committed markdown)
+pnpm preview          # Preview production build
 ```
+
+Always use `pnpm dev` (not `npx astro dev`) — it triggers the event sync first.
 
 ## Architecture
 
@@ -48,10 +51,23 @@ public/
 
 Events live in `src/data/events/` as Markdown files. Schema defined in `src/content.config.ts` with Zod:
 
-- **Required**: `title`, `date`, `location`, `description`, `type` (`"meetup" | "hackathon" | "workshop"`), `status` (`"planned" | "venue-pending" | "register-open" | "register-closed" | "completed" | "canceled"`)
-- **Optional**: `titleAr`, `locationAr`, `descriptionAr`, `lumaUrl`, `speakers`, `slides`, `place`
+- **Required**: `title`, `date`, `location`, `description`, `type` (`"meetup" | "hackathon" | "workshop" | "build"`), `status` (`"backlog" | "informed" | "venue-pending" | "register-open" | "register-closed" | "concluded" | "canceled"`)
+- **Optional**: `titleAr`, `locationAr`, `descriptionAr`, `lumaUrl`, `speakers`, `slides`, `venue`, `photos`, `videos`, `coverPhoto`
 
 `status` drives UI behavior: register buttons show only for `register-open`, canceled events are muted/strikethrough, and status badges are color-coded on EventCards. Access events only through `src/utils/events.ts` helpers.
+
+### Vault ↔ repo bidirectional sync
+
+`scripts/sync-events.mjs` keeps `src/data/events/` and `public/events/` in sync with the maintainer's Obsidian Vault at `~/Vault/cursorsaudi/events/` (markdown) and `~/Vault/__media/` (images/videos). Key behaviors:
+
+- **Bidirectional**: new files on either side propagate to the other. For files that exist on both sides, content is compared after applying the Vault → repo transform; only genuine differences trigger a sync, with newer mtime winning conflicts. After every sync the two sides' mtimes are aligned so subsequent runs see them as in-sync.
+- **Vault → repo transformations**: strips Obsidian-only fields (`created`, `modified`, `status_obs`, `published`); converts `![[file]]` wikilinks to `![](/events/<slug>/<file>)`; populates `photos`/`videos`/`coverPhoto` from referenced media; applies fallbacks for required fields when the Vault has incomplete drafts (slug→title-case, filename→date, invalid `type`→`meetup`, invalid `status`→`backlog`); copies referenced media from `~/Vault/__media/` into `public/events/<slug>/`.
+- **Repo → vault transformations**: strips auto-generated fields (`photos`, `coverPhoto`, `videos`); converts markdown image links back to wikilinks; preserves any existing `created`/`modified` fields on the Vault destination so Obsidian metadata isn't clobbered; copies media back to `~/Vault/__media/` (warns on flat-folder name collisions).
+- **Soft mode** (`--soft`): used by `pnpm dev` so the script silently exits when `~/Vault` isn't present (CI machines, contributors without the Vault).
+- **CI**: GitHub Actions builds straight from the committed markdown — no sync, no Vault checkout. The Vault dependency is purely a local convenience.
+- **Manual override flags**: `--vault-wins`, `--repo-wins`, `--dry-run`, `--vault-path <path>`.
+
+**Never** commit to `src/data/events/` or `public/events/` directly without running `pnpm sync-events` first if the Vault is reachable — otherwise the next sync will see drift and may overwrite the freshly-committed file.
 
 ## i18n
 

@@ -1,55 +1,44 @@
 ---
 import LangToggle from "@/components/LangToggle.astro";
 
-interface Props {
-  isSubPage?: boolean;
-}
-
-const { isSubPage = false } = Astro.props;
-
 const navItems = [
-  { id: "home", en: "Home", ar: "الرئيسية" },
-  { id: "events", en: "Events", ar: "الفعاليات" },
-  { id: "albums", en: "Albums", ar: "ألبومات" },
-  { id: "about", en: "About", ar: "عن المجتمع" },
-  { id: "ambassadors", en: "Become an ambassador", ar: "كن سفيراً" },
-  { id: "partnerships", en: "Work with us", ar: "اعمل معنا" },
-  { id: "thankyou", en: "Thank You", ar: "شكراً" },
+  { id: "home", href: "/", en: "Home", ar: "الرئيسية" },
+  { id: "events", href: "/events", en: "Events", ar: "الفعاليات" },
+  { id: "albums", href: "/albums", en: "Albums", ar: "ألبومات" },
+  { id: "about", href: "/about", en: "About", ar: "عن المجتمع" },
+  { id: "ambassadors", href: "/ambassadors", en: "Become an ambassador", ar: "كن سفيراً" },
+  { id: "partnerships", href: "/partnerships", en: "Work with us", ar: "اعمل معنا" },
+  { id: "thankyou", href: "/thankyou", en: "Thank You", ar: "شكراً" },
 ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+function isActive(href: string) {
+  if (href === "/") return currentPath === "/" || currentPath === "";
+  return currentPath.startsWith(href);
+}
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 glass-nav h-[72px] flex items-center">
   <div class="max-w-7xl mx-auto w-full px-6 md:px-10 flex items-center justify-between">
     <!-- Logo -->
-    {isSubPage ? (
-      <a href="/" class="flex items-center group cursor-pointer" aria-label="Cursor Saudi - Home">
-        <svg width="22" height="25" viewBox="0 0 467 532" fill="none" class="logo-cursor" aria-hidden="true">
-          <path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z" fill="#15803d"/>
-        </svg>
-      </a>
-    ) : (
-      <a href="#" class="flex items-center group cursor-pointer" data-nav="home" aria-label="Cursor Saudi - Home">
-        <svg width="22" height="25" viewBox="0 0 467 532" fill="none" class="logo-cursor" aria-hidden="true">
-          <path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z" fill="#15803d"/>
-        </svg>
-      </a>
-    )}
+    <a href="/" class="flex items-center group cursor-pointer" aria-label="Cursor Saudi - Home">
+      <svg width="22" height="25" viewBox="0 0 467 532" fill="none" class="logo-cursor" aria-hidden="true">
+        <path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z" fill="#15803d"/>
+      </svg>
+    </a>
 
-    <!-- Desktop nav from xl up; hamburger only below xl (tablets / narrow laptops) -->
+    <!-- Desktop nav from xl up; hamburger only below xl -->
     <div class="hidden xl:flex items-center gap-5 min-w-0 shrink xl:gap-6 2xl:gap-8">
-      {navItems.map((item) =>
-        isSubPage ? (
-          <a href={`/#${item.id}`} class={`nav-link${item.id === "events" ? " active" : ""}`} id={`nav-${item.id}`}>
-            <span class="lang-ar">{item.ar}</span>
-            <span class="lang-en">{item.en}</span>
-          </a>
-        ) : (
-          <button class={`nav-link${item.id === "home" ? " active" : ""}`} data-nav={item.id} id={`nav-${item.id}`}>
-            <span class="lang-ar">{item.ar}</span>
-            <span class="lang-en">{item.en}</span>
-          </button>
-        )
-      )}
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`nav-link${isActive(item.href) ? " active" : ""}`}
+          id={`nav-${item.id}`}
+        >
+          <span class="lang-ar">{item.ar}</span>
+          <span class="lang-en">{item.en}</span>
+        </a>
+      ))}
     </div>
 
     <!-- Right side actions -->
@@ -60,7 +49,7 @@ const navItems = [
         <span class="lang-en">Join Community</span>
       </a>
 
-      <!-- Hamburger: viewports &lt; xl only -->
+      <!-- Hamburger: viewports < xl only -->
       <button
         id="mobile-menu-btn"
         class="xl:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-colors shrink-0"
@@ -80,19 +69,15 @@ const navItems = [
   <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="mobile-menu-backdrop"></div>
   <div class="absolute top-[72px] left-0 right-0 bg-[#0F0F0F] border-b border-[#252525] shadow-2xl">
     <div class="flex flex-col p-6 gap-1">
-      {navItems.map((item) =>
-        isSubPage ? (
-          <a href={`/#${item.id}`} class={`mobile-nav-link nav-link text-start py-3 px-4 rounded-xl text-base font-medium ${item.id === "events" ? "active text-white" : "text-[#999999]"} hover:text-white hover:bg-white/5 transition-colors`}>
-            <span class="lang-ar">{item.ar}</span>
-            <span class="lang-en">{item.en}</span>
-          </a>
-        ) : (
-          <button class={`mobile-nav-link nav-link text-start py-3 px-4 rounded-xl text-base font-medium ${item.id === "home" ? "active text-white" : "text-[#999999]"} hover:text-white hover:bg-white/5 transition-colors`} data-nav={item.id}>
-            <span class="lang-ar">{item.ar}</span>
-            <span class="lang-en">{item.en}</span>
-          </button>
-        )
-      )}
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`mobile-nav-link nav-link text-start py-3 px-4 rounded-xl text-base font-medium ${isActive(item.href) ? "active text-white" : "text-[#999999]"} hover:text-white hover:bg-white/5 transition-colors`}
+        >
+          <span class="lang-ar">{item.ar}</span>
+          <span class="lang-en">{item.en}</span>
+        </a>
+      ))}
       <div class="border-t border-[#252525] mt-3 pt-4">
         <a href="https://discord.gg/KpsKtegvz4" target="_blank" rel="noreferrer" class="btn-primary w-full px-5 py-3 rounded-full text-sm font-medium text-center">
           <span class="lang-ar">انضم للمجتمع</span>

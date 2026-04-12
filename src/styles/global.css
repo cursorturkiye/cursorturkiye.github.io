@@ -218,15 +218,7 @@ a:focus-visible {
   border-color: rgba(255,255,255,0.2);
 }
 
-/* ─── Page Content (SPA transitions) ─── */
-.page-content {
-  display: none;
-}
-.page-content.active {
-  display: block;
-  animation: fadeIn 0.4s ease-out forwards;
-}
-
+/* ─── Page Content ─── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }

@@ -1,10 +1,8 @@
-name: Sync Vault Events & Deploy
+name: Deploy
 
 on:
   push:
     branches: ["main"]
-  repository_dispatch:
-    types: [vault-events-updated]
   workflow_dispatch:
 
 permissions:
@@ -21,17 +19,6 @@ jobs:
       - name: Checkout website
         uses: actions/checkout@v4
 
-      - name: Checkout vault events
-        uses: actions/checkout@v4
-        with:
-          repository: ma7dev/Vault
-          token: ${{ secrets.VAULT_PAT }}
-          sparse-checkout: |
-            cursorsaudi/events
-            __media
-          sparse-checkout-cone-mode: false
-          path: vault
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -45,9 +32,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Sync events from vault
-        run: node scripts/sync-vault-events.mjs --vault-path vault
 
       - name: Build site
         run: pnpm build

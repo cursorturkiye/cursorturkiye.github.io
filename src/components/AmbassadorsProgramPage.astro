@@ -14,11 +14,11 @@ const leadXHandle =
     : "ma7dev";
 /** Official Cursor ambassador application (same flow Cursor documents globally). */
 const cursorAmbassadorsUrl = "https://cursor.com/ambassadors";
-/** Cursor program contact from official ambassadors FAQ. */
-const cursorAmbassadorProgramEmail = "blang@cursor.com";
+/** Community inbox for ambassador program questions (same as site contact). */
+const cursorAmbassadorProgramEmail = config.social.email;
 ---
 
-<section id="ambassadors" class="page-content">
+<section id="ambassadors">
   <div class="max-w-3xl mx-auto px-6 md:px-10 py-12 md:py-20">
     <p class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-4">
       <span class="lang-en">Community</span>
@@ -374,11 +374,47 @@ const cursorAmbassadorProgramEmail = "blang@cursor.com";
       </div>
     </div>
 
+    <!-- Cursor on Campus -->
+    <div class="bg-[#171717] border border-[#252525] rounded-2xl p-6 md:p-8 mb-12">
+      <div class="flex items-start gap-4">
+        <div class="shrink-0 w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/25 flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold text-white mb-2">
+            <span class="lang-en">Cursor on Campus</span>
+            <span class="lang-ar">كيرسر في الجامعات</span>
+          </h2>
+          <p class="text-sm text-[#b0b0b0] leading-relaxed mb-4">
+            <span class="lang-en">
+              Are you a student? Cursor&apos;s <strong class="text-white/90 font-medium">Campus Leads</strong> program lets you represent Cursor at your
+              university — teach best practices, organize events, and connect your campus with the global developer community.
+              This is separate from the ambassador program and designed specifically for students.
+            </span>
+            <span class="lang-ar">
+              هل أنت طالب؟ برنامج <strong class="text-white/90 font-medium">قادة الجامعات</strong> من كيرسر يتيح لك تمثيل كيرسر في جامعتك —
+              علّم أفضل الممارسات، نظّم فعاليات، واربط جامعتك بمجتمع المطورين العالمي.
+              هذا البرنامج منفصل عن برنامج السفراء ومصمم خصيصاً للطلاب.
+            </span>
+          </p>
+          <a
+            href="https://cursorai.notion.site/Cursor-on-Campus-215da74ef045808d805fd336f9a62a40"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors"
+          >
+            <span class="lang-en">Apply as a Campus Lead ↗</span>
+            <span class="lang-ar">قدّم كقائد جامعي ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <div class="flex flex-wrap gap-4">
-      <button type="button" data-nav="about" class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">
+      <a href="/about" class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">
         <span class="lang-en">← Back to About</span>
         <span class="lang-ar">العودة إلى عن المجتمع ←</span>
-      </button>
+      </a>
       <a
         href={cursorAmbassadorsUrl}
         target="_blank"
