@@ -19,6 +19,7 @@ export const config = {
       photo: "/images/speakers/abdullah-mosaibah.jpg",
       twitter: "https://x.com/AbdoMosaibah",
       twitterHandle: "AbdoMosaibah",
+      linkedin: "https://www.linkedin.com/in/abdullah-mosaibah-67814312b/",
       aliases: [],
     },
     {
@@ -45,6 +46,7 @@ export const config = {
       photo: "/images/speakers/faris-hijazi.jpg",
       twitter: "https://x.com/theefaris",
       twitterHandle: "theefaris",
+      linkedin: "https://www.linkedin.com/in/theefaris/",
       aliases: [],
     },
     {
