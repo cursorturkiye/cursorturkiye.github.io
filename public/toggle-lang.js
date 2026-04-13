@@ -14,9 +14,11 @@
   html.dir = lang === "ar" ? "rtl" : "ltr";
 })();
 
-document.addEventListener("DOMContentLoaded", function () {
+function setupLangToggle() {
   var btn = document.getElementById("lang-toggle");
   if (!btn) return;
+  if (btn.dataset.langToggleBound === "1") return;
+  btn.dataset.langToggleBound = "1";
 
   function stripLocale(p) {
     var x = p.match(/^\/(ar|en)(\/.*)?$/);
@@ -30,9 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
     return "/" + nextLang + tail;
   }
 
-  btn.addEventListener("click", function () {
+  function navigateToNextLang() {
     var cur = document.documentElement.lang === "en" ? "en" : "ar";
     var next = cur === "ar" ? "en" : "ar";
-    window.location.href = withLocale(location.pathname, next);
-  });
-});
+    window.location.href = withLocale(location.pathname, next) + location.search + location.hash;
+  }
+
+  if ("onpointerup" in window) {
+    btn.addEventListener("pointerup", navigateToNextLang);
+    return;
+  }
+
+  btn.addEventListener("click", navigateToNextLang);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", setupLangToggle);
+} else {
+  setupLangToggle();
+}
