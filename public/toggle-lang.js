@@ -38,12 +38,23 @@ function setupLangToggle() {
     window.location.href = withLocale(location.pathname, next) + location.search + location.hash;
   }
 
+  var shouldIgnoreNextClick = false;
+
   if ("onpointerup" in window) {
-    btn.addEventListener("pointerup", navigateToNextLang);
-    return;
+    btn.addEventListener("pointerup", function (event) {
+      // Keep pointer responsiveness on mobile while preserving click a11y path.
+      shouldIgnoreNextClick = true;
+      navigateToNextLang();
+    });
   }
 
-  btn.addEventListener("click", navigateToNextLang);
+  btn.addEventListener("click", function () {
+    if (shouldIgnoreNextClick) {
+      shouldIgnoreNextClick = false;
+      return;
+    }
+    navigateToNextLang();
+  });
 }
 
 if (document.readyState === "loading") {
