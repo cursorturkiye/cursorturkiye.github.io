@@ -125,7 +125,7 @@ A 3-hour interactive workshop where participants built and deployed real softwar
 - وازِ العمل مع الوكلاء الخلفيين
 
 ### خط أنابيب أدوات الذكاء الاصطناعي
-- بحث (ChatGPT/Perplexity) → نموذج أولي (Replit/Lovable/v0) → بناء (Cursor) → تحسين (variant.com/v0) → نشر
+- بحث (ChatGPT/Perplexity) → نموذج أولي (Replit/Lovable/v0) → بناء (كيرسر) → تحسين (variant.com/v0) → نشر
 
 ### البناء العملي
 - بنى الحضور تطبيقات تشمل: متتبع تغذية الحيوانات الأليفة، أداة توليد صور لوسائل التواصل، وتطبيق مجتمع دراجات الرياض

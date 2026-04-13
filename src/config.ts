@@ -66,7 +66,7 @@ export const config = {
       nameAr: "نيك ميلر",
       initials: "NM",
       bio: "An architect and engineer with 25+ years of experience as a Senior Software Engineer, Product Manager, CTO, and Founder. Led specialized engineering consultancies serving global enterprises like Adobe, Amazon, and Nvidia. Currently an Engineer at Cursor, integrating large language models into production workflows.",
-      bioAr: "مهندس ومعماري برمجيات بأكثر من 25 سنة خبرة بين أدوار مهندس برمجيات أول ومدير منتج ومدير تقني ومؤسس. قاد شركات استشارات هندسية متخصصة خدمت شركات عالمية مثل Adobe وAmazon وNvidia. يعمل حالياً مهندساً في Cursor على دمج نماذج اللغة الكبيرة في سير عمل الإنتاج.",
+      bioAr: "مهندس ومعماري برمجيات بأكثر من 25 سنة خبرة بين أدوار مهندس برمجيات أول ومدير منتج ومدير تقني ومؤسس. قاد شركات استشارات هندسية متخصصة خدمت شركات عالمية مثل Adobe وAmazon وNvidia. يعمل حالياً مهندساً في كيرسر على دمج نماذج اللغة الكبيرة في سير عمل الإنتاج.",
       photo: "/images/speakers/nick-miller.jpg",
       twitter: "https://x.com/nickwm",
       twitterHandle: "nickwm",
@@ -146,7 +146,7 @@ export const config = {
       role: "Community Supporter",
       roleAr: "داعمة من المجتمع",
       contribution: "Sends Cursor merch and helps make our events happen.",
-      contributionAr: "ترسل هدايا Cursor وتساعد على إقامة فعالياتنا.",
+      contributionAr: "ترسل هدايا كيرسر وتساعد على إقامة فعالياتنا.",
       twitter: "https://x.com/ftnabeelah",
       twitterHandle: "ftnabeelah",
       linkedin: "https://www.linkedin.com/in/fawziyahnabeelah/",
@@ -269,8 +269,8 @@ export const config = {
           "As Cursor Saudi’s official partner, Cursor supports the community through team talks, workshops, and product access. Community meetups and hackathons are organized locally; Cursor is the global product and team that backs the ecosystem.",
         ],
         ar: [
-          "Anysphere هي الشركة التي تطوّر Cursor. الفريق يبني أدوات للمطورين مدعومة بالذكاء الاصطناعي مع تركيز على سير عمل الإنتاج الفعلي — لا مجرد عروض — لإعادة هيكلة الكود والتنقل في مشاريع كبيرة والعمل مع النماذج داخل المحرر الذي تعتمد عليه أصلاً.",
-          "كشريك رسمي لـ Cursor السعودية، تدعم Cursor المجتمع من خلال جلسات الفريق وورش العمل والوصول للمنتج. اللقاءات والهاكاثونات تُنظَّم محلياً؛ Cursor هو المنتج والفريق العالمي الذي يدعم المنظومة.",
+          "Anysphere هي الشركة التي تطوّر كيرسر. الفريق يبني أدوات للمطورين مدعومة بالذكاء الاصطناعي مع تركيز على سير عمل الإنتاج الفعلي — لا مجرد عروض — لإعادة هيكلة الكود والتنقل في مشاريع كبيرة والعمل مع النماذج داخل المحرر الذي تعتمد عليه أصلاً.",
+          "كشريك رسمي لـ كيرسر السعودية، تدعم كيرسر المجتمع من خلال جلسات الفريق وورش العمل والوصول للمنتج. اللقاءات والهاكاثونات تُنظَّم محلياً؛ كيرسر هو المنتج والفريق العالمي الذي يدعم المنظومة.",
         ],
       },
     },
@@ -433,7 +433,7 @@ export const config = {
       description:
         "A Saudi tech community that partnered with Cursor Saudi for the community kickoff in Riyadh.",
       descriptionAr:
-        "مجتمع تقني سعودي شارك في دعم حفل إطلاق مجتمع Cursor السعودية في الرياض.",
+        "مجتمع تقني سعودي شارك في دعم حفل إطلاق مجتمع كيرسر السعودية في الرياض.",
       cities: ["Riyadh"],
       eventVenues: [],
       events: ["2025-05-28-kickoff"],

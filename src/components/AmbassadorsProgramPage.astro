@@ -14,10 +14,9 @@ const tocItems = [
   { id: "campus", labelEn: "Cursor on Campus", labelAr: "كيرسر في الجامعات" },
 ];
 
-/** Prefer Riyadh chapter lead; otherwise first ambassador; links fall back to community socials. */
+/** Prefer Riyadh chapter lead; otherwise first ambassador; inbox falls back to community email. */
 const leader =
   config.ambassadors.find((a) => a.city === "Riyadh") ?? config.ambassadors[0];
-const leaderX = leader?.twitter ?? config.social.twitter;
 /** Lead direct contact (falls back to community inbox if unset). */
 const leadEmail =
   leader &&
@@ -25,12 +24,9 @@ const leadEmail =
   typeof (leader as { email?: string }).email === "string"
     ? (leader as { email: string }).email
     : config.social.email;
-const leadXHandle =
-  leader &&
-  "twitterHandle" in leader &&
-  typeof (leader as { twitterHandle?: string }).twitterHandle === "string"
-    ? (leader as { twitterHandle: string }).twitterHandle
-    : config.social.twitterHandle;
+/** Public X for Cursor Saudi (ambassador inquiries, local chapters). */
+const saPublicX = config.social.twitter;
+const saPublicXHandle = config.social.twitterHandle;
 /** Official Cursor ambassador application (same flow Cursor documents globally). */
 const cursorAmbassadorsUrl = "https://cursor.com/ambassadors";
 /** Global Cursor ambassador program contact (from Cursor team). */
@@ -217,13 +213,13 @@ const cursorAmbassadorProgramEmail = "blang@cursor.com";
       <ol class="space-y-6 text-[#b0b0b0] text-sm md:text-base leading-relaxed list-decimal list-inside marker:text-[#58a6ff]">
         <li class="pl-1">
           <span class="lang-en">
-            <strong class="text-white">Contact the Saudi community lead</strong> — reach out to learn more about the program,
-            expectations, and time commitment: <a href={leaderX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{leadXHandle} on X</a>
+            <strong class="text-white">Contact Cursor Saudi</strong> — reach out to learn more about the program,
+            expectations, and time commitment: <a href={saPublicX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{saPublicXHandle} on X</a>
             or <a href={`mailto:${leadEmail}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{leadEmail}</a>.
           </span>
           <span class="lang-ar">
-            <strong class="text-white">تواصل مع قائد المجتمع في السعودية</strong> — لمعرفة البرنامج والالتزام والتوقعات:
-            <a href={leaderX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{leadXHandle} على X</a>
+            <strong class="text-white">تواصل مع كيرسر السعودية</strong> — لمعرفة البرنامج والالتزام والتوقعات:
+            <a href={saPublicX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{saPublicXHandle} على X</a>
             أو <a href={`mailto:${leadEmail}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{leadEmail}</a>.
           </span>
         </li>
@@ -234,7 +230,7 @@ const cursorAmbassadorProgramEmail = "blang@cursor.com";
             page — that is how you move forward officially with the program.
           </span>
           <span class="lang-ar">
-            إذا رغبت بالمتابعة، <strong class="text-white">قدّم طلبك عبر Cursor</strong> من صفحة
+            إذا رغبت بالمتابعة، <strong class="text-white">قدّم طلبك عبر كيرسر</strong> من صفحة
             <a href={cursorAmbassadorsUrl} target="_blank" rel="noopener noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">السفراء الرسمية</a>
             — هذه هي الطريقة الرسمية للمتابعة مع البرنامج.
           </span>
@@ -245,7 +241,7 @@ const cursorAmbassadorProgramEmail = "blang@cursor.com";
             take notes, and <strong class="text-white">share a recommendation with the Cursor team</strong>.
           </span>
           <span class="lang-ar">
-            <strong class="text-white">حدد موعداً للحديث عن مهاراتك</strong> مع قائد المجتمع؛ سيقيّم الملاءمة ويعد ملاحظاته و<strong class="text-white">يشاركها مع فريق Cursor</strong>.
+            <strong class="text-white">حدد موعداً للحديث عن مهاراتك</strong> مع قائد المجتمع؛ سيقيّم الملاءمة ويعد ملاحظاته و<strong class="text-white">يشاركها مع فريق كيرسر</strong>.
           </span>
         </li>
         <li class="pl-1">
@@ -253,7 +249,7 @@ const cursorAmbassadorProgramEmail = "blang@cursor.com";
             If you pass that step, <strong class="text-white">the Cursor team will contact you</strong> for a follow-up interview.
           </span>
           <span class="lang-ar">
-            إذا نجحت في هذه المرحلة، <strong class="text-white">سيتواصل معك فريق Cursor</strong> لمقابلة إضافية.
+            إذا نجحت في هذه المرحلة، <strong class="text-white">سيتواصل معك فريق كيرسر</strong> لمقابلة إضافية.
           </span>
         </li>
         <li class="pl-1">
@@ -385,14 +381,14 @@ const cursorAmbassadorProgramEmail = "blang@cursor.com";
               <a href={`mailto:${cursorAmbassadorProgramEmail}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{cursorAmbassadorProgramEmail}</a>
               on their FAQ. For <strong class="text-white/90">Cursor Saudi</strong> — chapters, meetups, and local expectations — contact
               <a href={`mailto:${leadEmail}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{leadEmail}</a>
-              or <a href={leaderX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{leadXHandle} on X</a>.
+              or <a href={saPublicX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{saPublicXHandle} on X</a>.
             </span>
             <span class="lang-ar">
               لـ <strong class="text-white/90">برنامج السفراء العالمي</strong>، كيرسر يذكر في الأسئلة الشائعة
               <a href={`mailto:${cursorAmbassadorProgramEmail}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{cursorAmbassadorProgramEmail}</a>.
               لـ <strong class="text-white/90">كيرسر السعودية</strong> — الفروع واللقاءات والتوقعات المحلية — راسل
               <a href={`mailto:${leadEmail}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{leadEmail}</a>
-              أو <a href={leaderX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{leadXHandle} على X</a>.
+              أو <a href={saPublicX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{saPublicXHandle} على X</a>.
             </span>
           </div>
         </details>
