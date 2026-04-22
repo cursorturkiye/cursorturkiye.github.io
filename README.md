@@ -1,8 +1,8 @@
-# cursorsaudi.com
+# cursorturkiye.com
 
-Community website for **Cursor Saudi** — the AI-native developer community in Saudi Arabia.
+Community website for **Cursor Türkiye** — the AI-native developer community in Türkiye.
 
-Live at [cursorsaudi.com](https://cursorsaudi.com).
+Live at [cursorturkiye.com](https://cursorturkiye.com).
 
 ## Quick start
 
@@ -23,7 +23,7 @@ pnpm preview        # Preview production build locally
 | Language     | TypeScript (strict)                                      |
 | Package mgr  | pnpm                                                     |
 | Deployment   | Cloudflare Pages via GitHub Actions                      |
-| Domain       | cursorsaudi.com (CNAME in `public/`)                     |
+| Domain       | cursorturkiye.com (CNAME in `public/`)                     |
 
 ## Features
 
@@ -63,7 +63,7 @@ public/
 ├── toggle-lang.js      Sets <html dir/lang> from localStorage before paint
 ├── logos/              Partner logos
 ├── images/             Static images
-└── CNAME               cursorsaudi.com
+└── CNAME               cursorturkiye.com
 ```
 
 ## i18n
@@ -72,7 +72,7 @@ UI copy uses paired `<span class="lang-ar">` / `<span class="lang-en">` elements
 
 ## Community language policy
 
-- **Cursor Saudi ambassadors** must be fluent in both Arabic and English. Slides can be in either language, but ambassadors present in Arabic using normal, everyday language.
+- **Cursor Türkiye ambassadors** We expect you to know both Turkish and English. Slides can be in either language, but ambassadors present in English ot Turkish using normal, everyday language.
 - **Guest speakers** can be English-only — international speakers are welcome. Slides can be in either language.
 
 ## Deployment
@@ -93,4 +93,4 @@ See `.github/workflows/deploy.yml` for the full workflow.
 - Components are stateless: props in, HTML out, no side effects
 ## License
 
-Community project by [Cursor Saudi](https://x.com/cursorsaudi).
+Community project by [Cursor Türkiye](https://x.com/cursorturkiye).
