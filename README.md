@@ -94,3 +94,4 @@ See `.github/workflows/deploy.yml` for the full workflow.
 ## License
 
 Community project by [Cursor Türkiye](https://x.com/cursorturkiye).
+Credits to: [CursorSaudi.com](https://cursorsaudi.com) & [CursorThailand.com](https://cursorthailand.com)
