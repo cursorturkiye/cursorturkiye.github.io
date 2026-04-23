@@ -1,4 +1,4 @@
-# CLAUDE.md — CursorSaudi.com
+# CLAUDE.md — CursorTurkiye.com
 
 ## Commands
 
@@ -12,7 +12,7 @@ pnpm preview          # Preview production build
 
 ## Architecture
 
-Astro 5 static site with multiple routes under `src/pages/` (home, events, albums, about, ambassadors, partnerships, thank you, blog, speakers, partners). Bilingual (Arabic RTL default, English LTR) with client-side `localStorage` toggle. Dark mode only — no theme switcher.
+Astro 5 static site with multiple routes under `src/pages/` (home, events, albums, about, ambassadors, partnerships, thank you, blog, speakers, partners). Bilingual (Turkish RTL default, English LTR) with client-side `localStorage` toggle. Dark mode only — no theme switcher.
 
 ### Stack
 
@@ -41,7 +41,7 @@ src/
 └── styles/global.css          # Tailwind imports, dark theme CSS variables
 public/
 ├── toggle-lang.js             # Runs early from Layout to set <html dir/lang> from localStorage
-└── CNAME                      # cursorsaudi.com
+└── CNAME                      # cursorturkiye.com
 ```
 
 ## Content Collections
