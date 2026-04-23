@@ -7,7 +7,7 @@ import { assertSiteConfigPublicAssets } from "./src/utils/validate-site-config";
 assertSiteConfigPublicAssets(config);
 
 export default defineConfig({
-  site: "https://cursorsaudi.com",
+  site: "https://cursorturkiye.com",
   integrations: [sitemap()],
   vite: {
     plugins: [tailwind()],
