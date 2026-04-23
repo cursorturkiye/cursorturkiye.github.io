@@ -27,7 +27,7 @@ pnpm preview        # Preview production build locally
 
 ## Features
 
-- **Bilingual**: Arabic (RTL, default) and English (LTR) with a client-side toggle stored in `localStorage`
+- **Bilingual**: Turkish (RTL, default) and English (LTR) with a client-side toggle stored in `localStorage`
 - **Dark mode only**: Single dark color scheme, no theme switcher
 - **Content collections**: Events in `src/data/events/` with Zod-validated frontmatter
 - **Per-page table of contents**: Horizontal pill nav linking to page sections
