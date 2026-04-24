@@ -133,8 +133,8 @@ function formatShortDate(date: Date) {
             )}
           </div>
           <div class="flex gap-4 mb-6">
-            <div><div class="text-xl font-bold text-white">{riyadhPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-ar">مكتملة</span></div></div>
-            <div><div class="text-xl font-bold text-white">{riyadhUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-ar">قادمة</span></div></div>
+            <div><div class="text-xl font-bold text-white">{ankaraPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-tr">Tamamlanmış</span></div></div>
+            <div><div class="text-xl font-bold text-white">{ankaraUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-tr">Yakında</span></div></div>
           </div>
           {nextAnkara && (
             <div class="border-t border-[#252525] pt-4">
@@ -172,7 +172,7 @@ function formatShortDate(date: Date) {
           <div class="flex items-center justify-between mb-6">
             <div class="flex items-center gap-3">
               <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
-              <h3 class="text-xl font-semibold text-white"><span class="lang-en">Jeddah Chapter</span><span class="lang-tr">Izmir Şube</span></h3>
+              <h3 class="text-xl font-semibold text-white"><span class="lang-en">Izmir Chapter</span><span class="lang-tr">Izmir Şube</span></h3>
             </div>
             <span class="text-xs font-mono text-[#999999] border border-[#252525] rounded px-2 py-1">EST. 2026</span>
           </div>
@@ -207,7 +207,7 @@ function formatShortDate(date: Date) {
             <div><div class="text-xl font-bold text-white">{izmirPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-tr">Tamamlanmış</span></div></div>
             <div><div class="text-xl font-bold text-white">{izmirUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-tr">Yakında</span></div></div>
           </div>
-          {nextJeddah && (
+          {nextIzmir && (
             <div class="border-t border-[#252525] pt-4">
               <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span><span class="lang-tr">Sonraki Etkinlik</span></div>
               <div class="text-xs text-white font-medium">{nextIzmir.data.title}</div>
@@ -266,8 +266,8 @@ function formatShortDate(date: Date) {
               {istanbulAmbassador ? (
                 <div class="flex flex-wrap items-center gap-2 text-[#999999]">
                   <span class="lang-en line-through decoration-white/25 text-white/70 font-medium">{istanbulAmbassador.name}</span>
-                  <span class="lang-tr line-through decoration-white/25 text-white/70 font-medium">{istanbulAmbassador.nameAr ?? istanbulAmbassador.name}</span>
-                  {khobarAmbassador.twitter && (
+                  <span class="lang-tr line-through decoration-white/25 text-white/70 font-medium">{istanbulAmbassador.nameTr ?? istanbulAmbassador.name}</span>
+                  {istanbulAmbassador.twitter && (
                     <a href={istanbulAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
@@ -286,8 +286,8 @@ function formatShortDate(date: Date) {
               )}
             </div>
             <div class="border-t border-[#252525] pt-4 flex gap-4">
-              <div><div class="text-xl font-bold text-white">{khobarPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-tr">Tamamlanmış</span></div></div>
-              <div><div class="text-xl font-bold text-white">{khobarUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-tr">Yakında</span></div></div>
+              <div><div class="text-xl font-bold text-white">{istanbulPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-tr">Tamamlanmış</span></div></div>
+              <div><div class="text-xl font-bold text-white">{istanbulUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-tr">Yakında</span></div></div>
             </div>
             <div class="border-t border-red-500/15 pt-3">
               <div class="text-[10px] uppercase tracking-widest text-red-400/95 font-medium mb-2">
@@ -400,7 +400,7 @@ function formatShortDate(date: Date) {
                 {ambassador.status === "retired" ? (
                   <>
                     <span class="lang-en">Ongoing · {ambassador.city}</span>
-                    <span class="lang-tr">Devam Ediyor · {ambassador.cityAr}</span>
+                    <span class="lang-tr">Devam Ediyor · {ambassador.cityTr}</span>
                   </>
                 ) : (
                   <>
@@ -418,7 +418,7 @@ function formatShortDate(date: Date) {
                 <span class="lang-en">{ambassador.name}</span>
                 <span class="lang-tr">{ambassador.nameTr ?? ambassador.name}</span>
               </h3>
-              {(ambassador.description || ambassador.descriptionAr) && (
+              {(ambassador.description || ambassador.descriptionTr) && (
                 <p class="text-sm text-[#999999] leading-relaxed mb-4">
                   <span class="lang-en">{ambassador.description}</span>
                   <span class="lang-tr">{ambassador.descriptionTr}</span>
