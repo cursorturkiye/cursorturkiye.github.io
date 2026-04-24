@@ -2,11 +2,11 @@
 alwaysApply: true
 ---
 
-# cursorturkiye.com — Project Rules
+# CursorSaudi.com — Project Rules
 
 ## Project Overview
 
-Community website for Cursor Türkiye (cursorturkiye.com), inspired by [CursorSaudi.com](https://cursorsaudi.com) & [CursorThailand.com](https://cursorthailand.com). Multi-route static site: home, events, albums, about, ambassadors, partnerships, thank you, blog (event recaps), speakers, and partners.
+Community website for Cursor Saudi (cursorsaudi.com), inspired by [CursorThailand.com](https://cursorthailand.com). Multi-route static site: home, events, albums, about, ambassadors, partnerships, thank you, blog (event recaps), speakers, and partners.
 
 ## Stack
 
@@ -15,11 +15,11 @@ Community website for Cursor Türkiye (cursorturkiye.com), inspired by [CursorSa
 - **Language**: TypeScript (strict)
 - **Package manager**: pnpm
 - **Deployment**: Cloudflare Pages via GitHub Actions (`pnpm check`, `pnpm build`, `wrangler pages deploy`)
-- **Domain**: cursorturkiye.com (CNAME in `public/`)
+- **Domain**: cursorsaudi.com (CNAME in `public/`)
 
 ## Key Constraints
 
-- **Bilingual**: Turkish (default, RTL) + English (LTR) with client-side toggle stored in `localStorage`
+- **Bilingual**: Arabic (default, RTL) + English (LTR) with client-side toggle stored in `localStorage`
 - **Dark mode only**: No theme toggle. Single dark color scheme.
 - **Content collections**: Events in `src/data/events/`; optional blog posts in `src/data/blog/` — Zod-validated in `content.config.ts`.
 - **Community links**: Luma (event registration) + X/Twitter
@@ -34,7 +34,7 @@ cursorsaudi.com/
 ├── tsconfig.json                    # base: astro/tsconfigs/strict, paths: @/* -> ./src/*
 ├── public/
 │   ├── .nojekyll
-│   ├── CNAME                        # cursorturkiye.com
+│   ├── CNAME                        # cursorsaudi.com
 │   ├── favicon.svg
 │   └── toggle-lang.js              # Language toggle script (runs before hydration)
 └── src/
