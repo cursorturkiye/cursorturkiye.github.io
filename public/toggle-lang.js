@@ -1,21 +1,21 @@
-(function () {
+﻿(function () {
   var html = document.documentElement;
   html.classList.add("dark");
 
   var path = location.pathname;
-  var m = path.match(/^\/(ar|en)(?:\/|$)/);
-  var lang = m ? m[1] : localStorage.getItem("lang") || "ar";
-  if (lang !== "ar" && lang !== "en") lang = "ar";
+  var m = path.match(/^\/(tr|en)(?:\/|$)/);
+  var lang = m ? m[1] : localStorage.getItem("lang") || "tr";
+  if (lang !== "tr" && lang !== "en") lang = "tr";
   try {
     localStorage.setItem("lang", lang);
   } catch (e) {}
 
   html.lang = lang;
-  html.dir = lang === "ar" ? "rtl" : "ltr";
+  html.dir = "ltr";
 
   var toggleBtn = document.getElementById("lang-toggle");
   if (toggleBtn) {
-    toggleBtn.setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
+    toggleBtn.setAttribute("aria-label", lang === "tr" ? "Switch to English" : "Switch to Turkish");
   }
 })();
 
@@ -26,7 +26,7 @@ function setupLangToggle() {
   btn.dataset.langToggleBound = "1";
 
   function stripLocale(p) {
-    var x = p.match(/^\/(ar|en)(\/.*)?$/);
+    var x = p.match(/^\/(tr|en)(\/.*)?$/);
     if (!x) return p || "/";
     return x[2] || "/";
   }
@@ -38,10 +38,10 @@ function setupLangToggle() {
   }
 
   btn.addEventListener("click", function () {
-    var cur = document.documentElement.lang === "en" ? "en" : "ar";
-    var next = cur === "ar" ? "en" : "ar";
+    var cur = document.documentElement.lang === "en" ? "en" : "tr";
+    var next = cur === "tr" ? "en" : "tr";
     try { localStorage.setItem("lang", next); } catch (e) {}
-    btn.setAttribute("aria-label", next === "ar" ? "Switch to English" : "التبديل إلى العربية");
+    btn.setAttribute("aria-label", next === "tr" ? "Switch to English" : "Switch to Turkish");
     window.location.href = withLocale(location.pathname, next) + location.search + location.hash;
   });
 }
@@ -51,3 +51,4 @@ if (document.readyState === "loading") {
 } else {
   setupLangToggle();
 }
+

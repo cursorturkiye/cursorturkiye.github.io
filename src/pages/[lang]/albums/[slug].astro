@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -27,9 +27,9 @@ const pagePath = Astro.url.pathname;
 const partnersMap = getEventPartnersMap();
 const eventPartners = getEventPartners(event.id, event.data.venue, partnersMap);
 
-const siteOrigin = Astro.site?.origin ?? "https://cursorsaudi.com";
+const siteOrigin = Astro.site?.origin ?? "https://cursorturkiye.com";
 const pageUrl = new URL(Astro.url.pathname, siteOrigin).href;
-const shareText = `${event.data.title} — Cursor Saudi`;
+const shareText = `${event.data.title} — Cursor Türkiye`;
 const xShareUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`;
 const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
 
@@ -39,7 +39,7 @@ const personLookup = new Map<string, PersonLookup>();
 
 type SpeakerLookupSource = { name: string; nameAr?: string; slug: string; aliases?: readonly string[] };
 for (const speaker of config.speakers as unknown as readonly SpeakerLookupSource[]) {
-  const entry: PersonLookup = { nameAr: speaker.nameAr ?? speaker.name, href: `/speakers/${speaker.slug}` };
+  const entry: PersonLookup = { nameAr: speaker.nameAr, href: `/speakers/${speaker.slug}` };
   personLookup.set(speaker.name, entry);
   for (const alias of speaker.aliases ?? []) personLookup.set(alias, entry);
 }
@@ -49,7 +49,7 @@ for (const partner of config.partners) {
   const contributors = "contributors" in partner ? (partner.contributors as readonly PartnerContributorSource[] | undefined) : undefined;
   for (const c of contributors ?? []) {
     if (personLookup.has(c.name)) continue;
-    personLookup.set(c.name, { nameAr: c.nameAr ?? c.name, href: `/partners/${partner.slug}` });
+    personLookup.set(c.name, { nameAr: c.nameAr, href: `/partners/${partner.slug}` });
   }
 }
 
@@ -77,8 +77,8 @@ function joinerEn(idx: number, total: number) {
 
 function joinerAr(idx: number, total: number) {
   if (idx === 0) return "";
-  if (idx === total - 1) return " و";
-  return "، ";
+  if (idx === total - 1) return " Türkçe";
+  return "Türkçe ";
 }
 
 const media = getAllMedia(event);
@@ -89,7 +89,7 @@ const photographers: PhotoCreditRow[] = (event.data.photographers ?? []).map((na
 ---
 
 <Layout
-  title={`${event.data.title} Album — Cursor Saudi`}
+  title={`${event.data.title} Album — Cursor Türkiye`}
   description={event.data.description}
 >
   <Header />
@@ -102,24 +102,24 @@ const photographers: PhotoCreditRow[] = (event.data.photographers ?? []).map((na
             <polyline points="15 18 9 12 15 6"/>
           </svg>
           <span class="lang-en">Back to Albums</span>
-          <span class="lang-ar">العودة للألبومات</span>
+      <span class="lang-tr">Back to Albums</span>
         </a>
 
         <div class="mb-10 border-b border-[#252525] pb-8">
           <h1 class="text-3xl md:text-4xl font-semibold text-white mb-3">
             <span class="lang-en">{event.data.title}</span>
-            <span class="lang-ar">{event.data.titleAr || event.data.title}</span>
+      <span class="lang-tr">{event.data.title}</span>
           </h1>
           <div class="flex flex-wrap items-center gap-4 text-sm text-[#999999] mb-4">
             <span class="flex items-center gap-1.5">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               <span class="lang-en">{formatDate(event.data.date)}</span>
-              <span class="lang-ar">{formatDateAr(event.data.date)}</span>
+      <span class="lang-tr">{formatDate(event.data.date)}</span>
             </span>
             <span class="flex items-center gap-1.5">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <span class="lang-en">{event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
-              <span class="lang-ar">{event.data.locationAr || event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
+      <span class="lang-tr">{event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
             </span>
             {eventPartners.length > 0 && (
               <span class="flex flex-wrap items-center gap-2">
@@ -128,7 +128,7 @@ const photographers: PhotoCreditRow[] = (event.data.photographers ?? []).map((na
                     <img src={p.logo} alt={p.name} class="w-5 h-5 object-contain" width="20" height="20" loading="lazy" />
                     <span class="text-[10px] text-[#8b949e] leading-tight">
                       <span class="lang-en">{partnerRoleLabels[p.role].en}</span>
-                      <span class="lang-ar">{partnerRoleLabels[p.role].ar}</span>
+      <span class="lang-tr">{partnerRoleLabels[p.role].en}</span>
                     </span>
                   </a>
                 ))}
@@ -145,7 +145,7 @@ const photographers: PhotoCreditRow[] = (event.data.photographers ?? []).map((na
           </div>
           <p class="text-[#999999] max-w-2xl">
             <span class="lang-en">{event.data.description}</span>
-            <span class="lang-ar">{event.data.descriptionAr || event.data.description}</span>
+      <span class="lang-tr">{event.data.description}</span>
           </p>
         </div>
 
@@ -165,8 +165,8 @@ const photographers: PhotoCreditRow[] = (event.data.photographers ?? []).map((na
                 </>
               ))}
             </span>
-            <span class="lang-ar">
-              تصوير:{" "}
+            <span class="lang-tr">
+              Türkçe:{" "}
               {photographers.map((p: PhotoCreditRow, i: number) => (
                 <>
                   {joinerAr(i, photographers.length)}
@@ -260,7 +260,7 @@ const photographers: PhotoCreditRow[] = (event.data.photographers ?? []).map((na
             class="pointer-events-auto text-xs font-medium px-3 py-1.5 rounded-lg border border-white/20 bg-white/10 text-white hover:bg-white/15 hover:border-white/30 transition-colors shrink-0"
           >
             <span class="lang-en">Copy link to this photo</span>
-            <span class="lang-ar">نسخ رابط هذه الصورة</span>
+      <span class="lang-tr">Copy link to this photo</span>
           </button>
         </div>
         <p id="lightbox-copy-status" class="sr-only" role="status" aria-live="polite"></p>
@@ -457,19 +457,19 @@ const photographers: PhotoCreditRow[] = (event.data.photographers ?? []).map((na
     if (copyLinkBtn) {
       copyLinkBtn.addEventListener('click', function () {
         var href = window.location.href;
-        var ar = document.documentElement.getAttribute('lang') === 'ar';
+        var ar = document.documentElement.getAttribute('lang') === 'tr';
         function announce(msg) {
           if (copyStatus) copyStatus.textContent = msg;
           window.setTimeout(function () { if (copyStatus) copyStatus.textContent = ''; }, 2500);
         }
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(href).then(function () {
-            announce(ar ? 'تم نسخ الرابط' : 'Link copied');
+            announce(ar ? 'Türkçe Türkçe Türkçe' : 'Link copied');
           }).catch(function () {
-            announce(ar ? 'انسخ الرابط من شريط العنوان' : 'Copy the URL from the address bar');
+            announce(ar ? 'Türkçe Türkçe Türkçe Türkçe Türkçe' : 'Copy the URL from the address bar');
           });
         } else {
-          announce(ar ? 'انسخ الرابط من شريط العنوان' : 'Copy the URL from the address bar');
+          announce(ar ? 'Türkçe Türkçe Türkçe Türkçe Türkçe' : 'Copy the URL from the address bar');
         }
       });
     }

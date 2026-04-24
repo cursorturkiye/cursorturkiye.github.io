@@ -1,4 +1,4 @@
----
+﻿---
 import { getEventsWithAlbums, getEventCoverUrl } from "@/utils/events";
 import { getEventPartnersMap, getEventPartners, partnerRoleLabels } from "@/utils/people";
 import type { EventPartnerEntry } from "@/utils/people";
@@ -36,11 +36,11 @@ function formatDateAr(date: Date) {
       <div class="mb-16 border-b border-[#252525] pb-8">
         <h1 class="text-4xl md:text-5xl font-semibold text-white mb-4">
           <span class="lang-en">Albums</span>
-          <span class="lang-ar">ألبومات</span>
+      <span class="lang-tr">Albums</span>
         </h1>
         <p class="text-[#999999] text-lg max-w-xl">
           <span class="lang-en">Photos & videos from our past events</span>
-          <span class="lang-ar">صور وفيديوهات من فعالياتنا السابقة</span>
+      <span class="lang-tr">Photos & videos from our past events</span>
         </p>
       </div>
 
@@ -53,7 +53,7 @@ function formatDateAr(date: Date) {
           </svg>
           <p class="text-[#999999] text-lg">
             <span class="lang-en">No albums yet</span>
-            <span class="lang-ar">لا توجد ألبومات حالياً</span>
+      <span class="lang-tr">No albums yet</span>
           </p>
         </div>
       ) : (
@@ -89,26 +89,26 @@ function formatDateAr(date: Date) {
                 <div class="p-5">
                   <h3 class="text-lg font-semibold text-white mb-1 group-hover:text-white transition-colors">
                     <span class="lang-en">{event.data.title}</span>
-                    <span class="lang-ar">{event.data.titleAr || event.data.title}</span>
+      <span class="lang-tr">{event.data.title}</span>
                   </h3>
                   <div class="flex items-center gap-3 text-xs text-[#999999]">
                     <span>
                       <span class="lang-en">{formatDate(event.data.date)}</span>
-                      <span class="lang-ar">{formatDateAr(event.data.date)}</span>
+      <span class="lang-tr">{formatDate(event.data.date)}</span>
                     </span>
                     <span class="text-[#555]">·</span>
                     <span>
                       {photoCount > 0 && (
                         <>
                           <span class="lang-en">{photoCount} photos</span>
-                          <span class="lang-ar">{photoCount.toLocaleString("ar-SA")} صور</span>
+      <span class="lang-tr">{photoCount} photos</span>
                         </>
                       )}
                       {photoCount > 0 && videoCount > 0 && <span class="text-[#555]"> · </span>}
                       {videoCount > 0 && (
                         <>
                           <span class="lang-en">{videoCount} {videoCount === 1 ? 'video' : 'videos'}</span>
-                          <span class="lang-ar">{videoCount.toLocaleString("ar-SA")} {videoCount === 1 ? 'فيديو' : 'فيديوهات'}</span>
+      <span class="lang-tr">{videoCount} {videoCount === 1 ? 'video' : 'videos'}</span>
                         </>
                       )}
                     </span>
@@ -116,7 +116,7 @@ function formatDateAr(date: Date) {
                   <div class="flex items-center gap-1.5 text-xs text-[#6E6E6E] mt-2">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span class="lang-en">{event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
-                    <span class="lang-ar">{event.data.locationAr || event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
+      <span class="lang-tr">{event.data.location}{event.data.venue ? ` · ${event.data.venue}` : ''}</span>
                   </div>
                   {eventPartners.length > 0 && (
                     <div class="flex flex-wrap items-center gap-2 mt-2">
@@ -125,7 +125,7 @@ function formatDateAr(date: Date) {
                           <img src={p.logo} alt={p.name} class="w-4 h-4 object-contain" width="16" height="16" loading="lazy" />
                           <span class="text-[10px] text-[#8b949e] leading-tight">
                             <span class="lang-en">{partnerRoleLabels[p.role].en}</span>
-                            <span class="lang-ar">{partnerRoleLabels[p.role].ar}</span>
+      <span class="lang-tr">{partnerRoleLabels[p.role].en}</span>
                           </span>
                         </span>
                       ))}
@@ -142,7 +142,7 @@ function formatDateAr(date: Date) {
         <div class="mt-14">
           <h2 class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-6">
             <span class="lang-en">External Invitations</span>
-            <span class="lang-ar">دعوات خارجية</span>
+      <span class="lang-tr">External Invitations</span>
           </h2>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {invitesWithPhotos.map((invite) => {
@@ -163,22 +163,22 @@ function formatDateAr(date: Date) {
                   <div class="p-5">
                     <h3 class="text-lg font-semibold text-white mb-1 group-hover:text-white transition-colors">
                       <span class="lang-en">{invite.talkTitle}</span>
-                      <span class="lang-ar">{invite.talkTitleAr}</span>
+      <span class="lang-tr">{invite.talkTitle}</span>
                     </h3>
                     <div class="flex items-center gap-3 text-xs text-[#999999]">
                       <span>
                         <span class="lang-en">{formatDate(inviteDate)}</span>
-                        <span class="lang-ar">{formatDateAr(inviteDate)}</span>
+      <span class="lang-tr">{formatDate(inviteDate)}</span>
                       </span>
                       <span class="text-[#555]">·</span>
                       <span>
                         <span class="lang-en">{invite.photos.length} {invite.photos.length === 1 ? 'photo' : 'photos'}</span>
-                        <span class="lang-ar">{invite.photos.length.toLocaleString("ar-SA")} {invite.photos.length === 1 ? 'صورة' : 'صور'}</span>
+      <span class="lang-tr">{invite.photos.length} {invite.photos.length === 1 ? 'photo' : 'photos'}</span>
                       </span>
                     </div>
                     <div class="flex items-center gap-1.5 text-xs text-[#6E6E6E] mt-2">
                       <span class="lang-en">{invite.speaker} · {invite.invitedBy}</span>
-                      <span class="lang-ar">{invite.speakerAr} · {invite.invitedByAr}</span>
+      <span class="lang-tr">{invite.speaker} · {invite.invitedBy}</span>
                     </div>
                   </div>
                 </a>
@@ -191,3 +191,4 @@ function formatDateAr(date: Date) {
 
   </div>
 </section>
+

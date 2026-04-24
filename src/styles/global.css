@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -43,8 +43,8 @@ body {
   overflow-y: scroll;
 }
 
-html[lang="ar"] body {
-  font-family: "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+html[lang="tr"] body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 a {
@@ -316,9 +316,9 @@ a:focus-visible {
 }
 
 /* ─── Language Toggle ─── */
-/* "عربي" sits in .lang-en when UI is English — use Arabic typeface, not mono */
+/* "TR" sits in .lang-en when UI is English — use Arabic typeface, not mono */
 html[lang="en"] #lang-toggle .lang-en {
-  font-family: "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 .lang-en {
@@ -329,11 +329,15 @@ html[lang="en"] .lang-en {
   display: inline;
 }
 
-html[lang="en"] .lang-ar {
+html[lang="en"] .lang-tr {
   display: none;
 }
 
-html[lang="ar"] .lang-ar {
+html[lang="tr"] .lang-en {
+  display: none;
+}
+
+html[lang="tr"] .lang-tr {
   display: inline;
 }
 
@@ -346,13 +350,16 @@ html[lang="en"] svg text.lang-en {
   display: block;
 }
 
-html[lang="en"] svg text.lang-ar {
+html[lang="en"] svg text.lang-tr {
   display: none;
 }
 
-html[lang="ar"] svg text.lang-ar {
+html[lang="tr"] svg text.lang-en {
+  display: none;
+}
+
+html[lang="tr"] svg text.lang-tr {
   display: block;
-  font-family: "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
 }
 
 /* ─── Cursor Logo Animation ─── */
@@ -396,13 +403,20 @@ html[lang="ar"] svg text.lang-ar {
 
 /* ─── Blog Language Sections ─── */
 .blog-lang-en,
-.blog-lang-ar {
+.blog-lang-tr {
   display: none;
 }
 
 html[lang="en"] .blog-lang-en,
-html[lang="ar"] .blog-lang-ar,
 .blog-lang-shared {
+  display: block;
+}
+
+html[lang="tr"] .blog-lang-en {
+  display: none;
+}
+
+html[lang="tr"] .blog-lang-tr {
   display: block;
 }
 
@@ -829,3 +843,4 @@ html[lang="ar"] .blog-lang-ar,
     transform: none;
   }
 }
+

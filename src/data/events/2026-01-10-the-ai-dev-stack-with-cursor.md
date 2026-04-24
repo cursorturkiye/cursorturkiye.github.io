@@ -1,11 +1,11 @@
----
+﻿---
 title: The AI Dev Stack with Cursor
-titleAr: حزمة أدوات AI للمطورين مع كيرسر
+titleAr: The AI Dev Stack with Cursor
 date: 2026-01-10
-location: Riyadh
-locationAr: الرياض
+location: Ankara
+locationAr: Ankara
 description: "Breaking down the AI tools landscape and how to combine ChatGPT, Perplexity, Lovable, Replit, Codex, and Claude Code into a practical workflow with Cursor."
-descriptionAr: تحليل مشهد أدوات الذكاء الاصطناعي وكيفية دمج ChatGPT وPerplexity وLovable وReplit وCodex وClaude Code في سير عمل عملي مع كيرسر.
+descriptionAr: "Breaking down the AI tools landscape and how to combine ChatGPT, Perplexity, Lovable, Replit, Codex, and Claude Code into a practical workflow with Cursor."
 type: meetup
 status: concluded
 venue: Mozn Office
@@ -13,7 +13,7 @@ speakers:
   - Mazen Alotaibi
 lumaUrl: "https://lu.ma/0fjpw44n"
 slides: 
-  - "https://github.com/cursorsaudi/events-slides/blob/main/2026-01-riyadh-meetup.pdf"
+  - "https://github.com/cursorturkiye/events-slides/blob/main/2026-01-riyadh-meetup.pdf"
 photos:
   - "/images/events/2026-01-10-the-ai-dev-stack-with-cursor/G-oihMDXIAAXeWW.jpg"
   - "/images/events/2026-01-10-the-ai-dev-stack-with-cursor/G-oihIVbAAANuY_.jpg"
@@ -35,7 +35,7 @@ A comprehensive breakdown of the modern AI developer stack, showing how to combi
 ## Format
 
 - **Type**: In-person meetup
-- **Venue**: Mozn Office, Riyadh
+- **Venue**: Mozn Office, Ankara
 - **Duration**: Evening session
 - **Speaker**: 1
 - **Structure**: Presentation + tool comparisons + workflow demos + Q&A
@@ -82,36 +82,37 @@ A comprehensive breakdown of the modern AI developer stack, showing how to combi
 
 ## Resources
 
-- [Slides (PDF)](https://github.com/cursorsaudi/events-slides/blob/main/2026-01-riyadh-meetup.pdf)
+- [Slides (PDF)](https://github.com/cursorturkiye/events-slides/blob/main/2026-01-riyadh-meetup.pdf)
 - [Event Registration](https://lu.ma/0fjpw44n)
 
 ---
 
-## نظرة عامة
+## Türkçe Türkçe
 
-تحليل شامل لحزمة أدوات AI الحديثة للمطورين، يوضح كيفية دمج أدوات AI متعددة في سير عمل متكامل. غطت الجلسة متى تستخدم كل أداة (ChatGPT، Perplexity، Lovable، Replit، Codex، Claude Code) وكيف يعمل كيرسر كمحور مركزي للتطوير بمساعدة AI.
+Türkçe Türkçe Türkçe Türkçe AI Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe AI Türkçe Türkçe Türkçe Türkçe Türkçe. Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe (ChatGPTTürkçe PerplexityTürkçe LovableTürkçe ReplitTürkçe CodexTürkçe Claude Code) Türkçe Türkçe Cursor Türkçe Türkçe Türkçe Türkçe AI.
 
-## أبرز النقاط
+## Türkçe Türkçe
 
-- خريطة شاملة لمشهد أدوات AI للمطورين
-- مقارنات بين أدوات البرمجة المختلفة بـ AI
-- عروض عملية لسير العمل تظهر تركيبات الأدوات
-- أمثلة حقيقية لبناء منتجات SaaS بمساعدة AI
-- جعل المشاريع "المستحيلة" قابلة للتنفيذ بالأدوات الصحيحة
+- Türkçe Türkçe Türkçe Türkçe AI Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe AI
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe SaaS Türkçe AI
+- Türkçe Türkçe "Türkçe" Türkçe Türkçe Türkçe Türkçe
 
-## الأدوات المغطاة
+## Türkçe Türkçe
 
-- **ChatGPT**: AI متعدد الأغراض، العصف الذهني، التوثيق
-- **Perplexity**: البحث، التحقق من الحقائق، إيجاد المكتبات
-- **Lovable**: نماذج UI السريعة والتصميم
-- **Replit**: النشر السريع، البرمجة التعاونية
-- **Codex/Claude Code**: وكلاء برمجة AI في الطرفية
-- **كيرسر**: IDE المركزي الذي يدمج AI عبر سير العمل
+- **ChatGPT**: AI Türkçe Türkçe Türkçe Türkçe Türkçe
+- **Perplexity**: Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- **Lovable**: Türkçe UI Türkçe Türkçe
+- **Replit**: Türkçe Türkçe Türkçe Türkçe
+- **Codex/Claude Code**: Türkçe Türkçe AI Türkçe Türkçe
+- **Cursor**: IDE Türkçe Türkçe Türkçe AI Türkçe Türkçe Türkçe
 
-## الدروس المستفادة
+## Türkçe Türkçe
 
-- لا توجد أداة AI واحدة هي الأفضل لكل شيء - ابنِ حزمة
-- كيرسر يتفوق كمحور تطوير لكنه يستفيد من أدوات أخرى
-- البحث (Perplexity) + التخطيط (ChatGPT) + البناء (كيرسر) = تركيبة قوية
-- الوقت المستثمر في تعلم الأدوات يعود بشكل أسي
-- المشاريع "المستحيلة" تصبح قابلة للتنفيذ مع تنسيق أدوات AI الصحيح
+- Türkçe Türkçe Türkçe AI Türkçe Türkçe Türkçe Türkçe Türkçe - Türkçe Türkçe
+- Cursor Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe (Perplexity) + Türkçe (ChatGPT) + Türkçe (Cursor) = Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe "Türkçe" Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe AI Türkçe
+

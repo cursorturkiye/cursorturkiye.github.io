@@ -1,4 +1,4 @@
-# CLAUDE.md — CursorSaudi.com
+﻿# CLAUDE.md — CursorTürkiye.com
 
 ## Commands
 
@@ -41,7 +41,7 @@ src/
 └── styles/global.css          # Tailwind imports, dark theme CSS variables
 public/
 ├── toggle-lang.js             # Runs early from Layout to set <html dir/lang> from localStorage
-└── CNAME                      # cursorsaudi.com
+└── CNAME                      # cursorturkiye.com
 ```
 
 ## Content Collections
@@ -55,7 +55,7 @@ Events live in `src/data/events/` as Markdown files. Schema defined in `src/cont
 
 ## i18n
 
-- UI copy uses paired `<span class="lang-ar">` / `<span class="lang-en">` blocks toggled in CSS
+- UI copy uses paired `<span class="lang-tr">` / `<span class="lang-en">` blocks toggled in CSS
 - `public/toggle-lang.js` is loaded from `Layout.astro` so `<html dir>` and `lang` match `localStorage` before paint
 
 ## Design Tokens (Dark Only)
@@ -72,3 +72,4 @@ Events live in `src/data/events/` as Markdown files. Schema defined in `src/cont
 - All content collection access goes through `src/utils/events.ts`
 - Events listing lives in `src/components/EventsPage.astro`; the home page shows featured cards via `HomePage.astro`
 - Partners are configured in `src/config.ts` and rendered inline where needed (e.g. home, about)
+

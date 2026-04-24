@@ -1,32 +1,32 @@
-/**
- * URL-prefix locales for shareable /ar/... and /en/... routes.
- * Default public locale is Arabic (`ar`).
+﻿/**
+ * URL-prefix locales for shareable /tr/... and /en/... routes.
+ * Default public locale is Turkish (`tr`).
  */
 
-export const SITE_LOCALES = ["ar", "en"] as const;
+export const SITE_LOCALES = ["tr", "en"] as const;
 
 export type SiteLocale = (typeof SITE_LOCALES)[number];
 
 export function isSiteLocale(value: string): value is SiteLocale {
-  return value === "ar" || value === "en";
+  return value === "tr" || value === "en";
 }
 
 /**
- * Reads the first path segment when it is `ar` or `en`.
- * Falls back to `ar` for legacy or unexpected paths.
+ * Reads the first path segment when it is `tr` or `en`.
+ * Falls back to `tr` for legacy or unexpected paths.
  */
 export function localeFromPathname(pathname: string): SiteLocale {
-  const m = pathname.match(/^\/(ar|en)(?:\/|$)/);
+  const m = pathname.match(/^\/(tr|en)(?:\/|$)/);
   if (m && isSiteLocale(m[1])) return m[1];
-  return "ar";
+  return "tr";
 }
 
 /**
- * Path without the `/ar` or `/en` prefix (leading slash preserved on rest).
- * `/en/events` → `/events`; `/ar/` → `/`
+ * Path without the `/tr` or `/en` prefix (leading slash preserved on rest).
+ * `/en/events` → `/events`; `/tr/` → `/`
  */
 export function stripLocalePrefix(pathname: string): string {
-  const m = pathname.match(/^\/(ar|en)(\/.*)?$/);
+  const m = pathname.match(/^\/(tr|en)(\/.*)?$/);
   if (!m) return pathname || "/";
   const rest = m[2];
   if (!rest || rest === "/") return "/";
@@ -39,7 +39,7 @@ export function stripLocalePrefix(pathname: string): string {
  */
 export function localizedPath(currentPathname: string, href: string): string {
   if (!href.startsWith("/") || href.startsWith("//")) return href;
-  if (/^\/(ar|en)(\/|$)/.test(href)) return href;
+  if (/^\/(tr|en)(\/|$)/.test(href)) return href;
   const locale = localeFromPathname(currentPathname);
   if (href === "/") return `/${locale}/`;
   return `/${locale}${href}`;
@@ -50,7 +50,8 @@ export function localizedPath(currentPathname: string, href: string): string {
  */
 export function pathForLocale(locale: SiteLocale, href: string): string {
   if (!href.startsWith("/") || href.startsWith("//")) return href;
-  if (/^\/(ar|en)(\/|$)/.test(href)) return href;
+  if (/^\/(tr|en)(\/|$)/.test(href)) return href;
   if (href === "/") return `/${locale}/`;
   return `/${locale}${href}`;
 }
+

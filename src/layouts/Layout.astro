@@ -1,4 +1,4 @@
----
+﻿---
 import { config } from "@/config";
 import "@/styles/global.css";
 import { localeFromPathname, stripLocalePrefix, pathForLocale } from "@/utils/i18n-path";
@@ -10,16 +10,16 @@ interface Props {
 
 const { title = config.title, description = config.description } = Astro.props;
 
-const siteOrigin = Astro.site?.origin ?? "https://cursorsaudi.com";
+const siteOrigin = Astro.site?.origin ?? "https://cursorturkiye.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
 const pageLocale = localeFromPathname(Astro.url.pathname);
 const htmlLang = pageLocale;
-const htmlDir = pageLocale === "ar" ? "rtl" : "ltr";
-const ogLocale = pageLocale === "ar" ? "ar_SA" : "en_US";
+const htmlDir = "ltr";
+const ogLocale = pageLocale === "tr" ? "tr_TR" : "en_US";
 
 const stripped = stripLocalePrefix(Astro.url.pathname);
 const pathForAlternates = stripped === "/" ? "/" : stripped.endsWith("/") ? stripped : `${stripped}/`;
-const hreflangAr = new URL(pathForLocale("ar", pathForAlternates), siteOrigin).href;
+const hreflangTr = new URL(pathForLocale("tr", pathForAlternates), siteOrigin).href;
 const hreflangEn = new URL(pathForLocale("en", pathForAlternates), siteOrigin).href;
 ---
 
@@ -37,15 +37,15 @@ const hreflangEn = new URL(pathForLocale("en", pathForAlternates), siteOrigin).h
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={ogLocale} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="ar" href={hreflangAr} />
+    <link rel="alternate" hreflang="tr" href={hreflangTr} />
     <link rel="alternate" hreflang="en" href={hreflangEn} />
-    <link rel="alternate" hreflang="x-default" href={hreflangAr} />
+    <link rel="alternate" hreflang="x-default" href={hreflangTr} />
     <meta name="theme-color" content="#0F0F0F" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <!-- Prevent FOUC: set language before render (single source: public/toggle-lang.js) -->
@@ -54,7 +54,7 @@ const hreflangEn = new URL(pathForLocale("en", pathForAlternates), siteOrigin).h
   <body class="min-h-screen flex flex-col relative">
     <a href="#main-content" class="skip-link">
       <span class="lang-en">Skip to content</span>
-      <span class="lang-ar">تخطي إلى المحتوى</span>
+      <span class="lang-tr">Skip to content</span>
     </a>
 
     <!-- Grid background -->
@@ -82,3 +82,4 @@ const hreflangEn = new URL(pathForLocale("en", pathForAlternates), siteOrigin).h
     </script>
   </body>
 </html>
+

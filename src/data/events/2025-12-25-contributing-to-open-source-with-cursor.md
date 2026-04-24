@@ -1,11 +1,11 @@
----
+﻿---
 title: Contributing to Open Source with Cursor
-titleAr: المساهمة في المصادر المفتوحة باستخدام كيرسر
+titleAr: Contributing to Open Source with Cursor
 date: 2025-12-25
-location: Riyadh
-locationAr: الرياض
+location: Ankara
+locationAr: Ankara
 description: Workshop on contributing to open source with Cursor — from picking a good first issue to shipping a review-friendly PR.
-descriptionAr: ورشة عمل عن المساهمة في المصادر المفتوحة باستخدام كيرسر — من اختيار أول مشكلة إلى إرسال طلب سحب جاهز للمراجعة.
+descriptionAr: Workshop on contributing to open source with Cursor — from picking a good first issue to shipping a review-friendly PR.
 type: meetup
 status: concluded
 venue: Mozn Office
@@ -14,8 +14,8 @@ speakers:
   - Usman Siddique
 lumaUrl: "https://lu.ma/f41u8pty"
 slides: 
-  - "https://github.com/cursorsaudi/events-slides/blob/main/2025-12-riyadh-meetup.pdf"
-  - "https://github.com/cursorsaudi/events-slides/blob/main/2025-12-riyadh-meetup-guest-speaker.pdf"
+  - "https://github.com/cursorturkiye/events-slides/blob/main/2025-12-riyadh-meetup.pdf"
+  - "https://github.com/cursorturkiye/events-slides/blob/main/2025-12-riyadh-meetup-guest-speaker.pdf"
 photos: 
   - 8 (2).png
   - 7 (2).png
@@ -37,7 +37,7 @@ A hands-on workshop focused on contributing to open source projects using Cursor
 ## Format
 
 - **Type**: In-person workshop
-- **Venue**: Mozn Office, Riyadh
+- **Venue**: Mozn Office, Ankara
 - **Duration**: 3.5 hours (6:00 PM - 9:30 PM)
 - **Speakers**: 2
 - **Attendance**: ~20 in-person (54 registrations)
@@ -83,30 +83,30 @@ Thanks to Dal for community support, Mozn for hosting, and Ben Lang for support.
 
 ## Resources
 
-- [Main Slides](https://github.com/cursorsaudi/events-slides/blob/main/2025-12-riyadh-meetup.pdf)
-- [Guest Speaker Slides](https://github.com/cursorsaudi/events-slides/blob/main/2025-12-riyadh-meetup-guest-speaker.pdf)
+- [Main Slides](https://github.com/cursorturkiye/events-slides/blob/main/2025-12-riyadh-meetup.pdf)
+- [Guest Speaker Slides](https://github.com/cursorturkiye/events-slides/blob/main/2025-12-riyadh-meetup-guest-speaker.pdf)
 - [Event Registration](https://lu.ma/f41u8pty)
 
 ---
 
-## نظرة عامة
+## Türkçe Türkçe
 
-ورشة عمل عملية تركز على المساهمة في مشاريع المصادر المفتوحة باستخدام كيرسر. غطت الجلسة سير العمل الكامل من إيجاد المشاكل المناسبة للمبتدئين إلى إرسال طلبات سحب جاهزة للمراجعة، مع التركيز على استخدام أدوات AI للحفاظ على الجودة مع السرعة.
+Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Cursor. Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe AI Türkçe Türkçe Türkçe Türkçe Türkçe.
 
-## أبرز النقاط
+## Türkçe Türkçe
 
-- قدم Usman سير عمل عملي للمساهمة في OSS باستخدام كيرسر: أين تجد المشاكل، كيف تتواصل مع المشرفين، وكيف تحافظ على الجودة
-- نقاش تراخيص OSS وما يعنيه "المساهمة الصحيحة" (الأخلاقيات، الإسناد، التوقعات)
-- مثال حي: مساهمة حقيقية بـ كيرسر قُبلت من المشرف بأقل تدخل
-- معالجة الخوف الشائع: القلق من أن المساهمات يجب أن تكون "جديدة" أو "معقدة جداً"
-- إعادة صياغة: أفضل المساهمات الأولى بسيطة لك لكنها ذات معنى للمشرفين
+- Türkçe Usman Türkçe Türkçe Türkçe Türkçe Türkçe OSS Türkçe Cursor: Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe OSS Türkçe Türkçe "Türkçe Türkçe" (Türkçe Türkçe Türkçe)
+- Türkçe Türkçe: Türkçe Türkçe Türkçe Cursor Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe: Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe "Türkçe" Türkçe "Türkçe Türkçe"
+- Türkçe Türkçe: Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
 
-## الدروس المستفادة
+## Türkçe Türkçe
 
-- العائق ليس المهارة — إنه التوقعات
-- المساهمات "الصغيرة عالية التأثير" هي أسرع طريق إلى OSS
-- الأمثلة العملية + منظور المشرف + سير عمل AI يجعل OSS قابلاً للتنفيذ
-- أدوات AI تساعد المبتدئين على المساهمة بجودة المطور الخبير
+- Türkçe Türkçe Türkçe — Türkçe Türkçe
+- Türkçe "Türkçe Türkçe Türkçe" Türkçe Türkçe Türkçe Türkçe OSS
+- Türkçe Türkçe + Türkçe Türkçe + Türkçe Türkçe AI Türkçe OSS Türkçe Türkçe
+- Türkçe AI Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
 
 ---
 
@@ -125,3 +125,4 @@ Thanks to Dal for community support, Mozn for hosting, and Ben Lang for support.
 ![](/event-assets/2025-12-25-contributing-to-open-source-with-cursor/oss-talk-2.jpg)
 
 ![](/event-assets/2025-12-25-contributing-to-open-source-with-cursor/oss-talk-3.jpg)
+

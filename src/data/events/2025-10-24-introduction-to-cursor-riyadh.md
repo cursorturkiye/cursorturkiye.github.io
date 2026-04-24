@@ -1,28 +1,28 @@
----
+﻿---
 title: Introduction to Cursor
-titleAr: مقدمة في كيرسر
+titleAr: Introduction to Cursor
 date: 2025-10-24
-location: Riyadh
-locationAr: الرياض
-description: 'Invited talk at the DAL Health Datathon 2025 (CODE, Riyadh): intro to Cursor and the AI coding tools landscape for participants—not a standalone Cursor Saudi community meetup.'
-descriptionAr: 'محاضرة بدعوة ضمن داتاثون دال الصحي 2025 (CODE، الرياض): مقدمة عن كيرسر ومشهد أدوات البرمجة بالذكاء الاصطناعي للمشاركين — وليست لقاءً مستقلاً تنظمه مجتمع كيرسر السعودية.'
+location: Ankara
+locationAr: Ankara
+description: 'Invited talk at the DAL Health Datathon 2025 (CODE, Ankara): intro to Cursor and the AI coding tools landscape for participants—not a standalone Cursor Türkiye community meetup.'
+descriptionAr: 'Invited talk at the DAL Health Datathon 2025 (CODE, Ankara): intro to Cursor and the AI coding tools landscape for participants—not a standalone Cursor Türkiye community meetup.'
 type: talk
 status: concluded
 venue: CODE
 speakers:
   - Mazen Alotaibi
 slides:
-  - 'https://github.com/cursorsaudi/events-slides/blob/main/2025-10-riyadh-hackathon.pdf'
+  - 'https://github.com/cursorturkiye/events-slides/blob/main/2025-10-riyadh-hackathon.pdf'
 ---
 
 ## Overview
 
-An **invited** Cursor introduction delivered as part of the **DAL Health Datathon 2025** program at CODE, Riyadh—hosted by the datathon organizers, not produced as a standalone Cursor Saudi community meetup. The session helped participants understand the AI coding tools landscape and how to use Cursor during the competition.
+An **invited** Cursor introduction delivered as part of the **DAL Health Datathon 2025** program at CODE, Ankara—hosted by the datathon organizers, not produced as a standalone Cursor Türkiye community meetup. The session helped participants understand the AI coding tools landscape and how to use Cursor during the competition.
 
 ## Format
 
 - **Type**: Invited hackathon / datathon talk (external program)
-- **Venue**: CODE, Riyadh
+- **Venue**: CODE, Ankara
 - **Event**: DAL Health Datathon 2025
 - **Duration**: Presentation session
 - **Speaker**: 1
@@ -55,34 +55,34 @@ An **invited** Cursor introduction delivered as part of the **DAL Health Datatho
 
 ## Resources
 
-- [Slides (PDF)](https://github.com/cursorsaudi/events-slides/blob/main/2025-10-riyadh-hackathon.pdf)
+- [Slides (PDF)](https://github.com/cursorturkiye/events-slides/blob/main/2025-10-riyadh-hackathon.pdf)
 
 ---
 
-## نظرة عامة
+## Türkçe Türkçe
 
-**محاضرة بدعوة** ضمن برنامج **داتاثون دال الصحي 2025** في CODE بالرياض — من تنظيم الجهة المضيفة للداتاثون، وليست لقاءً مستقلاً تنظمه مجتمع كيرسر السعودية. تناولت مقدمة عن كيرسر ومشهد أدوات البرمجة بالذكاء الاصطناعي وكيفية الاستفادة من كيرسر أثناء المنافسة.
+**Türkçe Türkçe** Türkçe Türkçe **Türkçe Türkçe Türkçe 2025** Türkçe CODE TürkçeAnkara — Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Cursor Türkiye. Türkçe Türkçe Türkçe Cursor Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Cursor Türkçe Türkçe.
 
-## أبرز النقاط
+## Türkçe Türkçe
 
-- محتوى مخصص لسياق الهاكاثون (السرعة، النماذج الأولية، التعاون)
-- نظرة عامة على مشهد أدوات AI الأوسع
-- نصائح عملية لاستخدام أدوات AI خلال المنافسات المحدودة الوقت
-- التركيز على حالات الاستخدام المتعلقة بالرعاية الصحية والبيانات
+- Türkçe Türkçe Türkçe Türkçe (Türkçe Türkçe Türkçe Türkçe)
+- Türkçe Türkçe Türkçe Türkçe Türkçe AI Türkçe
+- Türkçe Türkçe Türkçe Türkçe AI Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
 
-## المواضيع المغطاة
+## Türkçe Türkçe
 
-- مشهد أدوات AI: ChatGPT، Claude، Perplexity، وأدوات البرمجة
-- موقع كيرسر في المنظومة
-- ميزات كيرسر الأساسية للتطوير السريع
-- نصائح للنجاح في الهاكاثون مع مساعدة AI
-- الموازنة بين السرعة وجودة الكود في المنافسات
+- Türkçe Türkçe AI: ChatGPTTürkçe ClaudeTürkçe PerplexityTürkçe Türkçe Türkçe
+- Türkçe Cursor Türkçe Türkçe
+- Türkçe Cursor Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe AI
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
 
-## الدروس المستفادة
+## Türkçe Türkçe
 
-- أدوات AI مضاعفات قوة في الهاكاثونات
-- فهم مشهد الأدوات يساعد في اختيار الأداة المناسبة لكل مهمة
-- كيرسر يتفوق في توليد الكود وتحرير ملفات متعددة
+- Türkçe AI Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Cursor Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
 
 ---
 
@@ -101,3 +101,4 @@ An **invited** Cursor introduction delivered as part of the **DAL Health Datatho
 ![](/images/events/2025-10-24-introduction-to-cursor-riyadh/G4gRyt2XsAE8Aog.jpg)
 
 ![](/images/events/2025-10-24-introduction-to-cursor-riyadh/G4gRyt3XUAA-MAl.jpg)
+

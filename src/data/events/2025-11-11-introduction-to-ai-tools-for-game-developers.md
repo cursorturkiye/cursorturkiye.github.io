@@ -1,18 +1,18 @@
----
+﻿---
 title: Introduction to AI Tools for Game Developers
-titleAr: مقدمة في أدوات الذكاء الاصطناعي لمطوري الألعاب
+titleAr: Introduction to AI Tools for Game Developers
 date: 2025-11-11
-location: Riyadh
-locationAr: الرياض
+location: Ankara
+locationAr: Ankara
 description: "Introduction to Cursor at the AI Game Hackathon 2025, covering AI tools for game development workflows."
-descriptionAr: مقدمة عن كيرسر في هاكاثون الألعاب بالذكاء الاصطناعي 2025، تغطي أدوات الذكاء الاصطناعي لتطوير الألعاب.
+descriptionAr: "Introduction to Cursor at the AI Game Hackathon 2025, covering AI tools for game development workflows."
 type: talk
 status: concluded
 venue: Virtual
 speakers: 
   - Mazen Alotaibi
 slides: 
-  - "https://github.com/cursorsaudi/events-slides/blob/main/2025-11-riyadh-ai-game.pdf"
+  - "https://github.com/cursorturkiye/events-slides/blob/main/2025-11-riyadh-ai-game.pdf"
 ---
 
 ## Overview
@@ -31,7 +31,7 @@ A virtual talk at the AI Game Hackathon 2025, introducing game developers to AI-
 
 ## Highlights
 
-- First virtual CursorSaudi event, expanding reach beyond in-person attendance
+- First virtual CursorTürkiye event, expanding reach beyond in-person attendance
 - Content tailored specifically for game development workflows
 - Coverage of AI tools across the game dev pipeline
 - Practical examples relevant to Unity, Unreal, and Godot developers
@@ -57,33 +57,34 @@ A virtual talk at the AI Game Hackathon 2025, introducing game developers to AI-
 
 ## Resources
 
-- [Slides (PDF)](https://github.com/cursorsaudi/events-slides/blob/main/2025-11-riyadh-ai-game.pdf)
+- [Slides (PDF)](https://github.com/cursorturkiye/events-slides/blob/main/2025-11-riyadh-ai-game.pdf)
 
 ---
 
-## نظرة عامة
+## Türkçe Türkçe
 
-حديث افتراضي في هاكاثون الألعاب بالذكاء الاصطناعي 2025، يعرّف مطوري الألعاب على أدوات التطوير المدعومة بالذكاء الاصطناعي. غطت الجلسة كيف يمكن لـ كيرسر وأدوات AI الأخرى تسريع سير عمل تطوير الألعاب، من البرمجة إلى تصحيح الأخطاء إلى إدارة خط أنابيب الأصول.
+Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe 2025Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe. Türkçe Türkçe Türkçe Türkçe Türkçe Cursor Türkçe AI Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe.
 
-## أبرز النقاط
+## Türkçe Türkçe
 
-- أول حدث افتراضي لـ كيرسر السعودية، يوسع الوصول إلى ما وراء الحضور الشخصي
-- محتوى مخصص لسير عمل تطوير الألعاب
-- تغطية أدوات AI عبر خط أنابيب تطوير الألعاب
-- أمثلة عملية لمطوري Unity وUnreal وGodot
+- Türkçe Türkçe Türkçe Türkçe Cursor TürkiyeTürkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe AI Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Unity TürkçeUnreal TürkçeGodot
 
-## المواضيع المغطاة
+## Türkçe Türkçe
 
-- مشهد أدوات AI لمطوري الألعاب
-- كيرسر لبرمجة الألعاب (C#، C++، GDScript، Lua)
-- تصحيح أخطاء منطق اللعبة بمساعدة AI
-- توليد الكود النمطي لأنماط الألعاب الشائعة
-- أدوات AI لتطوير الشيدر
-- إمكانيات أتمتة خط أنابيب الأصول
+- Türkçe Türkçe AI Türkçe Türkçe
+- Cursor Türkçe Türkçe (C#Türkçe C++Türkçe GDScriptTürkçe Lua)
+- Türkçe Türkçe Türkçe Türkçe Türkçe AI
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe AI Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe
 
-## الدروس المستفادة
+## Türkçe Türkçe
 
-- تطوير الألعاب له فرص فريدة لأدوات AI (كود، فن، تصميم)
-- AI يتفوق في أنماط برمجة الألعاب المتكررة
-- كيرسر يعمل جيداً مع لغات برمجة محركات الألعاب
-- الأحداث الافتراضية تصل لجماهير لا تستطيع الحضور شخصياً
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe AI (Türkçe Türkçe Türkçe)
+- AI Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Cursor Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+

@@ -1,4 +1,4 @@
----
+﻿---
 interface TocItem {
   id: string;
   labelEn: string;
@@ -21,9 +21,10 @@ const { items } = Astro.props;
           class="inline-block rounded-full border border-[#252525] bg-[#141414] px-3.5 py-1.5 text-[#999999] hover:text-white hover:border-white/20 transition-colors whitespace-nowrap"
         >
           <span class="lang-en">{item.labelEn}</span>
-          <span class="lang-ar">{item.labelAr}</span>
+      <span class="lang-tr">{item.labelEn}</span>
         </a>
       </li>
     ))}
   </ul>
 </nav>
+

@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 import { config } from "@/config";
 import { getSortedEvents } from "@/utils/events";
@@ -361,7 +361,7 @@ function speakerToContributor(s: ConfigSpeaker): PartnerContributor {
     name: s.name,
     nameAr: s.nameAr,
     role: "Engineer",
-    roleAr: "مهندس",
+    roleAr: "Türkçe",
     twitter: s.twitter,
     twitterHandle: s.twitterHandle,
     linkedin: s.linkedin,
@@ -463,10 +463,10 @@ export function getAllSupporters(): Supporter[] {
 export type PartnerRole = "official" | "community-partner" | "venue-host" | "past-community-partner";
 
 export const partnerRoleLabels: Record<PartnerRole, { en: string; ar: string }> = {
-  "official": { en: "Official Partner", ar: "شريك رسمي" },
-  "community-partner": { en: "Community Partner", ar: "شريك مجتمعي" },
-  "venue-host": { en: "Venue Host", ar: "مستضيف المكان" },
-  "past-community-partner": { en: "Community Partner", ar: "شريك مجتمعي" },
+  "official": { en: "Official Partner", ar: "Resmi Is Ortagi" },
+  "community-partner": { en: "Community Partner", ar: "Topluluk Ortagi" },
+  "venue-host": { en: "Venue Host", ar: "Mekan Ev Sahibi" },
+  "past-community-partner": { en: "Community Partner", ar: "Topluluk Ortagi" },
 };
 
 export type EventPartnerEntry = { logo: string; slug: string; name: string; nameAr: string; role: PartnerRole };

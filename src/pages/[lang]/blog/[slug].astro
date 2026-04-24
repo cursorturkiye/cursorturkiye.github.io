@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -55,16 +55,16 @@ const dateStrAr = post.date.toLocaleDateString("ar-SA", {
 });
 
 const typeLabels: Record<string, { en: string; ar: string }> = {
-  meetup: { en: "Meetup", ar: "لقاء" },
-  hackathon: { en: "Hackathon", ar: "هاكاثون" },
-  workshop: { en: "Workshop", ar: "ورشة عمل" },
-  build: { en: "Build", ar: "بناء" },
-  talk: { en: "Talk", ar: "محاضرة" },
-  interview: { en: "Interview", ar: "مقابلة" },
+  meetup: { en: "Meetup", ar: "Türkçe" },
+  hackathon: { en: "Hackathon", ar: "Türkçe" },
+  workshop: { en: "Workshop", ar: "Türkçe Türkçe" },
+  build: { en: "Build", ar: "Türkçe" },
+  talk: { en: "Talk", ar: "Türkçe" },
+  interview: { en: "Interview", ar: "Türkçe" },
 };
 ---
 
-<Layout title={`${post.title} — Cursor Saudi`} description={post.description}>
+<Layout title={`${post.title} — Cursor Türkiye`} description={post.description}>
   <Header />
 
   <main id="main-content" class="flex-grow pt-[72px] relative z-10">
@@ -75,7 +75,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
           <path d="M10 12L6 8l4-4"/>
         </svg>
         <span class="lang-en">Back to Events</span>
-        <span class="lang-ar">العودة للفعاليات</span>
+      <span class="lang-tr">Back to Events</span>
       </a>
 
       {eventAlbumHref && (
@@ -85,7 +85,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
             class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-[#252525] text-sm text-white hover:bg-white/10 hover:border-[#444] transition-colors"
           >
             <span class="lang-en">See album</span>
-            <span class="lang-ar">عرض الألبوم</span>
+      <span class="lang-tr">See album</span>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 12l8-8m0 0H5m7 0v7"/>
             </svg>
@@ -100,18 +100,18 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
           {post.source === "event" ? (
             <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
               <span class="lang-en">Event Recap</span>
-              <span class="lang-ar">ملخص فعالية</span>
+      <span class="lang-tr">Event Recap</span>
             </span>
           ) : (
             <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
               <span class="lang-en">Article</span>
-              <span class="lang-ar">مقال</span>
+      <span class="lang-tr">Article</span>
             </span>
           )}
           {post.eventType && (
             <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-[#999] border border-[#252525] capitalize">
               <span class="lang-en">{typeLabels[post.eventType]?.en ?? post.eventType}</span>
-              <span class="lang-ar">{typeLabels[post.eventType]?.ar ?? post.eventType}</span>
+      <span class="lang-tr">{typeLabels[post.eventType]?.en ?? post.eventType}</span>
             </span>
           )}
         </div>
@@ -132,7 +132,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
                   )}
                   <span class="group-hover/speaker:text-white transition-colors">
                     <span class="lang-en">{displayNameEn}</span>
-                    <span class="lang-ar">{displayNameAr}</span>
+      <span class="lang-tr">{displayNameEn}</span>
                   </span>
                   {partner && (
                     <img src={partner.logo} alt={partner.name} class="w-3.5 h-3.5 object-contain opacity-50 shrink-0" width="14" height="14" loading="lazy" />
@@ -149,7 +149,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
                 <img src={p.logo} alt={p.name} class="w-5 h-5 object-contain" width="20" height="20" loading="lazy" />
                 <span class="text-[10px] text-[#8b949e] leading-tight">
                   <span class="lang-en">{partnerRoleLabels[p.role].en}</span>
-                  <span class="lang-ar">{partnerRoleLabels[p.role].ar}</span>
+      <span class="lang-tr">{partnerRoleLabels[p.role].en}</span>
                 </span>
               </a>
             ))}
@@ -158,7 +158,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
 
         <!-- Title -->
         <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-          <span class="lang-ar">{post.titleAr ?? post.title}</span>
+          <span class="lang-tr">{post.titleAr}</span>
           <span class="lang-en">{post.title}</span>
         </h1>
 
@@ -166,18 +166,18 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
         <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#6E6E6E]">
           <time>
             <span class="lang-en">{dateStr}</span>
-            <span class="lang-ar">{dateStrAr}</span>
+      <span class="lang-tr">{dateStr}</span>
           </time>
           {post.author && eventSpeakerNames.length === 0 && (
             <span>
               <span class="lang-en">by</span>
-              <span class="lang-ar">بواسطة</span>
+      <span class="lang-tr">by</span>
               {" "}{post.author}
             </span>
           )}
           {post.eventLocation && (
             <span>
-              <span class="lang-ar">{post.eventLocationAr ?? post.eventLocation}</span>
+              <span class="lang-tr">{post.eventLocationAr}</span>
               <span class="lang-en">{post.eventLocation}</span>
             </span>
           )}
@@ -280,7 +280,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
             if (isImageSection(nodes)) {
               wrapper.className = 'blog-lang-shared';
             } else if (isArabic(text)) {
-              wrapper.className = 'blog-lang-ar';
+              wrapper.className = 'blog-lang-tr';
               wrapper.setAttribute('dir', 'rtl');
             } else {
               wrapper.className = 'blog-lang-en';
@@ -297,7 +297,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
         <div class="mt-10 pt-6 border-t border-[#252525]">
           <h3 class="text-sm font-semibold text-[#999] mb-3">
             <span class="lang-en">Slides</span>
-            <span class="lang-ar">العروض</span>
+      <span class="lang-tr">Slides</span>
           </h3>
           <div class="flex flex-wrap gap-3">
             {post.eventSlides.map((slide, i) => (
@@ -311,7 +311,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
                   <path d="M4 12l8-8m0 0H5m7 0v7"/>
                 </svg>
                 <span class="lang-en">Slide {i + 1}</span>
-                <span class="lang-ar">عرض {i + 1}</span>
+      <span class="lang-tr">Slide {i + 1}</span>
               </a>
             ))}
           </div>
@@ -325,7 +325,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
             class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-[#252525] text-sm text-white hover:bg-white/10 hover:border-[#444] transition-colors"
           >
             <span class="lang-en">See album</span>
-            <span class="lang-ar">عرض الألبوم</span>
+      <span class="lang-tr">See album</span>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 12l8-8m0 0H5m7 0v7"/>
             </svg>
@@ -340,7 +340,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
             <path d="M10 12L6 8l4-4"/>
           </svg>
           <span class="lang-en">Back to Events</span>
-          <span class="lang-ar">العودة للفعاليات</span>
+      <span class="lang-tr">Back to Events</span>
         </a>
       </div>
     </article>

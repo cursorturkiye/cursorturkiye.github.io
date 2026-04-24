@@ -1,11 +1,11 @@
----
+﻿---
 title: "Ship in 3 Hours with Cursor: From Idea to Working Demo"
-titleAr: "أنجز في 3 ساعات مع كيرسر: من الفكرة إلى عرض تجريبي يعمل"
+titleAr: "Ship in 3 Hours with Cursor: From Idea to Working Demo"
 date: 2026-03-07
-location: Riyadh
-locationAr: الرياض
+location: Ankara
+locationAr: Ankara
 description: "A 3-hour interactive workshop where participants ship real software using Cursor. Features a shipping loop demo, Choose-Your-Path Build Lab with missions, and Cursor CLI agent exploration."
-descriptionAr: ورشة عمل تفاعلية مدتها 3 ساعات يتعلم فيها المشاركون بناء برمجيات حقيقية باستخدام كيرسر. تتضمن عرض حلقة الشحن ومختبر البناء بالمهام واستكشاف وكيل CLI.
+descriptionAr: "A 3-hour interactive workshop where participants ship real software using Cursor. Features a shipping loop demo, Choose-Your-Path Build Lab with missions, and Cursor CLI agent exploration."
 type: build
 status: concluded
 venue: Leqaa hall
@@ -15,13 +15,13 @@ speakers:
   - Abdullah Mosaibah
 lumaUrl: "https://lu.ma/cwbemd5n"
 slides: 
-  - "https://github.com/cursorsaudi/events-slides/blob/main/2026-03-07-cursor-workshop-ship-in-3-hours.pdf"
+  - "https://github.com/cursorturkiye/events-slides/blob/main/2026-03-07-cursor-workshop-ship-in-3-hours.pdf"
 communityPosts:
   - url: "https://x.com/Al_Mushdaq/status/2030625772734439789"
     author: "Al Mushdaq"
-    authorAr: "المشدق"
+    authorAr: "Türkçe"
     label: "Vlog"
-    labelAr: "فلوق"
+    labelAr: "Türkçe"
 photos:
   - "/images/events/2026-03-07-cursor-workshop-ship-in-3-hours/HDc4OQRXQAABlmU.jpg"
   - "/images/events/2026-03-07-cursor-workshop-ship-in-3-hours/HDc4Ms7WAAA-77I.jpg"
@@ -44,8 +44,8 @@ A 3-hour interactive workshop where participants built and deployed real softwar
 ## Format
 
 - **Type**: In-person workshop (with online attendance)
-- **Venue**: Leqaa Hall, Riyadh
-- **Co-organizer**: DAL | دال
+- **Venue**: Leqaa Hall, Ankara
+- **Co-organizer**: DAL | Türkçe
 - **Duration**: 11:00 PM – 2:00 AM (3 hours)
 - **Speakers**: 3 ([Mazen Alotaibi](https://x.com/ma7dev), [Nick Miller](https://x.com/nickwm), [Abdullah Moasibah](https://www.linkedin.com/in/abdullah-mosaibah-67814312b/))
 - **Structure**: Introduction → Guest speaker (Nick Miller) → Tricks & Tips → Build Time (1 hour)
@@ -81,7 +81,7 @@ A 3-hour interactive workshop where participants built and deployed real softwar
 - Research (ChatGPT/Perplexity) → Prototype (Replit/Lovable/v0) → Build (Cursor) → Polish (variant.com/v0) → Ship
 
 ### Hands-on Building
-- Attendees built apps including: a pet-feeding tracker with notifications and shared logging, a social media image generation tool, and a Riyadh bicycle community app
+- Attendees built apps including: a pet-feeding tracker with notifications and shared logging, a social media image generation tool, and a Ankara bicycle community app
 - MCP integrations used: PostHog MCP for user journey analysis, database access MCP for product insights, HexStrike MCP for vulnerability analysis
 
 ## Resources
@@ -90,42 +90,42 @@ A 3-hour interactive workshop where participants built and deployed real softwar
 
 ---
 
-## نظرة عامة
+## Türkçe Türkçe
 
-ورشة عمل تفاعلية مدتها 3 ساعات قام فيها المشاركون ببناء ونشر برمجيات حقيقية باستخدام كيرسر. تضمن الحدث عرضاً تقديمياً عن أحدث ميزات كيرسر، ونصائح عملية لسير العمل، وجلسة بناء عملية أنجز فيها الحاضرون نماذج أولية تعمل.
+Türkçe Türkçe Türkçe Türkçe 3 Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Cursor. Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe CursorTürkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe.
 
-## أبرز النقاط
+## Türkçe Türkçe
 
-- قدّم نيك ميلر عرضاً عن أحدث ميزات كيرسر (المهارات، الهوكس، السوق، الأتمتة) مع أمثلة واضحة
-- جلسة عملية عن تسريع سير العمل وعادات البرومبتنق الأفضل
-- قام الحضور ببناء ونشر نماذج أولية حقيقية خلال جلسة البناء العملي
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Cursor (Türkçe Türkçe Türkçe Türkçe) Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
 
-## المواضيع المغطاة
+## Türkçe Türkçe
 
-### المتحدث الضيف: نيك ميلر (مهندس في كيرسر)
-- أحدث ميزات كيرسر: المهارات، الهوكس، السوق، والأتمتة
-- أسئلة وأجوبة عملية عن الاستخدام الفعلي والذكاء الاصطناعي في الإنتاج
+### Türkçe Türkçe: Türkçe Türkçe (Türkçe Türkçe Cursor)
+- Türkçe Türkçe Cursor: Türkçe Türkçe Türkçe Türkçe
+- Soru ve cevaplar Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
 
-### نصائح وحيل: افعل ولا تفعل
-- هندسة الفايب مقابل برمجة الفايب (بحث → تخطيط → بناء → مراجعة)
-- راجع كل شيء — عامل الذكاء الاصطناعي كمبرمج مبتدئ
-- استخدم النموذج المناسب لكل مهمة (تخطيط vs تنفيذ vs بناء هيكلي)
-- لا تبدأ من الصفر — استخدم Lovable أو v0 أو القوالب أولاً
-- استخدم @docs للوثائق المحدّثة
-- استخدم قواعد كيرسر (قواعد المستخدم + قواعد المشروع)
-- استخدم MCPs والمهارات والإضافات (Perplexity، Context7، TaskMaster، Mobile)
-- حافظ على تركيز المحادثات — مهمة واحدة لكل محادثة
-- وضع التخطيط أولاً، ثم وضع الوكيل
-- اكتب برومبتات محددة وغنية بالسياق
-- احفظ نقاط تحقق باستمرار — git commits + نقاط تحقق كيرسر
-- وازِ العمل مع الوكلاء الخلفيين
+### Türkçe Türkçe: Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe (Türkçe → Türkçe → Türkçe → Türkçe)
+- Türkçe Türkçe Türkçe — Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe (Türkçe vs Türkçe vs Türkçe Türkçe)
+- Türkçe Türkçe Türkçe Türkçe — Türkçe Lovable Türkçe v0 Türkçe Türkçe Türkçe
+- Türkçe @docs Türkçe Türkçe
+- Türkçe Türkçe Cursor (Türkçe Türkçe + Türkçe Türkçe)
+- Türkçe MCPs Türkçe Türkçe (PerplexityTürkçe Context7Türkçe TaskMasterTürkçe Mobile)
+- Türkçe Türkçe Türkçe Türkçe — Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe — git commits + Türkçe Türkçe Cursor
+- Türkçe Türkçe Türkçe Türkçe Türkçe
 
-### خط أنابيب أدوات الذكاء الاصطناعي
-- بحث (ChatGPT/Perplexity) → نموذج أولي (Replit/Lovable/v0) → بناء (كيرسر) → تحسين (variant.com/v0) → نشر
+### Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe (ChatGPT/Perplexity) → Türkçe Türkçe (Replit/Lovable/v0) → Türkçe (Cursor) → Türkçe (variant.com/v0) → Türkçe
 
-### البناء العملي
-- بنى الحضور تطبيقات تشمل: متتبع تغذية الحيوانات الأليفة، أداة توليد صور لوسائل التواصل، وتطبيق مجتمع دراجات الرياض
-- استخدام تكاملات MCP: PostHog لتحليل رحلات المستخدم، وHexStrike لتحليل الثغرات
+### Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe: Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Ankara
+- Türkçe Türkçe MCP: PostHog Türkçe Türkçe Türkçe TürkçeHexStrike Türkçe Türkçe
 
 ---
 

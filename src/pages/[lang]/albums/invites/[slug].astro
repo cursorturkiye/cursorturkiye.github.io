@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -24,9 +24,9 @@ export function getStaticPaths() {
 const { invite } = Astro.props as { invite: InviteWithPhotos };
 const pagePath = Astro.url.pathname;
 
-const siteOrigin = Astro.site?.origin ?? "https://cursorsaudi.com";
+const siteOrigin = Astro.site?.origin ?? "https://cursorturkiye.com";
 const pageUrl = new URL(Astro.url.pathname, siteOrigin).href;
-const shareText = `${invite.talkTitle} — Cursor Saudi`;
+const shareText = `${invite.talkTitle} — Cursor Türkiye`;
 const xShareUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`;
 const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
 
@@ -42,7 +42,7 @@ const inviteDate = new Date(invite.date);
 ---
 
 <Layout
-  title={`${invite.talkTitle} Album — Cursor Saudi`}
+  title={`${invite.talkTitle} Album — Cursor Türkiye`}
   description={`Photos from ${invite.talkTitle}`}
 >
   <Header />
@@ -55,23 +55,23 @@ const inviteDate = new Date(invite.date);
             <polyline points="15 18 9 12 15 6"/>
           </svg>
           <span class="lang-en">Back to Albums</span>
-          <span class="lang-ar">العودة للألبومات</span>
+      <span class="lang-tr">Back to Albums</span>
         </a>
 
         <div class="mb-10 border-b border-[#252525] pb-8">
           <h1 class="text-3xl md:text-4xl font-semibold text-white mb-3">
             <span class="lang-en">{invite.talkTitle}</span>
-            <span class="lang-ar">{invite.talkTitleAr}</span>
+      <span class="lang-tr">{invite.talkTitle}</span>
           </h1>
           <div class="flex flex-wrap items-center gap-4 text-sm text-[#999999] mb-4">
             <span class="flex items-center gap-1.5">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               <span class="lang-en">{formatDate(inviteDate)}</span>
-              <span class="lang-ar">{formatDateAr(inviteDate)}</span>
+      <span class="lang-tr">{formatDate(inviteDate)}</span>
             </span>
             <span class="flex items-center gap-1.5">
               <span class="lang-en">{invite.speaker} &middot; {invite.invitedBy}</span>
-              <span class="lang-ar">{invite.speakerAr} &middot; {invite.invitedByAr}</span>
+      <span class="lang-tr">{invite.speaker} &middot; {invite.invitedBy}</span>
             </span>
             <span class="flex items-center gap-2 ms-auto">
               <a href={xShareUrl} target="_blank" rel="noreferrer" class="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 border border-[#252525] text-[#6E6E6E] hover:text-white hover:border-[#444] transition-colors" aria-label="Share on X">
@@ -135,7 +135,7 @@ const inviteDate = new Date(invite.date);
             class="pointer-events-auto text-xs font-medium px-3 py-1.5 rounded-lg border border-white/20 bg-white/10 text-white hover:bg-white/15 hover:border-white/30 transition-colors shrink-0"
           >
             <span class="lang-en">Copy link to this photo</span>
-            <span class="lang-ar">نسخ رابط هذه الصورة</span>
+      <span class="lang-tr">Copy link to this photo</span>
           </button>
         </div>
         <p id="lightbox-copy-status" class="sr-only" role="status" aria-live="polite"></p>
@@ -271,19 +271,19 @@ const inviteDate = new Date(invite.date);
     if (copyLinkBtn) {
       copyLinkBtn.addEventListener('click', function () {
         var href = window.location.href;
-        var ar = document.documentElement.getAttribute('lang') === 'ar';
+        var ar = document.documentElement.getAttribute('lang') === 'tr';
         function announce(msg) {
           if (copyStatus) copyStatus.textContent = msg;
           window.setTimeout(function () { if (copyStatus) copyStatus.textContent = ''; }, 2500);
         }
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(href).then(function () {
-            announce(ar ? 'تم نسخ الرابط' : 'Link copied');
+            announce(ar ? 'Türkçe Türkçe Türkçe' : 'Link copied');
           }).catch(function () {
-            announce(ar ? 'انسخ الرابط من شريط العنوان' : 'Copy the URL from the address bar');
+            announce(ar ? 'Türkçe Türkçe Türkçe Türkçe Türkçe' : 'Copy the URL from the address bar');
           });
         } else {
-          announce(ar ? 'انسخ الرابط من شريط العنوان' : 'Copy the URL from the address bar');
+          announce(ar ? 'Türkçe Türkçe Türkçe Türkçe Türkçe' : 'Copy the URL from the address bar');
         }
       });
     }

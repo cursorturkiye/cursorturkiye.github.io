@@ -1,11 +1,11 @@
----
+﻿---
 title: "Build your MVP with AI!"
-titleAr: "ابنِ نموذجك الأولي بالذكاء الاصطناعي!"
+titleAr: "Build your MVP with AI!"
 date: 2025-07-30
-location: Riyadh
-locationAr: الرياض
+location: Ankara
+locationAr: Ankara
 description: "A hands-on BUILD session for devs and non-devs. Bring your laptop, choose a problem, and ship a working MVP in under 3 hours using AI tools like Cursor and Replit."
-descriptionAr: جلسة بناء عملية للمطورين وغير المطورين. أحضر حاسوبك واختر مشكلة وابنِ نموذجاً أولياً في أقل من 3 ساعات باستخدام أدوات الذكاء الاصطناعي.
+descriptionAr: "A hands-on BUILD session for devs and non-devs. Bring your laptop, choose a problem, and ship a working MVP in under 3 hours using AI tools like Cursor and Replit."
 type: build
 status: concluded
 venue: CODE
@@ -14,14 +14,14 @@ speakers:
   - Mazen Alotaibi
 lumaUrl: "https://lu.ma/4w52ko64"
 slides: 
-  - "https://github.com/cursorsaudi/events-slides/blob/main/2025-07-riyadh-workshop.pdf"
+  - "https://github.com/cursorturkiye/events-slides/blob/main/2025-07-riyadh-workshop.pdf"
 communityPosts:
   - url: "https://x.com/Al_Mushdaq/status/1950639301680886220"
     author: "Al Mushdaq"
-    authorAr: "المشدق"
+    authorAr: "Türkçe"
   - url: "https://x.com/theeFaris/status/1950805628332499182"
     author: "Faris Hijazi"
-    authorAr: "فارس حجازي"
+    authorAr: "Türkçe Türkçe"
 photos:
   - GxIyD30WUAAGUyP.jpg
   - GxIyNxRXgAQ5vLB.jpg
@@ -37,7 +37,7 @@ A hands-on workshop designed to help both developers and non-developers build a 
 ## Format
 
 - **Type**: Hands-on workshop
-- **Venue**: CODE, Riyadh
+- **Venue**: CODE, Ankara
 - **Duration**: ~3 hours
 - **Speakers**: 2
 - **Structure**: Brief intro + guided building + peer support + demos
@@ -69,25 +69,26 @@ A hands-on workshop designed to help both developers and non-developers build a 
 
 ## Resources
 
-- [Workshop Slides](https://github.com/cursorsaudi/events-slides/blob/main/2025-07-riyadh-workshop.pdf)
+- [Workshop Slides](https://github.com/cursorturkiye/events-slides/blob/main/2025-07-riyadh-workshop.pdf)
 - [Event Registration](https://lu.ma/4w52ko64)
 
 ---
 
-## نظرة عامة
+## Türkçe Türkçe
 
-ورشة عمل عملية مصممة لمساعدة المطورين وغير المطورين على بناء نموذج أولي عامل (MVP) في أقل من 3 ساعات باستخدام أدوات التطوير المدعومة بالذكاء الاصطناعي. أحضر المشاركون حواسيبهم واختاروا مشكلة للحل وأنتجوا نماذج أولية عاملة بنهاية الجلسة.
+Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe (MVP) Türkçe Türkçe Türkçe 3 Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe. Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe.
 
-## أبرز النقاط
+## Türkçe Türkçe
 
-- بناء نماذج أولية في الوقت الفعلي باستخدام أدوات AI مثل كيرسر وReplit
-- اختار المشاركون مشاكلهم الخاصة للحل
-- مزيج من المشاركين التقنيين وغير التقنيين يتعاونون معاً
-- التركيز على إنتاج شيء وظيفي وليس مثالي
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe AI Türkçe Cursor TürkçeReplit
+- Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
 
-## الدروس المستفادة
+## Türkçe Türkçe
 
-- أدوات AI تقلل بشكل كبير من عائق بناء النماذج الأولية
-- غير المطورين يستطيعون إنتاج منتجات عاملة مع التوجيه الصحيح
-- القيود الزمنية تفرض التركيز على القيمة الأساسية
-- "المنجز أفضل من المثالي" عقلية أساسية للنماذج الأولية
+- Türkçe AI Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- "Türkçe Türkçe Türkçe Türkçe" Türkçe Türkçe Türkçe Türkçe
+

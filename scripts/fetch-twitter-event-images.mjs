@@ -1,4 +1,4 @@
-/**
+﻿/**
  * One-off / maintenance: find pbs.twimg.com URLs in `src/data/events/*.md`,
  * download JPEGs to `public/images/events/<event-id>/<mediaId>.jpg`, replace
  * URLs in-place with `/images/events/<event-id>/<mediaId>.jpg`.
@@ -23,7 +23,7 @@ async function fetchToFile(url, destPath) {
   }
   const res = await fetch(url, {
     headers: {
-      "User-Agent": "Mozilla/5.0 (compatible; CursorSaudiSite/1.0; +https://cursorsaudi.com)",
+      "User-Agent": "Mozilla/5.0 (compatible; CursorTürkiyeSite/1.0; +https://cursorturkiye.com)",
       Accept: "image/avif,image/webp,image/*,*/*;q=0.8",
     },
   });
@@ -64,3 +64,4 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+

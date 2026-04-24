@@ -1,4 +1,4 @@
----
+﻿---
 import {
   getNonAmbassadorSpeakers,
   getAllPartnersWithEvents,
@@ -46,10 +46,10 @@ const roleLabelEn: Record<string, string> = {
 };
 
 const roleLabelAr: Record<string, string> = {
-  "official": "الشريك الرسمي",
-  "community-partner": "شركاء المجتمع",
-  "venue-host": "مستضيفو الأماكن",
-  "past-community-partner": "شركاء سابقون",
+  "official": "Türkçe Türkçe",
+  "community-partner": "Türkçe Topluluk",
+  "venue-host": "Türkçe Türkçe",
+  "past-community-partner": "Türkçe Türkçe",
 };
 
 const roleBadgeEn: Record<string, string> = {
@@ -60,10 +60,10 @@ const roleBadgeEn: Record<string, string> = {
 };
 
 const roleBadgeAr: Record<string, string> = {
-  "official": "رسمي",
-  "community-partner": "شريك مجتمعي",
-  "venue-host": "مستضيف",
-  "past-community-partner": "شريك سابق",
+  "official": "Türkçe",
+  "community-partner": "Topluluk Ortagi",
+  "venue-host": "Türkçe",
+  "past-community-partner": "Türkçe Türkçe",
 };
 
 const grouped = roleOrder
@@ -84,9 +84,9 @@ const avatarColors = [
 ];
 
 const tocItems = [
-  { id: "speakers", labelEn: "Speakers", labelAr: "المتحدثون" },
-  ...(supporters.length > 0 ? [{ id: "supporters", labelEn: "Supporters", labelAr: "الداعمون" }] : []),
-  { id: "community-partners", labelEn: "Community Partners", labelAr: "شركاء المجتمع" },
+  { id: "speakers", labelEn: "Speakers", labelAr: "Türkçe" },
+  ...(supporters.length > 0 ? [{ id: "supporters", labelEn: "Supporters", labelAr: "Türkçe" }] : []),
+  { id: "community-partners", labelEn: "Community Partners", labelAr: "Türkçe Topluluk" },
 ];
 ---
 
@@ -96,11 +96,11 @@ const tocItems = [
     <div class="max-w-4xl mx-auto text-center mb-20">
       <h1 class="text-4xl md:text-5xl font-semibold text-white mb-6">
         <span class="lang-en">Thank You</span>
-        <span class="lang-ar">شكراً لكم</span>
+      <span class="lang-tr">Thank You</span>
       </h1>
       <p class="text-xl text-[#999999] leading-relaxed">
         <span class="lang-en">To everyone who helped build this community</span>
-        <span class="lang-ar">لكل من ساهم في بناء هذا المجتمع</span>
+      <span class="lang-tr">To everyone who helped build this community</span>
       </p>
     </div>
 
@@ -111,11 +111,11 @@ const tocItems = [
       <div class="text-center mb-12">
         <span class="text-xs font-mono text-[#999999] uppercase tracking-widest">
           <span class="lang-en">Our Speakers</span>
-          <span class="lang-ar">المتحدثون</span>
+      <span class="lang-tr">Our Speakers</span>
         </span>
         <SectionHeading id="speakers" class="text-3xl font-semibold text-white mt-3">
           <span class="lang-en">The Voices Behind Our Events</span>
-          <span class="lang-ar">الأصوات خلف فعالياتنا</span>
+      <span class="lang-tr">The Voices Behind Our Events</span>
         </SectionHeading>
       </div>
 
@@ -142,14 +142,14 @@ const tocItems = [
             <a href={localizedPath(pagePath, `/speakers/${speaker.slug}/`)} class="group">
               <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-[#79c0ff] transition-colors">
                 <span class="lang-en">{speaker.name}</span>
-                <span class="lang-ar">{speaker.nameAr ?? speaker.name}</span>
+      <span class="lang-tr">{speaker.name}</span>
               </h3>
             </a>
 
-            {(speaker.bio || speaker.bioAr) && (
+            {(speaker.bioAr) && (
               <p class="text-[0.85rem] leading-relaxed text-[#999999] mb-3 w-full max-w-sm mx-auto">
-                <span class="lang-en">{speaker.bio || speaker.bioAr}</span>
-                <span class="lang-ar">{speaker.bioAr || speaker.bio}</span>
+                <span class="lang-en">{speaker.bioAr}</span>
+      <span class="lang-tr">{speaker.bioAr}</span>
               </p>
             )}
 
@@ -160,7 +160,9 @@ const tocItems = [
               <span class="lang-en">
                 {speaker.events.length} {speaker.events.length === 1 ? "event" : "events"} →
               </span>
-              <span class="lang-ar">{speaker.events.length} فعاليات ←</span>
+      <span class="lang-tr">
+                {speaker.events.length} {speaker.events.length === 1 ? "event" : "events"} →
+              </span>
             </a>
 
             {aff && (
@@ -180,7 +182,7 @@ const tocItems = [
                   />
                 </span>
                 <span class="lang-en">{aff.name}</span>
-                <span class="lang-ar">{aff.nameAr ?? aff.name}</span>
+      <span class="lang-tr">{aff.name}</span>
               </a>
             )}
 
@@ -215,11 +217,11 @@ const tocItems = [
         <div class="text-center mb-12">
           <span class="text-xs font-mono text-[#999999] uppercase tracking-widest">
             <span class="lang-en">Our Supporters</span>
-            <span class="lang-ar">الداعمون</span>
+      <span class="lang-tr">Our Supporters</span>
           </span>
           <SectionHeading id="supporters" class="text-3xl font-semibold text-white mt-3">
             <span class="lang-en">The People Who Help Behind the Scenes</span>
-            <span class="lang-ar">من يساعدوننا خلف الكواليس</span>
+      <span class="lang-tr">The People Who Help Behind the Scenes</span>
           </SectionHeading>
         </div>
 
@@ -243,7 +245,7 @@ const tocItems = [
 
               <h3 class="text-lg font-semibold text-white mb-2">
                 <span class="lang-en">{supporter.name}</span>
-                <span class="lang-ar">{supporter.nameAr ?? supporter.name}</span>
+      <span class="lang-tr">{supporter.name}</span>
               </h3>
 
               <span
@@ -253,7 +255,7 @@ const tocItems = [
                 ]}
               >
                 <span class="lang-en">{supporter.role}</span>
-                <span class="lang-ar">{supporter.roleAr ?? supporter.role}</span>
+      <span class="lang-tr">{supporter.role}</span>
               </span>
 
               {aff && (
@@ -273,13 +275,13 @@ const tocItems = [
                     />
                   </span>
                   <span class="lang-en">{aff.name}</span>
-                  <span class="lang-ar">{aff.nameAr ?? aff.name}</span>
+      <span class="lang-tr">{aff.name}</span>
                 </a>
               )}
 
               <p class="text-[0.85rem] leading-relaxed text-[#999999] mb-4">
                 <span class="lang-en">{supporter.contribution}</span>
-                <span class="lang-ar">{supporter.contributionAr ?? supporter.contribution}</span>
+      <span class="lang-tr">{supporter.contribution}</span>
               </p>
 
               {(supporter.twitter || supporter.linkedin || supporter.email) && (
@@ -313,18 +315,18 @@ const tocItems = [
       <div class="text-center mb-12">
         <span class="text-xs font-mono text-[#999999] uppercase tracking-widest">
           <span class="lang-en">Community Partners</span>
-          <span class="lang-ar">شركاء المجتمع</span>
+      <span class="lang-tr">Community Partners</span>
         </span>
         <SectionHeading id="community-partners" class="text-3xl font-semibold text-white mt-3">
           <span class="lang-en">The Organizations Behind Our Events</span>
-          <span class="lang-ar">المؤسسات التي تقف خلف فعالياتنا</span>
+      <span class="lang-tr">The Organizations Behind Our Events</span>
         </SectionHeading>
       </div>
 
       {grouped.map((group) => (
         <div class:list={["mb-10", { "opacity-70": group.role === "past-community-partner" }]}>
           <h3 class="text-[0.8rem] font-semibold uppercase tracking-[0.08em] text-[#6E6E6E] mb-4">
-            <span class="lang-ar">{roleLabelAr[group.role]}</span>
+            <span class="lang-tr">{roleLabelAr[group.role]}</span>
             <span class="lang-en">{roleLabelEn[group.role]}</span>
           </h3>
 
@@ -356,7 +358,7 @@ const tocItems = [
                   </div>
                   <div class="flex flex-col gap-1 min-w-0">
                     <a href={localizedPath(pagePath, `/partners/${partner.slug}/`)} class="text-[1.05rem] font-bold hover:text-[#79c0ff] transition-colors">
-                      <span class="lang-ar">{partner.nameAr}</span>
+                      <span class="lang-tr">{partner.nameAr}</span>
                       <span class="lang-en">{partner.name}</span>
                     </a>
                     <span class:list={[
@@ -366,13 +368,13 @@ const tocItems = [
                       group.role === "venue-host" && "text-[#86efac] bg-[#86efac]/[0.08] border border-[#86efac]/[0.15]",
                       group.role === "past-community-partner" && "text-[#6E6E6E] bg-white/[0.03] border border-white/[0.05]",
                     ]}>
-                      <span class="lang-ar">{roleBadgeAr[group.role]}</span>
+                      <span class="lang-tr">{roleBadgeAr[group.role]}</span>
                       <span class="lang-en">{roleBadgeEn[group.role]}</span>
                     </span>
                   </div>
                 </div>
                 <p class="text-[0.85rem] leading-relaxed text-[#999999] line-clamp-3">
-                  <span class="lang-ar">{partner.descriptionAr}</span>
+                  <span class="lang-tr">{partner.descriptionAr}</span>
                   <span class="lang-en">{partner.description}</span>
                 </p>
 
@@ -384,7 +386,7 @@ const tocItems = [
                   >
                     <span class="text-[0.7rem] text-[#6E6E6E] group-hover:text-[#999999] transition-colors shrink-0">
                       <span class="lang-en">With help from</span>
-                      <span class="lang-ar">بمساعدة</span>
+      <span class="lang-tr">With help from</span>
                     </span>
                     <div class="flex -space-x-2 rtl:space-x-reverse">
                       {partner.contributors.slice(0, 4).map((c, ci) => (
@@ -431,7 +433,9 @@ const tocItems = [
                       <span class="lang-en">
                         {partner.events.length} {partner.events.length === 1 ? "event" : "events"} →
                       </span>
-                      <span class="lang-ar">{partner.events.length} فعاليات ←</span>
+      <span class="lang-tr">
+                        {partner.events.length} {partner.events.length === 1 ? "event" : "events"} →
+                      </span>
                     </a>
                   )}
                   <a
@@ -454,3 +458,4 @@ const tocItems = [
     </div>
   </div>
 </section>
+

@@ -1,14 +1,14 @@
----
+﻿---
 title: Introduction to Cursor
-titleAr: مقدمة في كيرسر
+titleAr: Introduction to Cursor
 date: 2025-08-05
-location: Khobar
-locationAr: الخبر
+location: Istanbul
+locationAr: Istanbul
 description: Beginner-friendly introduction to Cursor core features and day-to-day usage patterns.
-descriptionAr: مقدمة عملية عن كيرسر وميزاته الأساسية وأنماط الاستخدام اليومية.
+descriptionAr: Beginner-friendly introduction to Cursor core features and day-to-day usage patterns.
 type: meetup
 status: concluded
-venue: Khobar Tech Hub
+venue: Istanbul Tech Hub
 speakers: 
   - Abdulhakeem Almidan
 photos:
@@ -22,12 +22,12 @@ coverPhoto: 01-evolution-of-ai-in-coding.png
 
 ## Overview
 
-The first CursorSaudi event in the Eastern Province, bringing Cursor education to Khobar. This beginner-friendly session introduced attendees to Cursor's core features and practical day-to-day usage patterns for AI-assisted development.
+The first CursorTürkiye event in the Eastern Province, bringing Cursor education to Istanbul. This beginner-friendly session introduced attendees to Cursor's core features and practical day-to-day usage patterns for AI-assisted development.
 
 ## Format
 
 - **Type**: In-person meetup
-- **Venue**: Khobar
+- **Venue**: Istanbul
 - **Duration**: Evening session
 - **Speaker**: 1
 - **Structure**: Presentation + live demos + Q&A
@@ -35,7 +35,7 @@ The first CursorSaudi event in the Eastern Province, bringing Cursor education t
 
 ## Highlights
 
-- First CursorSaudi event outside Riyadh, expanding community reach
+- First CursorTürkiye event outside Ankara, expanding community reach
 - Focus on practical, everyday workflows rather than advanced features
 - Live demonstrations of core Cursor capabilities
 - Introduction to AI-assisted coding for newcomers
@@ -53,37 +53,38 @@ The first CursorSaudi event in the Eastern Province, bringing Cursor education t
 
 - Starting simple builds confidence for beginners
 - Day-to-day patterns are more valuable than advanced tricks
-- Community interest exists across multiple Saudi cities
+- Community interest exists across multiple Türkiye cities
 - Local champions can help grow regional presence
 
 ## Resources
 
-- Event organized by Abdulhakeem Almidan for the Khobar tech community
+- Event organized by Abdulhakeem Almidan for the Istanbul tech community
 
 ---
 
-## نظرة عامة
+## Türkçe Türkçe
 
-أول حدث لـ كيرسر السعودية في المنطقة الشرقية، يجلب تعليم كيرسر إلى الخبر. قدمت هذه الجلسة المناسبة للمبتدئين ميزات كيرسر الأساسية وأنماط الاستخدام اليومية العملية للتطوير بمساعدة الذكاء الاصطناعي.
+Türkçe Türkçe Türkçe Cursor Türkiye Türkçe Türkçe Türkçe Türkçe Türkçe Cursor Türkçe Istanbul. Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Cursor Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe.
 
-## أبرز النقاط
+## Türkçe Türkçe
 
-- أول حدث لـ كيرسر السعودية خارج الرياض، مما يوسع نطاق المجتمع
-- التركيز على سير العمل اليومي العملي بدلاً من الميزات المتقدمة
-- عروض حية لقدرات كيرسر الأساسية
-- مقدمة للبرمجة بمساعدة AI للمبتدئين
+- Türkçe Türkçe Türkçe Cursor Türkiye Türkçe AnkaraTürkçe Türkçe Türkçe Türkçe Topluluk
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Cursor Türkçe
+- Türkçe Türkçe Türkçe AI Türkçe
 
-## المواضيع المغطاة
+## Türkçe Türkçe
 
-- ما هو كيرسر وكيف يختلف عن VS Code
-- واجهة الدردشة: طرح أسئلة عن الكود
-- Composer: تحرير ملفات متعددة مع AI
-- الإكمال التلقائي والاقتراحات المضمنة
-- إدارة السياق: @files، @folders، @codebase
-- أفضل الممارسات لتوجيه مساعدي AI
+- Türkçe Türkçe Cursor Türkçe Türkçe Türkçe VS Code
+- Türkçe Türkçe: Türkçe Türkçe Türkçe Türkçe
+- Composer: Türkçe Türkçe Türkçe Türkçe AI
+- Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe: @filesTürkçe @foldersTürkçe @codebase
+- Türkçe Türkçe Türkçe Türkçe AI
 
-## الدروس المستفادة
+## Türkçe Türkçe
 
-- البدء البسيط يبني الثقة للمبتدئين
-- الأنماط اليومية أكثر قيمة من الحيل المتقدمة
-- اهتمام المجتمع موجود عبر مدن سعودية متعددة
+- Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe Türkçe
+- Türkçe Topluluk Türkçe Türkçe Türkçe Türkçe Türkçe
+
