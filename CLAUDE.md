@@ -1,4 +1,4 @@
-# CLAUDE.md — CursorTurkiye.com
+﻿# CLAUDE.md — CursorTürkiye.com
 
 ## Commands
 
@@ -12,7 +12,7 @@ pnpm preview          # Preview production build
 
 ## Architecture
 
-Astro 5 static site with multiple routes under `src/pages/` (home, events, albums, about, ambassadors, partnerships, thank you, blog, speakers, partners). Bilingual (Turkish RTL default, English LTR) with client-side `localStorage` toggle. Dark mode only — no theme switcher.
+Astro 5 static site with multiple routes under `src/pages/` (home, events, albums, about, ambassadors, partnerships, thank you, blog, speakers, partners). Bilingual (Arabic RTL default, English LTR) with client-side `localStorage` toggle. Dark mode only — no theme switcher.
 
 ### Stack
 
@@ -55,7 +55,7 @@ Events live in `src/data/events/` as Markdown files. Schema defined in `src/cont
 
 ## i18n
 
-- UI copy uses paired `<span class="lang-ar">` / `<span class="lang-en">` blocks toggled in CSS
+- UI copy uses paired `<span class="lang-tr">` / `<span class="lang-en">` blocks toggled in CSS
 - `public/toggle-lang.js` is loaded from `Layout.astro` so `<html dir>` and `lang` match `localStorage` before paint
 
 ## Design Tokens (Dark Only)
@@ -72,3 +72,4 @@ Events live in `src/data/events/` as Markdown files. Schema defined in `src/cont
 - All content collection access goes through `src/utils/events.ts`
 - Events listing lives in `src/components/EventsPage.astro`; the home page shows featured cards via `HomePage.astro`
 - Partners are configured in `src/config.ts` and rendered inline where needed (e.g. home, about)
+

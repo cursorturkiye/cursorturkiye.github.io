@@ -1,4 +1,4 @@
-# cursorturkiye.com
+﻿# cursorturkiye.com
 
 Community website for **Cursor Türkiye** — the AI-native developer community in Türkiye.
 
@@ -27,7 +27,7 @@ pnpm preview        # Preview production build locally
 
 ## Features
 
-- **Bilingual**: Turkish (RTL, default) and English (LTR) with a client-side toggle stored in `localStorage`
+- **Bilingual**: Turkish and English with a client-side toggle stored in `localStorage`
 - **Dark mode only**: Single dark color scheme, no theme switcher
 - **Content collections**: Events in `src/data/events/` with Zod-validated frontmatter
 - **Per-page table of contents**: Horizontal pill nav linking to page sections
@@ -41,7 +41,7 @@ pnpm preview        # Preview production build locally
 | `/albums`         | Photo and video galleries from past events       |
 | `/about`          | Mission, event types, chapters, team             |
 | `/ambassadors`    | Cursor ambassador program info and FAQ           |
-| `/partnerships`   | How to work with Cursor Saudi                    |
+| `/partnerships`   | How to work with Cursor Türkiye                    |
 | `/thankyou`       | Speakers, supporters, and community partners     |
 | `/blog/[slug]`    | Individual event recap posts                     |
 | `/speakers/[slug]`| Speaker profile pages                            |
@@ -68,11 +68,11 @@ public/
 
 ## i18n
 
-UI copy uses paired `<span class="lang-ar">` / `<span class="lang-en">` elements toggled via CSS. The `public/toggle-lang.js` script runs before first paint so the layout direction matches the stored language preference.
+UI copy uses paired `<span class="lang-tr">` / `<span class="lang-en">` elements toggled via CSS. The `public/toggle-lang.js` script runs before first paint so the layout direction matches the stored language preference.
 
 ## Community language policy
 
-- **Cursor Türkiye ambassadors** We expect you to know both Turkish and English. Slides can be in either language, but ambassadors present in English ot Turkish using normal, everyday language.
+- **Cursor Türkiye ambassadors** should support both Turkish and English in community activities.
 - **Guest speakers** can be English-only — international speakers are welcome. Slides can be in either language.
 
 ## Deployment
@@ -94,4 +94,4 @@ See `.github/workflows/deploy.yml` for the full workflow.
 ## License
 
 Community project by [Cursor Türkiye](https://x.com/cursorturkiye).
-Credits to: [CursorSaudi.com](https://cursorsaudi.com) & [CursorThailand.com](https://cursorthailand.com)
+

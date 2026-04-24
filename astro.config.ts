@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+﻿import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@tailwindcss/vite";
 import { config } from "./src/config";
@@ -13,4 +13,5 @@ export default defineConfig({
     plugins: [tailwind()],
   },
 });
+
 
