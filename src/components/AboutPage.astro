@@ -11,24 +11,24 @@ import { localizedPath } from "@/utils/i18n-path";
 const pagePath = Astro.url.pathname;
 
 const tocItems = [
-  { id: "mission", labelEn: "Mission", labelAr: "الرسالة" },
-  { id: "event-types", labelEn: "Our Events", labelAr: "فعالياتنا" },
-  { id: "chapters", labelEn: "Chapters", labelAr: "الفروع" },
-  { id: "team", labelEn: "Team", labelAr: "الفريق" },
+  { id: "mission", labelEn: "Mission", labelTr: "Amaç" },
+  { id: "event-types", labelEn: "Our Events", labelTr: "Etkinliklerimiz" },
+  { id: "chapters", labelEn: "Chapters", labelTr: "Şehir Şubeleri" },
+  { id: "team", labelEn: "Team", labelTr: "Takım" },
 ];
 
 type EventEntry = CollectionEntry<"events">;
 
 interface Ambassador {
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   role: string;
-  roleAr: string;
+  roleTr: string;
   city: string;
-  cityAr: string;
+  cityTr: string;
   photo?: string;
   description?: string;
-  descriptionAr?: string;
+  descriptionTr?: string;
   email?: string;
   twitter?: string;
   /** Display handle for X (without @). */
@@ -42,24 +42,24 @@ const ambassadors = config.ambassadors as readonly Ambassador[];
 const upcoming = (await getUpcomingEvents()).filter((e: EventEntry) => isHostedCommunityEventType(e.data.type));
 const past = (await getPastEvents()).filter((e: EventEntry) => isHostedCommunityEventType(e.data.type));
 
-const riyadhPast = past.filter((e: EventEntry) => e.data.location === "Riyadh").length;
-const riyadhUpcoming = upcoming.filter((e: EventEntry) => e.data.location === "Riyadh").length;
-const khobarPast = past.filter((e: EventEntry) => e.data.location === "Khobar").length;
-const khobarUpcoming = upcoming.filter((e: EventEntry) => e.data.location === "Khobar").length;
-const jeddahPast = past.filter((e: EventEntry) => e.data.location === "Jeddah").length;
-const jeddahUpcoming = upcoming.filter((e: EventEntry) => e.data.location === "Jeddah").length;
+const ankaraPast = past.filter((e: EventEntry) => e.data.location === "Ankara").length;
+const AnkaraUpcoming = upcoming.filter((e: EventEntry) => e.data.location === "Ankara").length;
+const istanbulPast = past.filter((e: EventEntry) => e.data.location === "Istanbul").length;
+const istanbulUpcoming = upcoming.filter((e: EventEntry) => e.data.location === "Istanbul").length;
+const izmirPast = past.filter((e: EventEntry) => e.data.location === "Izmir").length;
+const izmirUpcoming = upcoming.filter((e: EventEntry) => e.data.location === "Izmir").length;
 
-const nextRiyadh = upcoming.find((e: EventEntry) => e.data.location === "Riyadh");
-const nextKhobar = upcoming.find((e: EventEntry) => e.data.location === "Khobar");
-const nextJeddah = upcoming.find((e: EventEntry) => e.data.location === "Jeddah");
+const nextAnkara = upcoming.find((e: EventEntry) => e.data.location === "Ankara");
+const nextIstanbul = upcoming.find((e: EventEntry) => e.data.location === "Istanbul");
+const nextIzmir = upcoming.find((e: EventEntry) => e.data.location === "Izmir");
 
-const riyadhAmbassador = ambassadors.find((a) => a.city === "Riyadh");
-const khobarAmbassador = ambassadors.find((a) => a.city === "Khobar");
-const jeddahAmbassador = ambassadors.find((a) => a.city === "Jeddah");
+const AnkaraAmbassador = ambassadors.find((a) => a.city === "Ankara");
+const IstanbulAmbassador = ambassadors.find((a) => a.city === "Istanbul");
+const IzmirAmbassador = ambassadors.find((a) => a.city === "Izmir");
 
-const riyadhPartners = config.partners.filter((p) => (p.cities as readonly string[]).includes("Riyadh") && p.role !== "past-community-partner");
-const khobarPartners = config.partners.filter((p) => (p.cities as readonly string[]).includes("Khobar"));
-const jeddahPartners = config.partners.filter((p) => (p.cities as readonly string[]).includes("Jeddah"));
+const ankaraPartners = config.partners.filter((p) => (p.cities as readonly string[]).includes("Ankara") && p.role !== "past-community-partner");
+const istanbulPartners = config.partners.filter((p) => (p.cities as readonly string[]).includes("Istanbul"));
+const izmirPartners = config.partners.filter((p) => (p.cities as readonly string[]).includes("Izmir"));
 
 const avatarDecorations = ["deco-gradient-spin", "deco-glow-breathe", "deco-orbit", "deco-ripple", "deco-fire", "deco-sparkle"] as const;
 
@@ -87,39 +87,39 @@ function formatShortDate(date: Date) {
       <div class="text-center mb-12">
         <span class="text-xs font-mono text-[#999999] uppercase tracking-widest">
           <span class="lang-en">Our Chapters</span>
-          <span class="lang-ar">فروعنا</span>
+          <span class="lang-tr">Bölümlerimiz</span>
         </span>
         <SectionHeading id="chapters" class="text-3xl font-semibold text-white mt-3">
-          <span class="lang-en">Active Across the Kingdom</span>
-          <span class="lang-ar">نشطون في أنحاء المملكة</span>
+          <span class="lang-en">Active Across the Republic</span>
+          <span class="lang-tr">Cumhuriyet genelinde aktif</span>
         </SectionHeading>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,0.9fr)] gap-6 items-stretch">
-        <!-- Riyadh Chapter -->
-        <div id="riyadh-chapter" class="bg-[#171717] border border-[#252525] rounded-2xl p-8 h-full flex flex-col">
+        <!-- Ankara Chapter -->
+        <div id="ankara-chapter" class="bg-[#171717] border border-[#252525] rounded-2xl p-8 h-full flex flex-col">
           <div class="flex items-center justify-between mb-6">
             <div class="flex items-center gap-3">
               <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
-              <h3 class="text-xl font-semibold text-white"><span class="lang-en">Riyadh Chapter</span><span class="lang-ar">فرع الرياض</span></h3>
+              <h3 class="text-xl font-semibold text-white"><span class="lang-en">Ankara Chapter</span><span class="lang-tr">Ankara Şube</span></h3>
             </div>
             <span class="text-xs font-mono text-[#999999] border border-[#252525] rounded px-2 py-1">EST. 2025</span>
           </div>
-          <p class="text-sm text-[#999999] mb-4"><span class="lang-en">The flagship chapter — home to the largest community of Cursor developers in the Kingdom. Regular meetups, workshops, and build sprints covering AI-native development, MCP servers, prompt engineering, and more.</span><span class="lang-ar">الفرع الرئيسي — موطن أكبر مجتمع مطورين لـ كيرسر في المملكة. لقاءات وورش عمل وسباقات بناء منتظمة تغطي التطوير بالذكاء الاصطناعي وخوادم MCP وهندسة البرومبت والمزيد.</span></p>
+          <p class="text-sm text-[#999999] mb-4"><span class="lang-en">The community of Cursor developers in the capital city. Regular meetups, workshops, and build sprints covering AI-native development, MCP servers, prompt engineering, WEB3, and more.</span><span class="lang-tr">Başkentteki Cursor geliştirici topluluğu. Yapay zeka tabanlı geliştirme, MCP sunucuları, komut istemi mühendisliği, WEB3 ve daha fazlasını kapsayan düzenli buluşmalar, atölye çalışmaları ve geliştirme sprintleri.</span></p>
           <div class="flex items-center gap-2 text-xs text-[#999999] mb-4">
-            {riyadhAmbassador ? (
+            {ankaraAmbassador ? (
               <>
-                <span class="lang-en">{riyadhAmbassador.role}:</span><span class="lang-ar">{riyadhAmbassador.roleAr}:</span>
+                <span class="lang-en">{ankaraAmbassador.role}:</span><span class="lang-tr">{ankaraAmbassador.roleTr}:</span>
                 <div class="flex items-center gap-2">
-                  <span class="lang-en text-white font-medium">{riyadhAmbassador.name}</span>
-                  <span class="lang-ar text-white font-medium">{riyadhAmbassador.nameAr ?? riyadhAmbassador.name}</span>
-                  {riyadhAmbassador.twitter && (
-                    <a href={riyadhAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
+                  <span class="lang-en text-white font-medium">{ankaraAmbassador.name}</span>
+                  <span class="lang-tr text-white font-medium">{ankaraAmbassador.nameTr ?? ankaraAmbassador.name}</span>
+                  {ankaraAmbassador.twitter && (
+                    <a href={ankaraAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                   )}
-                  {riyadhAmbassador.linkedin && (
-                    <a href={riyadhAmbassador.linkedin} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="LinkedIn">
+                  {ankaraAmbassador.linkedin && (
+                    <a href={ankaraAmbassador.linkedin} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="LinkedIn">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </a>
                   )}
@@ -128,7 +128,7 @@ function formatShortDate(date: Date) {
             ) : (
               <span class="text-white font-medium">
                 <span class="lang-en">To Be Announced</span>
-                <span class="lang-ar">سيتم الإعلان قريباً</span>
+                <span class="lang-tr">Duyurulacak</span>
               </span>
             )}
           </div>
@@ -136,18 +136,18 @@ function formatShortDate(date: Date) {
             <div><div class="text-xl font-bold text-white">{riyadhPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-ar">مكتملة</span></div></div>
             <div><div class="text-xl font-bold text-white">{riyadhUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-ar">قادمة</span></div></div>
           </div>
-          {nextRiyadh && (
+          {nextAnkara && (
             <div class="border-t border-[#252525] pt-4">
-              <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span><span class="lang-ar">الفعالية القادمة</span></div>
-              <div class="text-xs text-white font-medium">{nextRiyadh.data.title}</div>
-              <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextRiyadh.data.date)}</div>
+              <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span><span class="lang-tr">Sonraki Etkinlik</span></div>
+              <div class="text-xs text-white font-medium">{nextAnkara.data.title}</div>
+              <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextAnkara.data.date)}</div>
             </div>
           )}
-          {riyadhPartners.length > 0 && (
+          {ankaraPartners.length > 0 && (
             <div class="border-t border-[#252525] pt-4 mt-4">
-              <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span><span class="lang-ar">شركاء الفرع</span></div>
+              <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span><span class="lang-tr">Şube Ortakları</span></div>
               <div class="grid w-full min-w-0 grid-cols-2 gap-2 sm:grid-cols-3">
-                {riyadhPartners.map((partner) => (
+                {ankaraPartners.map((partner) => (
                   <a
                     href={partner.url}
                     target="_blank"
@@ -167,30 +167,30 @@ function formatShortDate(date: Date) {
           )}
         </div>
 
-        <!-- Jeddah Chapter (center column — same structure as Riyadh) -->
-        <div id="jeddah-chapter" class="bg-[#171717] border border-[#252525] rounded-2xl p-8 h-full flex flex-col">
+        <!-- Izmir Chapter (center column — same structure as Ankara) -->
+        <div id="izmir-chapter" class="bg-[#171717] border border-[#252525] rounded-2xl p-8 h-full flex flex-col">
           <div class="flex items-center justify-between mb-6">
             <div class="flex items-center gap-3">
               <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
-              <h3 class="text-xl font-semibold text-white"><span class="lang-en">Jeddah Chapter</span><span class="lang-ar">فرع جدة</span></h3>
+              <h3 class="text-xl font-semibold text-white"><span class="lang-en">Jeddah Chapter</span><span class="lang-tr">Izmir Şube</span></h3>
             </div>
             <span class="text-xs font-mono text-[#999999] border border-[#252525] rounded px-2 py-1">EST. 2026</span>
           </div>
-          <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Our chapter on the Red Sea coast — meetups and workshops for Cursor builders in Jeddah and the western region, with the same focus on AI-native workflows, MCP, and shipping real projects.</span><span class="lang-ar">فرعنا على ساحل البحر الأحمر — لقاءات وورش للمبدعين بكيرسر في جدة والمنطقة الغربية، مع نفس التركيز على سير العمل المدعوم بالذكاء الاصطناعي وMCP وشحن مشاريع حقيقية.</span></p>
+          <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Our chapter on the Aegean coast — meetups and workshops for Cursor builders in Izmir and the western region, with the same focus on AI-native workflows, MCP, and shipping real projects.</span><span class="lang-tr">Ege Sahili bölümümüz — İzmir ve batı bölgesindeki Cursor geliştiricileri için yapay zeka tabanlı iş akışlarına, MCP'ye ve gerçek projelerin teslimine odaklanan buluşmalar ve atölye çalışmaları.</span></p>
           <div class="flex items-center gap-2 text-xs text-[#999999] mb-4">
-            {jeddahAmbassador ? (
+            {izmirAmbassador ? (
               <>
-                <span class="lang-en">{jeddahAmbassador.role}:</span><span class="lang-ar">{jeddahAmbassador.roleAr}:</span>
+                <span class="lang-en">{izmirAmbassador.role}:</span><span class="lang-tr">{izmirAmbassador.roleTr}:</span>
                 <div class="flex items-center gap-2">
-                  <span class="lang-en text-white font-medium">{jeddahAmbassador.name}</span>
-                  <span class="lang-ar text-white font-medium">{jeddahAmbassador.nameAr ?? jeddahAmbassador.name}</span>
-                  {jeddahAmbassador.twitter && (
-                    <a href={jeddahAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
+                  <span class="lang-en text-white font-medium">{izmirAmbassador.name}</span>
+                  <span class="lang-tr text-white font-medium">{izmirAmbassador.nameTr ?? izmirAmbassador.name}</span>
+                  {izmirAmbassador.twitter && (
+                    <a href={izmirAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                   )}
-                  {jeddahAmbassador.linkedin && (
-                    <a href={jeddahAmbassador.linkedin} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="LinkedIn">
+                  {izmirAmbassador.linkedin && (
+                    <a href={izmirAmbassador.linkedin} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="LinkedIn">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </a>
                   )}
@@ -199,26 +199,26 @@ function formatShortDate(date: Date) {
             ) : (
               <span class="text-white font-medium">
                 <span class="lang-en">To Be Announced</span>
-                <span class="lang-ar">سيتم الإعلان قريباً</span>
+                <span class="lang-tr">Duyurulacak</span>
               </span>
             )}
           </div>
           <div class="flex gap-4 mb-6">
-            <div><div class="text-xl font-bold text-white">{jeddahPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-ar">مكتملة</span></div></div>
-            <div><div class="text-xl font-bold text-white">{jeddahUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-ar">قادمة</span></div></div>
+            <div><div class="text-xl font-bold text-white">{izmirPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-tr">Tamamlanmış</span></div></div>
+            <div><div class="text-xl font-bold text-white">{izmirUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-tr">Yakında</span></div></div>
           </div>
           {nextJeddah && (
             <div class="border-t border-[#252525] pt-4">
-              <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span><span class="lang-ar">الفعالية القادمة</span></div>
-              <div class="text-xs text-white font-medium">{nextJeddah.data.title}</div>
-              <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextJeddah.data.date)}</div>
+              <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span><span class="lang-tr">Sonraki Etkinlik</span></div>
+              <div class="text-xs text-white font-medium">{nextIzmir.data.title}</div>
+              <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextIzmir.data.date)}</div>
             </div>
           )}
-          {jeddahPartners.length > 0 && (
+          {izmirPartners.length > 0 && (
             <div class="border-t border-[#252525] pt-4 mt-4">
-              <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span><span class="lang-ar">شركاء الفرع</span></div>
+              <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span><span class="lang-tr">Şube Ortakları</span></div>
               <div class="grid w-full min-w-0 grid-cols-2 gap-2 sm:grid-cols-3">
-                {jeddahPartners.map((partner) => (
+                {izmirPartners.map((partner) => (
                   <a
                     href={partner.url}
                     target="_blank"
@@ -238,42 +238,42 @@ function formatShortDate(date: Date) {
           )}
         </div>
 
-        <!-- Khobar Chapter (side column — red “stopped”, recruiting) -->
-        <div id="khobar-chapter" class="bg-[#171717] border border-red-500/20 rounded-2xl p-8 h-full flex flex-col">
+        <!-- Istanbul Chapter (side column — same structure as Ankara) -->
+        <div id="istanbul-chapter" class="bg-[#171717] border border-red-500/20 rounded-2xl p-8 h-full flex flex-col">
           <div class="flex items-center justify-between gap-3 mb-6">
             <div class="flex items-center gap-3 min-w-0">
               <span class="w-2.5 h-2.5 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.9)] animate-pulse"></span>
-              <h3 class="text-xl font-semibold text-white min-w-0"><span class="lang-en">Khobar Chapter</span><span class="lang-ar">فرع الخبر</span></h3>
+              <h3 class="text-xl font-semibold text-white min-w-0"><span class="lang-en">Istanbul Chapter</span><span class="lang-tr">Istanbul Şube</span></h3>
             </div>
             <div class="flex flex-col items-end gap-1 shrink-0 text-end">
               <span class="text-[10px] font-mono text-red-300 border border-red-500/35 bg-red-500/10 rounded px-2 py-0.5 leading-tight">
-                <span class="lang-en">Paused</span>
-                <span class="lang-ar">متوقف</span>
+                <span class="lang-en">Continued</span>
+                <span class="lang-tr">Devam ediyor</span>
               </span>
               <span class="text-[10px] font-mono text-red-400/90 leading-tight">
-                <span class="lang-en">Needs ambassador</span>
-                <span class="lang-ar">بحاجة لسفير</span>
+                <span class="lang-en">--</span>
+                <span class="lang-tr">--</span>
               </span>
             </div>
           </div>
-          <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Chapter activity is on hold until a new ambassador steps in. We still want to reconnect engineers across Khobar, Dammam, and Dhahran around AI-powered development — when leadership is back, programming resumes.</span><span class="lang-ar">نشاط الفرع متوقف حتى يتولى سفير جديد القيادة. ما زلنا نرغب بربط المهندسين في الخبر والدمام والظهران حول التطوير بالذكاء الاصطناعي — مع عودة القيادة يستأنف البرنامج.</span></p>
+          <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Our chapter on the City on Two Continents — meetups and workshops for Cursor builders in Istanbul and the western region, with the same focus on AI-native workflows, MCP, and shipping real projects.</span><span class="lang-tr">İki Kıtadaki Şehir başlıklı bölümümüz — İstanbul'da Cursor geliştiricileri için yapay zeka tabanlı iş akışlarına, MCP'ye ve gerçek projelerin teslimine odaklanan buluşmalar ve atölye çalışmaları.</span></p>
           <div class="space-y-4 mb-4 text-xs text-[#999999]">
             <div>
               <div class="text-[10px] uppercase tracking-widest text-amber-500/90 font-medium mb-1">
-                <span class="lang-en">Former ambassador · Retired</span>
-                <span class="lang-ar">سفير سابق · متقاعد</span>
+                <span class="lang-en">Current ambassador</span>
+                <span class="lang-tr">Mevcut Büyükelçi</span>
               </div>
-              {khobarAmbassador ? (
+              {istanbulAmbassador ? (
                 <div class="flex flex-wrap items-center gap-2 text-[#999999]">
-                  <span class="lang-en line-through decoration-white/25 text-white/70 font-medium">{khobarAmbassador.name}</span>
-                  <span class="lang-ar line-through decoration-white/25 text-white/70 font-medium">{khobarAmbassador.nameAr ?? khobarAmbassador.name}</span>
+                  <span class="lang-en line-through decoration-white/25 text-white/70 font-medium">{istanbulAmbassador.name}</span>
+                  <span class="lang-tr line-through decoration-white/25 text-white/70 font-medium">{istanbulAmbassador.nameAr ?? istanbulAmbassador.name}</span>
                   {khobarAmbassador.twitter && (
-                    <a href={khobarAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
+                    <a href={istanbulAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                   )}
-                  {khobarAmbassador.linkedin && (
-                    <a href={khobarAmbassador.linkedin} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="LinkedIn">
+                  {istanbulAmbassador.linkedin && (
+                    <a href={istanbulAmbassador.linkedin} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="LinkedIn">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </a>
                   )}
@@ -281,46 +281,46 @@ function formatShortDate(date: Date) {
               ) : (
                 <p class="text-sm text-[#6E6E6E]">
                   <span class="lang-en">No former ambassador on record.</span>
-                  <span class="lang-ar">لا يوجد سفير سابق مسجل.</span>
+                  <span class="lang-tr">Kayıtlarda eski büyükelçi olarak görev yapmış kimse yok.</span>
                 </p>
               )}
             </div>
             <div class="border-t border-[#252525] pt-4 flex gap-4">
-              <div><div class="text-xl font-bold text-white">{khobarPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-ar">مكتملة</span></div></div>
-              <div><div class="text-xl font-bold text-white">{khobarUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-ar">قادمة</span></div></div>
+              <div><div class="text-xl font-bold text-white">{khobarPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span><span class="lang-tr">Tamamlanmış</span></div></div>
+              <div><div class="text-xl font-bold text-white">{khobarUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span><span class="lang-tr">Yakında</span></div></div>
             </div>
             <div class="border-t border-red-500/15 pt-3">
               <div class="text-[10px] uppercase tracking-widest text-red-400/95 font-medium mb-2">
-                <span class="lang-en">Looking for</span>
-                <span class="lang-ar">نبحث عن</span>
+                <span class="lang-en">--</span>
+                <span class="lang-tr">--</span>
               </div>
               <p class="text-sm text-[#b0b0b0] leading-relaxed">
                 <span class="lang-en">
-                  We need an ambassador to restart the <strong class="text-white/90 font-medium">Khobar chapter</strong> and grow
-                  meetups for builders in Khobar, Dhahran, and Dammam.
+                  Building the <strong class="text-white/90 font-medium">Istanbul chapter</strong> and growing
+                  meetups for builders in the city.
                 </span>
-                <span class="lang-ar">
-                  نحتاج سفيراً لإعادة تشغيل <strong class="text-white/90 font-medium">فرع الخبر</strong> وتنمية اللقاءات للمبدعين في الخبر والظهران والدمام.
+                <span class="lang-tr">
+                  <strong class="text-white/90 font-medium">İstanbul şubesini</strong> kurmak ve şehirdeki inşaatçılar için buluşma etkinliklerini büyütmek.
                 </span>
               </p>
               <a href={localizedPath(pagePath, "/ambassadors/")} class="mt-3 text-xs font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
                 <span class="lang-en">Ambassador program &amp; how to apply →</span>
-                <span class="lang-ar">برنامج السفراء وكيفية التقديم ←</span>
+                <span class="lang-tr">Büyükelçiler Programı ve Başvuru Süreci ←</span>
               </a>
             </div>
           </div>
-          {nextKhobar && (
+          {nextIstanbul && (
             <div class="border-t border-[#252525] pt-4">
-              <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span><span class="lang-ar">الفعالية القادمة</span></div>
-              <div class="text-xs text-white font-medium">{nextKhobar.data.title}</div>
-              <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextKhobar.data.date)}</div>
+              <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span><span class="lang-tr">Sonraki Etkinlik</span></div>
+              <div class="text-xs text-white font-medium">{nextIstanbul.data.title}</div>
+              <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextIstanbul.data.date)}</div>
             </div>
           )}
-          {khobarPartners.length > 0 && (
+          {istanbulPartners.length > 0 && (
             <div class="border-t border-[#252525] pt-4 mt-4">
-              <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span><span class="lang-ar">شركاء الفرع</span></div>
+              <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span><span class="lang-tr">Bölüm Ortakları</span></div>
               <div class="grid w-full min-w-0 grid-cols-2 gap-2 sm:grid-cols-3">
-                {khobarPartners.map((partner) => (
+                {istanbulPartners.map((partner) => (
                   <a
                     href={partner.url}
                     target="_blank"
@@ -347,11 +347,11 @@ function formatShortDate(date: Date) {
       <div class="text-center mb-12">
         <span class="text-xs font-mono text-[#999999] uppercase tracking-widest">
           <span class="lang-en">The People</span>
-          <span class="lang-ar">الفريق</span>
+          <span class="lang-tr">Halk</span>
         </span>
         <SectionHeading id="team" class="text-3xl font-semibold text-white mt-3">
           <span class="lang-en">Our Team</span>
-          <span class="lang-ar">فريقنا</span>
+          <span class="lang-tr">Takım</span>
         </SectionHeading>
       </div>
 
@@ -360,7 +360,7 @@ function formatShortDate(date: Date) {
           <div
             class:list={[
               "bg-[#171717] border rounded-2xl flex flex-col",
-              ambassador.status === "retired"
+              ambassador.status === "Ongoing"
                 ? "border-amber-500/20"
                 : "border-[#252525]",
             ]}
@@ -399,13 +399,13 @@ function formatShortDate(date: Date) {
               >
                 {ambassador.status === "retired" ? (
                   <>
-                    <span class="lang-en">Retired · {ambassador.city}</span>
-                    <span class="lang-ar">متقاعد · {ambassador.cityAr}</span>
+                    <span class="lang-en">Ongoing · {ambassador.city}</span>
+                    <span class="lang-tr">Devam Ediyor · {ambassador.cityAr}</span>
                   </>
                 ) : (
                   <>
                     <span class="lang-en">{ambassador.role} · {ambassador.city}</span>
-                    <span class="lang-ar">{ambassador.roleAr} · {ambassador.cityAr}</span>
+                    <span class="lang-tr">{ambassador.roleTr} · {ambassador.cityTr}</span>
                   </>
                 )}
               </div>
@@ -416,12 +416,12 @@ function formatShortDate(date: Date) {
                 ]}
               >
                 <span class="lang-en">{ambassador.name}</span>
-                <span class="lang-ar">{ambassador.nameAr ?? ambassador.name}</span>
+                <span class="lang-tr">{ambassador.nameTr ?? ambassador.name}</span>
               </h3>
               {(ambassador.description || ambassador.descriptionAr) && (
                 <p class="text-sm text-[#999999] leading-relaxed mb-4">
                   <span class="lang-en">{ambassador.description}</span>
-                  <span class="lang-ar">{ambassador.descriptionAr}</span>
+                  <span class="lang-tr">{ambassador.descriptionTr}</span>
                 </p>
               )}
               <div class="flex justify-center gap-4 mt-auto">
@@ -445,7 +445,7 @@ function formatShortDate(date: Date) {
           </div>
         ))}
 
-        <!-- Open Role: Khobar -->
+        <!-- Open Role: Istanbul -->
         <div class="bg-[#171717] border border-dashed border-cyan-500/25 rounded-2xl overflow-hidden flex flex-col">
           <div class="flex justify-center pt-8 pb-4">
             <div class="w-24 h-24 rounded-full bg-[#252525] border-2 border-dashed border-cyan-500/25 flex items-center justify-center">
@@ -454,21 +454,21 @@ function formatShortDate(date: Date) {
           </div>
           <div class="px-6 pb-6 text-center flex flex-col flex-grow">
             <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-500/90 mb-2">
-              <span class="lang-en">Open Role · Khobar</span>
-              <span class="lang-ar">دور مفتوح · الخبر</span>
+              <span class="lang-en">Open Role · Istanbul</span>
+              <span class="lang-tr">Açık Pozisyon · İstanbul</span>
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">
               <span class="lang-en">Ambassador Wanted</span>
-              <span class="lang-ar">مطلوب سفير</span>
+              <span class="lang-tr">Büyükelçiye ihtiyaç var</span>
             </h3>
             <p class="text-sm text-[#999999] leading-relaxed mb-4">
-              <span class="lang-en">Lead meetups for builders in Khobar, Dhahran, and Dammam.</span>
-              <span class="lang-ar">قدّم اللقاءات للمبدعين في الخبر والظهران والدمام.</span>
+              <span class="lang-en">Lead meetups for builders in Istanbul.</span>
+              <span class="lang-tr">İstanbul'da geliştiriciler için buluşmalar düzenlemek.</span>
             </p>
             <div class="mt-auto">
               <a href={localizedPath(pagePath, "/ambassadors/")} class="text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
                 <span class="lang-en">Apply →</span>
-                <span class="lang-ar">قدّم الآن ←</span>
+                <span class="lang-tr">Başvur Yap ←</span>
               </a>
             </div>
           </div>
@@ -479,16 +479,16 @@ function formatShortDate(date: Date) {
       <div class="text-center mt-10">
         <p class="text-[#999999] text-sm mb-4">
           <span class="lang-en">Interested in leading a chapter or representing Cursor at your university?</span>
-          <span class="lang-ar">مهتم بقيادة فرع أو تمثيل كيرسر في جامعتك؟</span>
+          <span class="lang-tr">Üniversitenizde Cursor'u temsil etmek veya bir bölümün liderliğini üstlenmekle ilgileniyor musunuz?</span>
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a href={localizedPath(pagePath, "/ambassadors/")} class="btn-accent px-5 py-2.5 rounded-full text-sm font-medium">
             <span class="lang-en">Become an Ambassador →</span>
-            <span class="lang-ar">كن سفيراً ←</span>
+            <span class="lang-tr">Büyükelçi Olun ←</span>
           </a>
           <a href="https://cursorai.notion.site/Cursor-on-Campus-215da74ef045808d805fd336f9a62a40" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">
             <span class="lang-en">Cursor on Campus ↗</span>
-            <span class="lang-ar">كيرسر في الجامعات ↗</span>
+            <span class="lang-tr">Kampüsteki İmleç ↗</span>
           </a>
         </div>
       </div>
@@ -503,11 +503,11 @@ function formatShortDate(date: Date) {
           {" "}or contact us on{" "}
           <a href={config.social.twitter} target="_blank" rel="noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">X (@{config.social.twitterHandle})</a>.
         </span>
-        <span class="lang-ar">
-          للاستفسار راسلنا على{" "}
+        <span class="lang-tr">
+          Sorularınız için lütfen bizimle iletişime geçin:{" "}
           <a href={`mailto:${config.social.email}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{config.social.email}</a>
-          {" "}أو تواصل معنا عبر{" "}
-          <a href={config.social.twitter} target="_blank" rel="noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">حساب كيرسر السعودية على إكس (@{config.social.twitterHandle})</a>.
+          {" "}Veya bizimle şu yollarla iletişime geçin:{" "}
+          <a href={config.social.twitter} target="_blank" rel="noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">}Cursor Türkiye'nin X'teki hesabı (@{config.social.twitterHandle})</a>.
         </span>
       </p>
       <div class="inline-flex gap-6 text-sm">
