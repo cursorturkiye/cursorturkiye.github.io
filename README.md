@@ -90,7 +90,7 @@ See `.github/workflows/deploy.yml` for the full workflow.
 
 - `src/config.ts` is the single source of truth for site metadata, social links, ambassadors, and partners
 - All content collection access goes through utility functions in `src/utils/`
-- Components are stateless: props in, HTML out, no side effects
+- Components are stateless: props in, HTML out, no side effects.
 ## License
 
 Community project by [Cursor Türkiye](https://x.com/cursorturkiye).
