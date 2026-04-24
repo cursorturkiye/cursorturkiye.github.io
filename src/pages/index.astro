@@ -1,0 +1,20 @@
+﻿---
+/** Unprefixed `/` → default locale (`/tr/`). Cloudflare `public/_redirects` also 302s here. */
+const siteOrigin = Astro.site?.origin ?? "https://cursorturkiye.com";
+const target = `${siteOrigin}/tr/`;
+---
+<!doctype html>
+<html lang="tr" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Cursor Türkiye</title>
+    <link rel="canonical" href={target} />
+    <meta http-equiv="refresh" content="0;url=/tr/" />
+  </head>
+  <body>
+    <a href="/tr/">Cursor Türkiye — /tr/</a>
+  </body>
+</html>
+

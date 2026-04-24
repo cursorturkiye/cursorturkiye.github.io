@@ -1,0 +1,134 @@
+﻿---
+import { config } from "@/config";
+import { localizedPath } from "@/utils/i18n-path";
+import PageToc from "@/components/PageToc.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+
+const pagePath = Astro.url.pathname;
+const email = config.social.email;
+const { luma, discord, twitter } = config.social;
+const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+
+const tocItems = [
+  { id: "support-community", labelEn: "Support the community", labelAr: "Topluluğu destekle" },
+  { id: "part-of-community", labelEn: "Be part of the community", labelAr: "Topluluğa katıl" },
+  { id: "we-offer", labelEn: "We offer", labelAr: "Sunduğumuz hizmetler" },
+];
+---
+
+<section id="partnerships">
+  <div class="max-w-3xl mx-auto px-6 md:px-10 py-12 md:py-20">
+    <p class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-4">
+      <span class="lang-en">Organizations &amp; builders</span>
+      <span class="lang-tr">Kurumlar ve üreticiler</span>
+    </p>
+
+    <h1 class="text-3xl md:text-4xl font-semibold text-white mb-6">
+      <span class="lang-en">Work with us</span>
+      <span class="lang-tr">Bizimle çalışın</span>
+    </h1>
+
+    <p class="text-lg text-[#999999] leading-relaxed mb-14">
+      <span class="lang-en">
+        Whether you are a company, venue, community, or individual contributor, this page explains how to support Cursor Türkiye and collaborate with us.
+      </span>
+      <span class="lang-tr">
+        Şirket, etkinlik mekanı, topluluk ya da bireysel üretici olmanız fark etmez; bu sayfada Cursor Türkiye ile nasıl işbirliği yapabileceğinizi bulabilirsiniz.
+      </span>
+    </p>
+
+    <PageToc items={tocItems} />
+
+    <div class="mb-16">
+      <SectionHeading id="support-community" class="text-xl font-semibold text-white mb-2">
+        <span class="lang-en">Support the community</span>
+        <span class="lang-tr">Topluluğu destekleyin</span>
+      </SectionHeading>
+      <p class="text-sm text-[#8b949e] mb-6 leading-relaxed">
+        <span class="lang-en">Help us run meetups, workshops, and hackathons across Türkiye.</span>
+        <span class="lang-tr">Türkiye genelinde buluşmalar, atölyeler ve hackathonlar düzenlememize destek olun.</span>
+      </p>
+      <div class="space-y-4">
+        <div class="bg-[#171717] border border-[#252525] rounded-xl p-5 md:p-6">
+          <h3 class="text-white font-medium mb-2"><span class="lang-en">Community partners</span><span class="lang-tr">Topluluk partnerleri</span></h3>
+          <p class="text-sm text-[#999999] leading-relaxed"><span class="lang-en">Support with operations, promotion, volunteer coordination, and outreach.</span><span class="lang-tr">Operasyon, tanıtım, gönüllü koordinasyonu ve erişim süreçlerinde destek sağlayın.</span></p>
+        </div>
+        <div class="bg-[#171717] border border-[#252525] rounded-xl p-5 md:p-6">
+          <h3 class="text-white font-medium mb-2"><span class="lang-en">Venue hosts</span><span class="lang-tr">Mekan ev sahipleri</span></h3>
+          <p class="text-sm text-[#999999] leading-relaxed"><span class="lang-en">Provide venue capacity, Wi‑Fi, and basic AV setup for community events.</span><span class="lang-tr">Topluluk etkinlikleri için mekan, internet ve temel AV altyapısı sağlayın.</span></p>
+        </div>
+        <div class="bg-[#171717] border border-[#252525] rounded-xl p-5 md:p-6">
+          <h3 class="text-white font-medium mb-2"><span class="lang-en">Sponsors</span><span class="lang-tr">Sponsorlar</span></h3>
+          <p class="text-sm text-[#999999] leading-relaxed"><span class="lang-en">Help cover event costs such as logistics, food, and production.</span><span class="lang-tr">Lojistik, ikram ve üretim gibi etkinlik maliyetlerine katkı sağlayın.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <SectionHeading id="part-of-community" class="text-xl font-semibold text-white mb-2">
+        <span class="lang-en">Be part of the community</span>
+        <span class="lang-tr">Topluluğun parçası olun</span>
+      </SectionHeading>
+      <p class="text-sm text-[#8b949e] mb-6 leading-relaxed">
+        <span class="lang-en">Share your ideas, sessions, and practical experiences with local builders.</span>
+        <span class="lang-tr">Fikirlerinizi, oturum önerilerinizi ve pratik deneyimlerinizi toplulukla paylaşın.</span>
+      </p>
+      <div class="bg-[#171717] border border-[#252525] rounded-xl p-5 md:p-6">
+        <h3 class="text-white font-medium mb-2"><span class="lang-en">Speaker requests</span><span class="lang-tr">Konuşmacı başvuruları</span></h3>
+        <p class="text-sm text-[#999999] leading-relaxed mb-4">
+          <span class="lang-en">Propose a talk, workshop, or panel topic. We prioritize practical, inclusive, and production-focused sessions.</span>
+          <span class="lang-tr">Konuşma, atölye veya panel önerisi gönderebilirsiniz. Pratik, kapsayıcı ve üretime dönük içerikleri önceliklendiriyoruz.</span>
+        </p>
+        <a href={mail("Cursor Türkiye — speaker proposal")} class="inline-flex text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
+          <span class="lang-en">Email your proposal →</span>
+          <span class="lang-tr">Önerini e-posta ile gönder →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mb-10">
+      <SectionHeading id="we-offer" class="text-xl font-semibold text-white mb-2">
+        <span class="lang-en">We offer</span>
+        <span class="lang-tr">Sunduğumuz hizmetler</span>
+      </SectionHeading>
+      <div class="space-y-4">
+        <div class="bg-[#171717] border border-[#252525] rounded-xl p-5 md:p-6">
+          <h3 class="text-white font-medium mb-2"><span class="lang-en">In-person training</span><span class="lang-tr">Yüz yüze eğitim</span></h3>
+          <p class="text-sm text-[#999999] leading-relaxed mb-4">
+            <span class="lang-en">We provide corporate and team training on AI-native software development with Cursor.</span>
+            <span class="lang-tr">Cursor ile AI-native yazılım geliştirme konusunda kurumlara ve ekiplere yüz yüze eğitim veriyoruz.</span>
+          </p>
+          <a href={mail("Cursor Türkiye — corporate training inquiry")} class="inline-flex text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
+            <span class="lang-en">Start by email →</span>
+            <span class="lang-tr">E-posta ile başlat →</span>
+          </a>
+        </div>
+        <div class="bg-[#171717] border border-[#252525] rounded-xl p-5 md:p-6">
+          <h3 class="text-white font-medium mb-2"><span class="lang-en">Media &amp; interviews</span><span class="lang-tr">Medya ve röportajlar</span></h3>
+          <p class="text-sm text-[#999999] leading-relaxed mb-4">
+            <span class="lang-en">Invite us to your podcast, panel, stream, or publication and share your audience/context.</span>
+            <span class="lang-tr">Podcast, panel, yayın veya medya içeriğinize davet etmek için format ve hedef kitlenizi paylaşın.</span>
+          </p>
+          <a href={mail("Cursor Türkiye — media request")} class="inline-flex text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
+            <span class="lang-en">Invite us →</span>
+            <span class="lang-tr">Bizi davet et →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href={mail("Cursor Türkiye — partnership")} class="btn-primary px-5 py-2.5 rounded-full text-sm font-medium inline-flex items-center justify-center">
+        <span class="lang-en">Email {email}</span>
+        <span class="lang-tr">E-posta gönder: {email}</span>
+      </a>
+      <a href={luma} target="_blank" rel="noreferrer" class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">Luma</a>
+      <a href={discord} target="_blank" rel="noreferrer" class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">Discord</a>
+      <a href={twitter} target="_blank" rel="noreferrer" class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">X</a>
+      <a href={localizedPath(pagePath, "/about/")} class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">
+        <span class="lang-en">← About the community</span>
+        <span class="lang-tr">← Topluluk hakkında</span>
+      </a>
+    </div>
+  </div>
+</section>

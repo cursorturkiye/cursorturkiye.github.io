@@ -1,0 +1,132 @@
+﻿---
+import { config } from "@/config";
+import { localizedPath } from "@/utils/i18n-path";
+import PageToc from "@/components/PageToc.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+
+const pagePath = Astro.url.pathname;
+const tocItems = [
+  { id: "how-ambassadors-contribute", labelEn: "How ambassadors contribute", labelAr: "Elçiler ne yapar?" },
+  { id: "program-benefits", labelEn: "Program benefits", labelAr: "Program avantajları" },
+  { id: "process", labelEn: "How the process works", labelAr: "Süreç nasıl işliyor?" },
+  { id: "faq", labelEn: "Q&A", labelAr: "Sık sorulan sorular" },
+  { id: "campus", labelEn: "Cursor on Campus", labelAr: "Kampüste Cursor" },
+];
+
+const leader = config.ambassadors.find((a) => a.city === "Ankara") ?? config.ambassadors[0];
+const leadEmail =
+  leader && "email" in leader && typeof (leader as { email?: string }).email === "string"
+    ? (leader as { email: string }).email
+    : config.social.email;
+const publicX = config.social.twitter;
+const publicXHandle = config.social.twitterHandle;
+const cursorAmbassadorsUrl = "https://cursor.com/ambassadors";
+---
+
+<section id="ambassadors">
+  <div class="max-w-3xl mx-auto px-6 md:px-10 py-12 md:py-20">
+    <p class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-4">
+      <span class="lang-en">Community</span>
+      <span class="lang-tr">Topluluk</span>
+    </p>
+
+    <h1 class="text-3xl md:text-4xl font-semibold text-white mb-6">
+      <span class="lang-en">Become a Cursor ambassador</span>
+      <span class="lang-tr">Cursor elçisi ol</span>
+    </h1>
+
+    <p class="text-lg text-[#999999] leading-relaxed mb-6">
+      <span class="lang-en">
+        We are growing ambassador coverage across <strong class="text-white font-medium">Türkiye</strong>. If you want to lead local meetups, workshops,
+        and chapter activities, start from the official program page:
+        <a href={cursorAmbassadorsUrl} target="_blank" rel="noopener noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2"> cursor.com/ambassadors</a>.
+      </span>
+      <span class="lang-tr">
+        <strong class="text-white font-medium">Türkiye</strong> genelinde elçi ağımızı büyütüyoruz. Yerel buluşmalar, atölyeler ve topluluk çalışmaları
+        yürütmek istiyorsan resmi programa
+        <a href={cursorAmbassadorsUrl} target="_blank" rel="noopener noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2"> cursor.com/ambassadors</a>
+        üzerinden başvurabilirsin.
+      </span>
+    </p>
+
+    <PageToc items={tocItems} />
+
+    <div class="bg-[#171717] border border-[#58a6ff]/25 rounded-2xl p-6 md:p-8 mb-12">
+      <p class="text-[#b0b0b0] text-sm md:text-base leading-relaxed mb-4">
+        <span class="lang-en">Ambassadors help developers adopt AI-native workflows and keep community spaces practical, open, and collaborative.</span>
+        <span class="lang-tr">Elçiler, geliştiricilerin AI-native iş akışlarını benimsemesine yardımcı olur ve topluluk alanlarını üretken, açık ve işbirlikçi tutar.</span>
+      </p>
+      <a
+        href={cursorAmbassadorsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary px-5 py-2.5 rounded-full text-sm font-medium inline-flex items-center justify-center gap-1.5"
+      >
+        <span class="lang-en">Apply to be an Ambassador on cursor.com ↗</span>
+        <span class="lang-tr">cursor.com üzerinden elçiliğe başvur ↗</span>
+      </a>
+    </div>
+
+    <div class="mb-12">
+      <SectionHeading id="how-ambassadors-contribute" class="text-xl font-semibold text-white mb-4">
+        <span class="lang-en">How ambassadors contribute</span>
+        <span class="lang-tr">Elçiler nasıl katkı sağlar?</span>
+      </SectionHeading>
+      <ul class="space-y-3 text-sm text-[#b0b0b0] leading-relaxed list-none border border-[#252525] rounded-2xl bg-[#171717] p-6 md:p-8">
+        <li class="flex gap-3"><span class="text-[#58a6ff] shrink-0" aria-hidden="true">·</span><span><span class="lang-en">Help developers troubleshoot and improve their Cursor workflow.</span><span class="lang-tr">Geliştiricilere sorun çözmede destek ol ve Cursor iş akışlarını iyileştirmelerine yardımcı ol.</span></span></li>
+        <li class="flex gap-3"><span class="text-[#58a6ff] shrink-0" aria-hidden="true">·</span><span><span class="lang-en">Host or co-host meetups, hackathons, and workshops.</span><span class="lang-tr">Buluşma, hackathon ve atölyeleri düzenle ya da birlikte yürüt.</span></span></li>
+        <li class="flex gap-3"><span class="text-[#58a6ff] shrink-0" aria-hidden="true">·</span><span><span class="lang-en">Share practical lessons from real projects.</span><span class="lang-tr">Gerçek projelerde edindiğin pratik deneyimleri paylaş.</span></span></li>
+        <li class="flex gap-3"><span class="text-[#58a6ff] shrink-0" aria-hidden="true">·</span><span><span class="lang-en">Provide clear, constructive feedback to the Cursor team.</span><span class="lang-tr">Cursor ekibine net ve yapıcı geri bildirim ver.</span></span></li>
+      </ul>
+    </div>
+
+    <div class="bg-[#171717] border border-[#252525] rounded-2xl p-6 md:p-8 mb-10">
+      <SectionHeading id="process" class="text-lg font-semibold text-white mb-6">
+        <span class="lang-en">How the process works (Türkiye)</span>
+        <span class="lang-tr">Süreç nasıl işliyor? (Türkiye)</span>
+      </SectionHeading>
+      <ol class="space-y-4 text-[#b0b0b0] text-sm md:text-base leading-relaxed list-decimal list-inside marker:text-[#58a6ff]">
+        <li><span class="lang-en">Reach out to Cursor Türkiye first via <a href={publicX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{publicXHandle}</a> or <a href={`mailto:${leadEmail}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{leadEmail}</a>.</span><span class="lang-tr">Önce Cursor Türkiye ile iletişime geç: <a href={publicX} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">@{publicXHandle}</a> veya <a href={`mailto:${leadEmail}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{leadEmail}</a>.</span></li>
+        <li><span class="lang-en">Submit the official application on cursor.com/ambassadors.</span><span class="lang-tr">Resmi başvurunu cursor.com/ambassadors üzerinden tamamla.</span></li>
+        <li><span class="lang-en">Complete interview and onboarding steps with the Cursor team.</span><span class="lang-tr">Cursor ekibiyle görüşme ve onboarding adımlarını tamamla.</span></li>
+      </ol>
+    </div>
+
+    <div class="mb-12">
+      <SectionHeading id="faq" class="text-xl font-semibold text-white mb-4">
+        <span class="lang-en">Q&A</span>
+        <span class="lang-tr">Sık sorulan sorular</span>
+      </SectionHeading>
+      <p class="text-sm text-[#8b949e] leading-relaxed">
+        <span class="lang-en">For the latest criteria, timelines, and policy details, always refer to the official page.</span>
+        <span class="lang-tr">Kriterler, takvim ve güncel politika detayları için her zaman resmi sayfayı takip et.</span>
+      </p>
+    </div>
+
+    <div class="bg-[#171717] border border-[#252525] rounded-2xl p-6 md:p-8 mb-12">
+      <SectionHeading id="campus" class="text-xl font-semibold text-white mb-2">
+        <span class="lang-en">Cursor on Campus</span>
+        <span class="lang-tr">Kampüste Cursor</span>
+      </SectionHeading>
+      <p class="text-sm text-[#b0b0b0] leading-relaxed mb-4">
+        <span class="lang-en">If you are a student, Campus Leads is a separate track for university communities.</span>
+        <span class="lang-tr">Öğrenciler için Campus Leads, üniversite topluluklarına yönelik ayrı bir programdır.</span>
+      </p>
+      <a href="https://cursorai.notion.site/Cursor-on-Campus-215da74ef045808d805fd336f9a62a40" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
+        <span class="lang-en">Apply as a Campus Lead ↗</span>
+        <span class="lang-tr">Campus Lead olarak başvur ↗</span>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap gap-4">
+      <a href={localizedPath(pagePath, "/about/")} class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">
+        <span class="lang-en">← Back to About</span>
+        <span class="lang-tr">← Hakkında sayfasına dön</span>
+      </a>
+      <a href={cursorAmbassadorsUrl} target="_blank" rel="noopener noreferrer" class="btn-primary px-5 py-2.5 rounded-full text-sm font-medium inline-flex items-center justify-center gap-1.5">
+        <span class="lang-en">Apply on cursor.com ↗</span>
+        <span class="lang-tr">cursor.com üzerinden başvur ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
