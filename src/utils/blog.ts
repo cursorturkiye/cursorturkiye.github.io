@@ -8,17 +8,17 @@ export interface BlogPost {
   slug: string;
   source: "event" | "blog";
   title: string;
-  titleAr?: string;
+  titleTr?: string;
   date: Date;
   description: string;
-  descriptionAr?: string;
+  descriptionTr?: string;
   author?: string;
   tags?: string[];
   coverImage?: string;
   // Event-specific fields
   eventType?: "meetup" | "hackathon" | "workshop" | "build" | "talk" | "interview";
   eventLocation?: string;
-  eventLocationAr?: string;
+  eventLocationTr?: string;
   eventSlides?: string[];
   /** Raw collection entry for `render()` in blog post pages */
   entry: EventCollectionEntry | BlogCollectionEntry;
@@ -37,10 +37,10 @@ export async function getEventBlogPosts(): Promise<BlogPost[]> {
       slug: `event-${event.id}`,
       source: "event",
       title: event.data.title,
-      titleAr: event.data.titleAr,
+      titleTr: event.data.titleTr,
       date: event.data.date,
       description: event.data.description,
-      descriptionAr: event.data.descriptionAr,
+      descriptionTr: event.data.descriptionTr,
       author: event.data.speakers?.[0],
       tags: [event.data.type],
       coverImage: (() => {
@@ -50,7 +50,7 @@ export async function getEventBlogPosts(): Promise<BlogPost[]> {
       })(),
       eventType: event.data.type,
       eventLocation: event.data.location,
-      eventLocationAr: event.data.locationAr,
+      eventLocationTr: event.data.locationTr,
       eventSlides: event.data.slides,
       entry: event,
     });
@@ -67,10 +67,10 @@ export async function getStandaloneBlogPosts(): Promise<BlogPost[]> {
       slug: entry.id,
       source: "blog" as const,
       title: entry.data.title,
-      titleAr: entry.data.titleAr,
+      titleTr: entry.data.titleTr,
       date: entry.data.date,
       description: entry.data.description,
-      descriptionAr: entry.data.descriptionAr,
+      descriptionTr: entry.data.descriptionTr,
       author: entry.data.author,
       tags: entry.data.tags,
       coverImage: entry.data.coverImage,
