@@ -12,16 +12,16 @@ export async function getStaticPaths() {
 const pagePath = Astro.url.pathname;
 const posts: BlogPost[] = await getAllBlogPosts();
 
-function typeLabel(type: string): { en: string; ar: string } {
-  const labels: Record<string, { en: string; ar: string }> = {
-    meetup: { en: "Meetup", ar: "Türkçe" },
-    hackathon: { en: "Hackathon", ar: "Türkçe" },
-    workshop: { en: "Workshop", ar: "Türkçe Türkçe" },
-    build: { en: "Build", ar: "Türkçe" },
-    talk: { en: "Talk", ar: "Türkçe" },
-    interview: { en: "Interview", ar: "Türkçe" },
+function typeLabel(type: string): { en: string; tr: string } {
+  const labels: Record<string, { en: string; tr: string }> = {
+    meetup: { en: "Meetup", tr: "Türkçe" },
+    hackathon: { en: "Hackathon", tr: "Türkçe" },
+    workshop: { en: "Workshop", tr: "Türkçe Türkçe" },
+    build: { en: "Build", tr: "Türkçe" },
+    talk: { en: "Talk", tr: "Türkçe" },
+    interview: { en: "Interview", tr: "Türkçe" },
   };
-  return labels[type] ?? { en: type, ar: type };
+  return labels[type] ?? { en: type, tr: type };
 }
 ---
 
@@ -52,7 +52,7 @@ function typeLabel(type: string): { en: string; ar: string } {
           {posts.map((post) => {
             const href = localizedPath(pagePath, `/blog/${post.slug}/`);
             const dateEn = post.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-            const dateAr = post.date.toLocaleDateString("ar-SA", { month: "short", day: "numeric", year: "numeric" });
+            const dateTr = post.date.toLocaleDateString("tr-TR", { month: "short", day: "numeric", year: "numeric" });
             return (
               <a href={href} class="group bg-[#171717] border border-[#252525] rounded-2xl overflow-hidden hover:border-white/20 transition-all flex flex-col sm:flex-row">
                 {post.coverImage && (

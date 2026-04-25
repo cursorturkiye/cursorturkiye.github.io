@@ -47,20 +47,20 @@ const dateStr = post.date.toLocaleDateString("en-US", {
   year: "numeric",
 });
 
-const dateStrAr = post.date.toLocaleDateString("ar-SA", {
+const dateStrTr = post.date.toLocaleDateString("tr-TR", {
   weekday: "long",
   month: "long",
   day: "numeric",
   year: "numeric",
 });
 
-const typeLabels: Record<string, { en: string; ar: string }> = {
-  meetup: { en: "Meetup", ar: "Türkçe" },
-  hackathon: { en: "Hackathon", ar: "Türkçe" },
-  workshop: { en: "Workshop", ar: "Türkçe Türkçe" },
-  build: { en: "Build", ar: "Türkçe" },
-  talk: { en: "Talk", ar: "Türkçe" },
-  interview: { en: "Interview", ar: "Türkçe" },
+const typeLabels: Record<string, { en: string; tr: string }> = {
+  meetup: { en: "Meetup", tr: "Türkçe" },
+  hackathon: { en: "Hackathon", tr: "Türkçe" },
+  workshop: { en: "Workshop", tr: "Türkçe Türkçe" },
+  build: { en: "Build", tr: "Türkçe" },
+  talk: { en: "Talk", tr: "Türkçe" },
+  interview: { en: "Interview", tr: "Türkçe" },
 };
 ---
 
@@ -121,7 +121,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
             {eventSpeakerNames.map((name: string) => {
               const info = speakerMap.get(name.toLowerCase().trim());
               const displayNameEn = info?.name ?? name;
-              const displayNameAr = info?.nameAr ?? displayNameEn;
+              const displayNameTr = info?.nameTr ?? displayNameEn;
               const partner = info?.affiliationPartnerSlug ? getAffiliationPartnerDisplay(info.affiliationPartnerSlug) : undefined;
               return (
                 <a href={info ? localizedPath(pagePath, `/speakers/${info.slug}/`) : "#"} class="flex items-center gap-1.5 hover:text-white transition-colors group/speaker">
@@ -158,7 +158,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
 
         <!-- Title -->
         <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-          <span class="lang-tr">{post.titleAr}</span>
+          <span class="lang-tr">{post.titleTr}</span>
           <span class="lang-en">{post.title}</span>
         </h1>
 
@@ -177,7 +177,7 @@ const typeLabels: Record<string, { en: string; ar: string }> = {
           )}
           {post.eventLocation && (
             <span>
-              <span class="lang-tr">{post.eventLocationAr}</span>
+              <span class="lang-tr">{post.eventLocationTr}</span>
               <span class="lang-en">{post.eventLocation}</span>
             </span>
           )}

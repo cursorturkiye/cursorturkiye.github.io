@@ -143,15 +143,15 @@ function formatDate(date: Date) {
       </div>
 
       <!-- Bio -->
-      {(speaker.bioAr) ? (
+      {(speaker.bioTr) ? (
         <div class="bg-[#171717] border border-[#252525] rounded-2xl p-6 md:p-8 mb-12">
           <h2 class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-3">
             <span class="lang-en">About</span>
       <span class="lang-tr">About</span>
           </h2>
           <p class="text-[#b0b0b0] leading-relaxed">
-            <span class="lang-en">{speaker.bioAr}</span>
-      <span class="lang-tr">{speaker.bioAr}</span>
+            <span class="lang-en">{speaker.bioTr}</span>
+      <span class="lang-tr">{speaker.bioTr}</span>
           </p>
         </div>
       ) : null}
