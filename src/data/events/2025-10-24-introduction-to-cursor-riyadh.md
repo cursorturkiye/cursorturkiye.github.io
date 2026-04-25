@@ -1,16 +1,16 @@
 ﻿---
 title: Introduction to Cursor
-titleAr: Introduction to Cursor
+titleTr: Introduction to Cursor
 date: 2025-10-24
 location: Ankara
-locationAr: Ankara
+locationTr: Ankara
 description: 'Invited talk at the DAL Health Datathon 2025 (CODE, Ankara): intro to Cursor and the AI coding tools landscape for participants—not a standalone Cursor Türkiye community meetup.'
-descriptionAr: 'Invited talk at the DAL Health Datathon 2025 (CODE, Ankara): intro to Cursor and the AI coding tools landscape for participants—not a standalone Cursor Türkiye community meetup.'
+descriptionTr: 'Invited talk at the DAL Health Datathon 2025 (CODE, Ankara): intro to Cursor and the AI coding tools landscape for participants—not a standalone Cursor Türkiye community meetup.'
 type: talk
 status: concluded
 venue: CODE
 speakers:
-  - Mazen Alotaibi
+  - Emre Özcan
 slides:
   - 'https://github.com/cursorturkiye/events-slides/blob/main/2025-10-riyadh-hackathon.pdf'
 ---

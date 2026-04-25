@@ -53,34 +53,34 @@ const backlogSorted = [...backlog].sort((a, b) => a.data.date.getTime() - b.data
 const eventCardPlaceholder = "/placeholders/event-card.svg";
 
 const tocItems = [
-  ...(backlog.length > 0 ? [{ id: "planned-dates", labelEn: "Planned dates", labelAr: "Türkçe Türkçe Türkçe" }] : []),
-  { id: "upcoming", labelEn: "Upcoming", labelAr: "Türkçe" },
-  { id: "past", labelEn: "Past", labelAr: "Türkçe" },
-  ...(invites.length > 0 ? [{ id: "external-invitations", labelEn: "External", labelAr: "Türkçe" }] : []),
+  ...(backlog.length > 0 ? [{ id: "planned-dates", labelEn: "Planned dates", labelTr: "Planlanan Tarihler" }] : []),
+  { id: "upcoming", labelEn: "Upcoming", labelTr: "Yaklaşan Etkinlikler" },
+  { id: "past", labelEn: "Past", labelTr: "Geçmiş Etkinlikler" },
+  ...(invites.length > 0 ? [{ id: "external-invitations", labelEn: "External", labelTr: "Dış Davetler" }] : []),
 ];
 
 function formatMonth(date: Date) {
   return date.toLocaleDateString("en-US", { month: "short" });
 }
 
-function formatMonthAr(date: Date) {
-  return date.toLocaleDateString("ar-SA", { month: "short" });
+function formatMonthTr(date: Date) {
+  return date.toLocaleDateString("tr-TR", { month: "short" });
 }
 
 function formatDay(date: Date) {
   return date.getDate().toString().padStart(2, "0");
 }
 
-function formatDayAr(date: Date) {
-  return date.getDate().toLocaleString("ar-SA");
+function formatDayTr(date: Date) {
+  return date.getDate().toLocaleString("tr-TR");
 }
 
 /** Calendar day for invite `YYYY-MM-DD` strings (no UTC day-shift). */
-function formatInviteFullDate(isoDate: string): { en: string; ar: string } {
+function formatInviteFullDate(isoDate: string): { en: string; tr: string } {
   const d = new Date(`${isoDate}T12:00:00`);
   return {
     en: d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-    ar: d.toLocaleDateString("ar-SA", { month: "short", day: "numeric", year: "numeric" }),
+    tr: d.toLocaleDateString("tr-TR", { month: "short", day: "numeric", year: "numeric" }),
   };
 }
 
@@ -95,16 +95,16 @@ function isSameSiteInviteUrl(url: string): boolean {
   return url.startsWith("/");
 }
 
-function typeLabel(type: string): { en: string; ar: string } {
-  const labels: Record<string, { en: string; ar: string }> = {
-    meetup: { en: "Meetup", ar: "Türkçe" },
-    hackathon: { en: "Hackathon", ar: "Türkçe" },
-    workshop: { en: "Workshop", ar: "Türkçe Türkçe" },
-    build: { en: "Build", ar: "Türkçe" },
-    talk: { en: "Talk", ar: "Türkçe" },
-    interview: { en: "Interview", ar: "Türkçe" },
+function typeLabel(type: string): { en: string; tr: string } {
+  const labels: Record<string, { en: string; tr: string }> = {
+    meetup: { en: "Meetup", tr: "Buluşma" },
+    hackathon: { en: "Hackathon", tr: "Hackathon" },
+    workshop: { en: "Workshop", tr: "Atölye" },
+    build: { en: "Build", tr: "Build Oturumu" },
+    talk: { en: "Talk", tr: "Konuşma" },
+    interview: { en: "Interview", tr: "Röportaj" },
   };
-  return labels[type] ?? { en: type, ar: type };
+  return labels[type] ?? { en: type, tr: type };
 }
 ---
 
@@ -113,7 +113,7 @@ function typeLabel(type: string): { en: string; ar: string } {
     <div class="mb-16 border-b border-[#252525] pb-8">
       <h1 class="text-4xl md:text-5xl font-semibold text-white mb-4">
         <span class="lang-en">Events</span>
-      <span class="lang-tr">Events</span>
+        <span class="lang-tr">Etkinlikler</span>
       </h1>
       <p class="text-[#999999] text-lg w-full max-w-none">
         <span class="lang-en">
@@ -121,8 +121,8 @@ function typeLabel(type: string): { en: string; ar: string } {
           interviews are not listed here. Past hosted events may include recaps you can open like blog posts.
         </span>
       <span class="lang-tr">
-          Meetups, hackathons, workshops, and build sessions we host—focused on AI-native development with Cursor. Invited talks and
-          interviews are not listed here. Past hosted events may include recaps you can open like blog posts.
+          Cursor ile AI-native geliştirmeye odaklanan buluşma, hackathon, atölye ve build oturumlarını burada listeliyoruz.
+          Dış davetli konuşma ve röportajlar bu bölümde yer almaz. Geçmiş etkinliklerin bazılarında blog formatında etkinlik özetleri bulunur.
         </span>
       </p>
     </div>
@@ -134,28 +134,28 @@ function typeLabel(type: string): { en: string; ar: string } {
         <div class="mb-14">
           <SectionHeading id="planned-dates" class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-4">
             <span class="lang-en">Planned dates</span>
-      <span class="lang-tr">Planned dates</span>
+      <span class="lang-tr">Planlanan tarihler</span>
           </SectionHeading>
           <div class="border border-dashed border-[#252525] rounded-2xl p-6">
             <p class="text-sm text-[#6E6E6E] mb-4">
               <span class="lang-en">Tentative slots — details and registration will be announced later.</span>
-      <span class="lang-tr">Tentative slots — details and registration will be announced later.</span>
+      <span class="lang-tr">Geçici takvimler — detaylar ve kayıt bilgisi daha sonra duyurulacaktır.</span>
             </p>
             <div class="flex flex-wrap gap-3">
               {backlogSorted.map((event: EventEntry) => {
                 const mEn = event.data.date.toLocaleDateString("en-US", { month: "short" });
                 const dEn = event.data.date.getDate();
-                const mAr = event.data.date.toLocaleDateString("ar-SA", { month: "short" });
-                const dAr = event.data.date.getDate().toLocaleString("ar-SA");
+                const mTr = event.data.date.toLocaleDateString("tr-TR", { month: "short" });
+                const dTr = event.data.date.getDate().toLocaleString("tr-TR");
                 return (
                   <div class="bg-[#1F1F1F] rounded-lg px-4 py-2.5 border border-[#252525] text-center min-w-[72px] max-w-[140px]">
                     <div class="text-[10px] text-[#6E6E6E] uppercase font-bold">
                       <span class="lang-en">{mEn}</span>
-      <span class="lang-tr">{mEn}</span>
+      <span class="lang-tr">{mTr}</span>
                     </div>
                     <div class="text-lg font-bold text-[#6E6E6E] leading-tight">
                       <span class="lang-en">{dEn}</span>
-      <span class="lang-tr">{dEn}</span>
+      <span class="lang-tr">{dTr}</span>
                     </div>
                     <div class="text-[10px] text-[#8b949e] mt-1.5 leading-snug border-t border-[#252525]/80 pt-1.5">
                       <span class="lang-en">{event.data.location}</span>
@@ -172,7 +172,7 @@ function typeLabel(type: string): { en: string; ar: string } {
       <div class="mb-14">
         <SectionHeading id="upcoming" class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-4">
           <span class="lang-en">Upcoming</span>
-      <span class="lang-tr">Upcoming</span>
+      <span class="lang-tr">Yaklaşan</span>
         </SectionHeading>
         <div class="grid md:grid-cols-3 gap-6">
           {upcoming.map((event: EventEntry) => {
@@ -221,16 +221,16 @@ function typeLabel(type: string): { en: string; ar: string } {
                 <div class="bg-[#1F1F1F] rounded-lg px-3 py-1 border border-[#252525] text-center min-w-[60px]">
                   <div class="text-[10px] text-[#999999] uppercase font-bold">
                     <span class="lang-en">{formatMonth(event.data.date)}</span>
-      <span class="lang-tr">{formatMonth(event.data.date)}</span>
+      <span class="lang-tr">{formatMonthTr(event.data.date)}</span>
                   </div>
                   <div class="text-xl font-bold text-white">
                     <span class="lang-en">{formatDay(event.data.date)}</span>
-      <span class="lang-tr">{formatDay(event.data.date)}</span>
+      <span class="lang-tr">{formatDayTr(event.data.date)}</span>
                   </div>
                 </div>
                 <span class="px-2 py-1 rounded-full bg-white/5 text-[10px] font-medium tracking-wide uppercase text-[#999999] border border-white/5">
                   <span class="lang-en">{typeLabel(event.data.type).en}</span>
-      <span class="lang-tr">{typeLabel(event.data.type).en}</span>
+      <span class="lang-tr">{typeLabel(event.data.type).tr}</span>
                 </span>
               </div>
               <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors">
@@ -242,7 +242,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                   {event.data.speakers.map((name: string) => {
                     const info = speakerMap.get(name.toLowerCase().trim());
                     const displayNameEn = info?.name ?? name;
-                    const displayNameAr = info?.nameAr ?? displayNameEn;
+                    const displayNameTr = info?.nameTr ?? displayNameEn;
                     const partner = info?.affiliationPartnerSlug ? getAffiliationPartnerDisplay(info.affiliationPartnerSlug) : undefined;
                     const SpeakerTag = info ? "a" : "span";
                     return (
@@ -254,7 +254,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                         )}
                         <span class={`${info ? "group-hover/speaker:text-white" : ""} transition-colors`}>
                           <span class="lang-en">{displayNameEn}</span>
-      <span class="lang-tr">{displayNameEn}</span>
+      <span class="lang-tr">{displayNameTr}</span>
                         </span>
                         {partner && (
                           <img src={partner.logo} alt={partner.name} class="w-3.5 h-3.5 object-contain opacity-50 shrink-0" width="14" height="14" loading="lazy" />
@@ -277,7 +277,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                         <img src={p.logo} alt={p.name} class="w-5 h-5 object-contain" width="20" height="20" loading="lazy" />
                         <span class="text-[10px] text-[#8b949e] leading-tight">
                           <span class="lang-en">{partnerRoleLabels[p.role].en}</span>
-      <span class="lang-tr">{partnerRoleLabels[p.role].en}</span>
+      <span class="lang-tr">{partnerRoleLabels[p.role].tr}</span>
                         </span>
                       </a>
                     ))}
@@ -288,7 +288,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                 <div class="flex items-center gap-2 text-xs text-[#999999]">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   <span class="lang-en">{event.data.location}{event.data.venue && <span class="text-[#6E6E6E]"> · {event.data.venue}</span>}</span>
-                  <span class="lang-tr">{event.data.locationAr}{event.data.venue && <span class="text-[#6E6E6E]"> · {event.data.venue}</span>}</span>
+                  <span class="lang-tr">{event.data.locationTr}{event.data.venue && <span class="text-[#6E6E6E]"> · {event.data.venue}</span>}</span>
                 </div>
                 {(() => {
                   const shareUrl = event.data.lumaUrl ?? absoluteSitePath("/events");
@@ -297,7 +297,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                     <div class="flex flex-col items-end gap-1 shrink-0" role="group" aria-label="Share with others">
                       <p class="text-[10px] leading-tight text-[#6E6E6E] text-end max-w-[9rem] sm:max-w-none">
                         <span class="lang-en">Share with others</span>
-      <span class="lang-tr">Share with others</span>
+      <span class="lang-tr">Paylaş</span>
                       </p>
                       <div class="flex items-center gap-1">
                         <a href={xShareLink(shareUrl, shareText)} target="_blank" rel="noreferrer" class="w-7 h-7 flex items-center justify-center rounded-full text-[#6E6E6E] hover:text-white transition-colors" aria-label="Share on X">
@@ -324,12 +324,12 @@ function typeLabel(type: string): { en: string; ar: string } {
                 {backlog.length > 0 ? (
                   <>
                     <span class="lang-en">No confirmed upcoming events with full details yet — see planned dates above.</span>
-      <span class="lang-tr">No confirmed upcoming events with full details yet — see planned dates above.</span>
+      <span class="lang-tr">Detayları netleşmiş yaklaşan etkinlik henüz yok — yukarıdaki planlanan tarihlere göz atabilirsiniz.</span>
                   </>
                 ) : (
                   <>
                     <span class="lang-en">No upcoming events listed yet.</span>
-      <span class="lang-tr">No upcoming events listed yet.</span>
+      <span class="lang-tr">Henüz yaklaşan etkinlik listelenmedi.</span>
                   </>
                 )}
               </p>
@@ -341,11 +341,11 @@ function typeLabel(type: string): { en: string; ar: string } {
       <div>
         <SectionHeading id="past" class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-2">
           <span class="lang-en">Past</span>
-      <span class="lang-tr">Past</span>
+      <span class="lang-tr">Geçmiş</span>
         </SectionHeading>
         <p class="text-sm text-[#6E6E6E] mb-6 max-w-2xl">
           <span class="lang-en">Each recap is a full post with photos, takeaways, and links. Open “Read recap” to view it.</span>
-      <span class="lang-tr">Each recap is a full post with photos, takeaways, and links. Open “Read recap” to view it.</span>
+      <span class="lang-tr">Her özet; fotoğraflar, çıkarımlar ve bağlantılar içeren tam bir yazıdır. Görmek için “Etkinlik özetini oku” butonunu kullanın.</span>
         </p>
         <div class="grid md:grid-cols-3 gap-6">
           {past.map((event: EventEntry) => {
@@ -361,8 +361,8 @@ function typeLabel(type: string): { en: string; ar: string } {
                     <a
                       href={recapHref}
                       class="absolute inset-0 z-10 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#58a6ff]/60"
-                      aria-label="Read full recap — Türkçe Türkçe Türkçe"
-                      title="Read full recap — Türkçe Türkçe Türkçe"
+                      aria-label="Etkinlik özetinin tamamını oku"
+                      title="Etkinlik özetinin tamamını oku"
                     />
                   )}
                   {showAlbumGrid ? (
@@ -404,16 +404,16 @@ function typeLabel(type: string): { en: string; ar: string } {
                   <div class="bg-[#1F1F1F] rounded-lg px-3 py-1 border border-[#252525] text-center min-w-[60px] opacity-50">
                     <div class="text-[10px] text-[#999999] uppercase font-bold">
                       <span class="lang-en">{formatMonth(event.data.date)}</span>
-      <span class="lang-tr">{formatMonth(event.data.date)}</span>
+      <span class="lang-tr">{formatMonthTr(event.data.date)}</span>
                     </div>
                     <div class="text-xl font-bold text-white">
                       <span class="lang-en">{formatDay(event.data.date)}</span>
-      <span class="lang-tr">{formatDay(event.data.date)}</span>
+      <span class="lang-tr">{formatDayTr(event.data.date)}</span>
                     </div>
                   </div>
                   <span class="px-2 py-1 rounded-full bg-white/5 text-[10px] font-medium tracking-wide uppercase text-[#999999] border border-white/5">
                     <span class="lang-en">{typeLabel(event.data.type).en}</span>
-      <span class="lang-tr">{typeLabel(event.data.type).en}</span>
+      <span class="lang-tr">{typeLabel(event.data.type).tr}</span>
                   </span>
                 </div>
                 <h3 class="text-xl font-semibold mb-2 leading-snug">
@@ -428,7 +428,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                   ) : (
                     <>
                       <span class="lang-en text-[#999999]">{event.data.title}</span>
-                      <span class="lang-tr text-[#999999]">{event.data.titleAr}</span>
+                      <span class="lang-tr text-[#999999]">{event.data.titleTr}</span>
                     </>
                   )}
                 </h3>
@@ -437,7 +437,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                     {event.data.speakers.map((name: string) => {
                       const info = speakerMap.get(name.toLowerCase().trim());
                       const displayNameEn = info?.name ?? name;
-                      const displayNameAr = info?.nameAr ?? displayNameEn;
+                      const displayNameTr = info?.nameTr ?? displayNameEn;
                       const partner = info?.affiliationPartnerSlug ? getAffiliationPartnerDisplay(info.affiliationPartnerSlug) : undefined;
                       const SpeakerTag = info ? "a" : "span";
                       return (
@@ -449,7 +449,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                           )}
                           <span class={`${info ? "group-hover/speaker:text-white" : ""} transition-colors`}>
                             <span class="lang-en">{displayNameEn}</span>
-      <span class="lang-tr">{displayNameEn}</span>
+      <span class="lang-tr">{displayNameTr}</span>
                           </span>
                           {partner && (
                             <img src={partner.logo} alt={partner.name} class="w-3.5 h-3.5 object-contain opacity-50 shrink-0" width="14" height="14" loading="lazy" />
@@ -472,7 +472,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                           <img src={p.logo} alt={p.name} class="w-5 h-5 object-contain" width="20" height="20" loading="lazy" />
                           <span class="text-[10px] text-[#8b949e] leading-tight">
                             <span class="lang-en">{partnerRoleLabels[p.role].en}</span>
-      <span class="lang-tr">{partnerRoleLabels[p.role].en}</span>
+      <span class="lang-tr">{partnerRoleLabels[p.role].tr}</span>
                           </span>
                         </a>
                       ))}
@@ -484,7 +484,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                     <div class="flex items-center gap-2 text-xs text-[#999999]">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                       <span class="lang-en">{event.data.location}{event.data.venue && <span class="text-[#6E6E6E]"> · {event.data.venue}</span>}</span>
-                      <span class="lang-tr">{event.data.locationAr}{event.data.venue && <span class="text-[#6E6E6E]"> · {event.data.venue}</span>}</span>
+                      <span class="lang-tr">{event.data.locationTr}{event.data.venue && <span class="text-[#6E6E6E]"> · {event.data.venue}</span>}</span>
                     </div>
                     {(() => {
                       const shareUrl = hasRecap ? absoluteSitePath(recapHref) : absoluteSitePath("/events");
@@ -493,7 +493,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                         <div class="flex flex-col items-end gap-1 shrink-0" role="group" aria-label="Share with others">
                           <p class="text-[10px] leading-tight text-[#6E6E6E] text-end max-w-[9rem] sm:max-w-none">
                             <span class="lang-en">Share with others</span>
-      <span class="lang-tr">Share with others</span>
+      <span class="lang-tr">Paylaş</span>
                           </p>
                           <div class="flex items-center gap-1">
                             <a href={xShareLink(shareUrl, shareText)} target="_blank" rel="noreferrer" class="w-7 h-7 flex items-center justify-center rounded-full text-[#6E6E6E] hover:text-white transition-colors" aria-label="Share on X">
@@ -523,7 +523,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                         <path d="M8 7h8M8 11h6"/>
                       </svg>
                       <span class="lang-en">Read full recap</span>
-      <span class="lang-tr">Read full recap</span>
+      <span class="lang-tr">Etkinlik özetini oku</span>
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#58a6ff] shrink-0 opacity-80 group-hover/recap:opacity-100 rtl:rotate-180 transition-opacity" aria-hidden="true">
                         <path d="M5 12h14M13 6l6 6-6 6"/>
                       </svg>
@@ -531,7 +531,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                   ) : (
                     <p class="text-xs text-[#5c5c5c]">
                       <span class="lang-en">Written recap not published yet.</span>
-      <span class="lang-tr">Written recap not published yet.</span>
+      <span class="lang-tr">Yazılı etkinlik özeti henüz yayımlanmadı.</span>
                     </p>
                   )}
                 </div>
@@ -543,7 +543,7 @@ function typeLabel(type: string): { en: string; ar: string } {
             <div class="col-span-full py-12 text-center">
               <p class="text-[#999999] text-lg">
                 <span class="lang-en">No past events to show yet.</span>
-      <span class="lang-tr">No past events to show yet.</span>
+      <span class="lang-tr">Gösterilecek geçmiş etkinlik henüz yok.</span>
               </p>
             </div>
           )}
@@ -554,16 +554,16 @@ function typeLabel(type: string): { en: string; ar: string } {
         <div class="mt-14">
           <SectionHeading id="external-invitations" class="text-xs font-mono text-[#6E6E6E] uppercase tracking-widest mb-2">
             <span class="lang-en">External Invitations</span>
-      <span class="lang-tr">External Invitations</span>
+      <span class="lang-tr">Dış davetler</span>
           </SectionHeading>
           <p class="text-sm text-[#6E6E6E] mb-6 max-w-2xl">
             <span class="lang-en">Talks and interviews our community members were invited to by external organizations — not hosted by Cursor Türkiye.</span>
-      <span class="lang-tr">Talks and interviews our community members were invited to by external organizations — not hosted by Cursor Türkiye.</span>
+      <span class="lang-tr">Topluluk üyelerimizin, Cursor Türkiye dışında kurumlar tarafından davet edildiği konuşma ve röportajlar.</span>
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {invites.map((invite) => {
               const typeLabelEn = invite.type === "interview" ? "Interview" : invite.type === "panel" ? "Panel" : "Talk";
-              const typeLabelAr = invite.type === "interview" ? "Türkçe" : invite.type === "panel" ? "Türkçe" : "Türkçe";
+              const typeLabelTr = invite.type === "interview" ? "Röportaj" : invite.type === "panel" ? "Panel" : "Konuşma";
               const inviteDate = formatInviteFullDate(invite.date);
               const inviteSlides = "slides" in invite && invite.slides && invite.slides.length > 0 ? invite.slides : null;
               const invitePhoto = "photos" in invite && invite.photos && invite.photos.length > 0 ? invite.photos[0] : null;
@@ -591,11 +591,11 @@ function typeLabel(type: string): { en: string; ar: string } {
                         : "text-[#58a6ff] border-[#58a6ff]/25 bg-[#58a6ff]/10",
                   ]}>
                     <span class="lang-en">{typeLabelEn}</span>
-      <span class="lang-tr">{typeLabelEn}</span>
+      <span class="lang-tr">{typeLabelTr}</span>
                   </span>
                   <span class="text-xs text-[#6E6E6E]">
                     <span class="lang-en">{inviteDate.en}</span>
-      <span class="lang-tr">{inviteDate.en}</span>
+      <span class="lang-tr">{inviteDate.tr}</span>
                   </span>
                 </div>
 
@@ -608,7 +608,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                   {(() => {
                     const speakerInfo = speakerMap.get(invite.speaker.toLowerCase().trim());
                     const inviteSpeakerEn = speakerInfo?.name ?? invite.speaker;
-                    const inviteSpeakerAr = speakerInfo?.nameAr ?? inviteSpeakerEn;
+                    const inviteSpeakerTr = speakerInfo?.nameTr ?? inviteSpeakerEn;
                     const InviteSpeakerTag = speakerInfo ? "a" : "span";
                     return (
                       <InviteSpeakerTag {...(speakerInfo ? { href: localizedPath(pagePath, `/speakers/${speakerInfo.slug}/`) } : {})} class={`flex items-center gap-1.5 text-xs text-[#6E6E6E] ${speakerInfo ? "hover:text-white cursor-pointer" : ""} transition-colors group/speaker`}>
@@ -619,7 +619,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                         )}
                         <span class={`${speakerInfo ? "group-hover/speaker:text-white" : ""} transition-colors`}>
                           <span class="lang-en">{inviteSpeakerEn}</span>
-      <span class="lang-tr">{inviteSpeakerEn}</span>
+      <span class="lang-tr">{inviteSpeakerTr}</span>
                         </span>
                       </InviteSpeakerTag>
                     );
@@ -646,13 +646,13 @@ function typeLabel(type: string): { en: string; ar: string } {
                       </a>
                     </span>
                     <span class="lang-tr">
-                      {invite.type === "interview" ? "Türkçe Türkçe Türkçe " : "Türkçe Türkçe "}
+                      {invite.type === "interview" ? "Röportaj: " : "Davet eden: "}
                       <a
                         href={inviteInviterHref(invite.invitedByUrl)}
                         class="text-[#58a6ff] hover:text-[#79c0ff] transition-colors"
                         {...(isSameSiteInviteUrl(invite.invitedByUrl) ? {} : { target: "_blank", rel: "noreferrer" })}
                       >
-                        {invite.invitedByAr}
+                        {invite.invitedByTr}
                       </a>
                     </span>
                   </div>
@@ -667,7 +667,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     <span class="lang-en">Post</span>
-      <span class="lang-tr">Post</span>
+      <span class="lang-tr">Paylaşım</span>
                     <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                       <path d="M4 12l8-8m0 0H5m7 0v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -681,7 +681,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                     >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                       <span class="lang-en">Recording</span>
-      <span class="lang-tr">Recording</span>
+      <span class="lang-tr">Kayıt</span>
                       <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                         <path d="M4 12l8-8m0 0H5m7 0v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
@@ -696,7 +696,7 @@ function typeLabel(type: string): { en: string; ar: string } {
                         class="inline-flex items-center gap-1.5 text-xs text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2"
                       >
                         <span class="lang-en">{inviteSlides.length > 1 ? `Slide ${i + 1}` : "Slides"}</span>
-      <span class="lang-tr">{inviteSlides.length > 1 ? `Slide ${i + 1}` : "Slides"}</span>
+      <span class="lang-tr">{inviteSlides.length > 1 ? `Slayt ${i + 1}` : "Slaytlar"}</span>
                         <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                           <path d="M4 12l8-8m0 0H5m7 0v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>

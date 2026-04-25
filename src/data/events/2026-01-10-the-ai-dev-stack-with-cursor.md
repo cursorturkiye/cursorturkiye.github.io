@@ -1,16 +1,16 @@
 ﻿---
 title: The AI Dev Stack with Cursor
-titleAr: The AI Dev Stack with Cursor
+titleTr: The AI Dev Stack with Cursor
 date: 2026-01-10
 location: Ankara
-locationAr: Ankara
+locationTr: Ankara
 description: "Breaking down the AI tools landscape and how to combine ChatGPT, Perplexity, Lovable, Replit, Codex, and Claude Code into a practical workflow with Cursor."
-descriptionAr: "Breaking down the AI tools landscape and how to combine ChatGPT, Perplexity, Lovable, Replit, Codex, and Claude Code into a practical workflow with Cursor."
+descriptionTr: "Breaking down the AI tools landscape and how to combine ChatGPT, Perplexity, Lovable, Replit, Codex, and Claude Code into a practical workflow with Cursor."
 type: meetup
 status: concluded
 venue: Mozn Office
 speakers: 
-  - Mazen Alotaibi
+  - Emre Özcan
 lumaUrl: "https://lu.ma/0fjpw44n"
 slides: 
   - "https://github.com/cursorturkiye/events-slides/blob/main/2026-01-riyadh-meetup.pdf"

@@ -1,11 +1,11 @@
 ﻿---
 title: Mcps Tools And Real Integrations
 date: 2026-07-25
-titleAr: Mcps Tools And Real Integrations
+titleTr: Mcps Tools And Real Integrations
 location: Ankara
-locationAr: Ankara
+locationTr: Ankara
 description: Mcps Tools And Real Integrations
-descriptionAr: Mcps Tools And Real Integrations
+descriptionTr: Mcps Tools And Real Integrations
 type: meetup
 status: backlog
 venue: ""

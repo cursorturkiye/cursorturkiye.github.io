@@ -11,24 +11,24 @@ import { localizedPath } from "@/utils/i18n-path";
 const pagePath = Astro.url.pathname;
 
 const tocItems = [
-  { id: "mission", labelEn: "Mission", labelAr: "Türkçe" },
-  { id: "event-types", labelEn: "Our Events", labelAr: "Türkçe" },
-  { id: "chapters", labelEn: "Chapters", labelAr: "Türkçe" },
-  { id: "team", labelEn: "Team", labelAr: "Türkçe" },
+  { id: "mission", labelEn: "Mission", labelTr: "Misyon" },
+  { id: "event-types", labelEn: "Our Events", labelTr: "Etkinliklerimiz" },
+  { id: "chapters", labelEn: "Chapters", labelTr: "Şubeler" },
+  { id: "team", labelEn: "Team", labelTr: "Ekip" },
 ];
 
 type EventEntry = CollectionEntry<"events">;
 
 interface Ambassador {
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   role: string;
-  roleAr: string;
+  roleTr: string;
   city: string;
-  cityAr: string;
+  cityTr: string;
   photo?: string;
   description?: string;
-  descriptionAr?: string;
+  descriptionTr?: string;
   email?: string;
   twitter?: string;
   /** Display handle for X (without @). */
@@ -64,11 +64,9 @@ const jeddahPartners = config.partners.filter((p) => (p.cities as readonly strin
 const avatarDecorations = ["deco-gradient-spin", "deco-glow-breathe", "deco-orbit", "deco-ripple", "deco-fire", "deco-sparkle"] as const;
 
 const avatarBadges: Record<string, string> = {
-  "Mazen Alotaibi": "🤖",
+  "Emre Özcan": "🤖",
   "Ali Almohammed": "💻",
   "Faris Hijazi": "🧪",
-  "Abdullah Mosaibah": "🐐",
-  "Abdulaziz AlMushdaq": "📸",
 };
 
 function formatShortDate(date: Date) {
@@ -87,11 +85,11 @@ function formatShortDate(date: Date) {
       <div class="text-center mb-12">
         <span class="text-xs font-mono text-[#999999] uppercase tracking-widest">
           <span class="lang-en">Our Chapters</span>
-      <span class="lang-tr">Our Chapters</span>
+      <span class="lang-tr">Şubelerimiz</span>
         </span>
         <SectionHeading id="chapters" class="text-3xl font-semibold text-white mt-3">
           <span class="lang-en">Active Across the Kingdom</span>
-      <span class="lang-tr">Active Across the Kingdom</span>
+      <span class="lang-tr">Türkiye Genelinde Aktif</span>
         </SectionHeading>
       </div>
 
@@ -102,12 +100,12 @@ function formatShortDate(date: Date) {
             <div class="flex items-center gap-3">
               <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
               <h3 class="text-xl font-semibold text-white"><span class="lang-en">Ankara Chapter</span>
-      <span class="lang-tr">Ankara Chapter</span></h3>
+      <span class="lang-tr">Ankara Şubesi</span></h3>
             </div>
             <span class="text-xs font-mono text-[#999999] border border-[#252525] rounded px-2 py-1">EST. 2025</span>
           </div>
           <p class="text-sm text-[#999999] mb-4"><span class="lang-en">The flagship chapter — home to the largest community of Cursor developers in the Kingdom. Regular meetups, workshops, and build sprints covering AI-native development, MCP servers, prompt engineering, and more.</span>
-      <span class="lang-tr">The flagship chapter — home to the largest community of Cursor developers in the Kingdom. Regular meetups, workshops, and build sprints covering AI-native development, MCP servers, prompt engineering, and more.</span></p>
+      <span class="lang-tr">Amiral şubemiz — Türkiye’deki en geniş Cursor geliştirici topluluğunun buluşma noktası. AI-native geliştirme, MCP sunucuları, prompt mühendisliği ve daha fazlasına odaklanan düzenli buluşmalar, atölyeler ve build sprint’leri düzenliyoruz.</span></p>
           <div class="flex items-center gap-2 text-xs text-[#999999] mb-4">
             {riyadhAmbassador ? (
               <>
@@ -115,7 +113,7 @@ function formatShortDate(date: Date) {
       <span class="lang-tr">{riyadhAmbassador.role}:</span>
                 <div class="flex items-center gap-2">
                   <span class="lang-en text-white font-medium">{riyadhAmbassador.name}</span>
-                  <span class="lang-tr text-white font-medium">{riyadhAmbassador.nameAr ?? riyadhAmbassador.name}</span>
+                  <span class="lang-tr text-white font-medium">{riyadhAmbassador.nameTr ?? riyadhAmbassador.name}</span>
                   {riyadhAmbassador.twitter && (
                     <a href={riyadhAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -131,20 +129,20 @@ function formatShortDate(date: Date) {
             ) : (
               <span class="text-white font-medium">
                 <span class="lang-en">To Be Announced</span>
-      <span class="lang-tr">To Be Announced</span>
+      <span class="lang-tr">Yakında duyurulacak</span>
               </span>
             )}
           </div>
           <div class="flex gap-4 mb-6">
             <div><div class="text-xl font-bold text-white">{riyadhPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span>
-      <span class="lang-tr">Completed</span></div></div>
+      <span class="lang-tr">Tamamlanan</span></div></div>
             <div><div class="text-xl font-bold text-white">{riyadhUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span>
-      <span class="lang-tr">Upcoming</span></div></div>
+      <span class="lang-tr">Yaklaşan</span></div></div>
           </div>
           {nextAnkara && (
             <div class="border-t border-[#252525] pt-4">
               <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span>
-      <span class="lang-tr">Next Event</span></div>
+      <span class="lang-tr">Sıradaki etkinlik</span></div>
               <div class="text-xs text-white font-medium">{nextAnkara.data.title}</div>
               <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextAnkara.data.date)}</div>
             </div>
@@ -152,7 +150,7 @@ function formatShortDate(date: Date) {
           {riyadhPartners.length > 0 && (
             <div class="border-t border-[#252525] pt-4 mt-4">
               <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span>
-      <span class="lang-tr">Chapter Partners</span></div>
+      <span class="lang-tr">Şube partnerleri</span></div>
               <div class="grid w-full min-w-0 grid-cols-2 gap-2 sm:grid-cols-3">
                 {riyadhPartners.map((partner) => (
                   <a
@@ -180,12 +178,12 @@ function formatShortDate(date: Date) {
             <div class="flex items-center gap-3">
               <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
               <h3 class="text-xl font-semibold text-white"><span class="lang-en">Izmir Chapter</span>
-      <span class="lang-tr">Izmir Chapter</span></h3>
+      <span class="lang-tr">İzmir Şubesi</span></h3>
             </div>
             <span class="text-xs font-mono text-[#999999] border border-[#252525] rounded px-2 py-1">EST. 2026</span>
           </div>
           <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Our chapter on the Red Sea coast — meetups and workshops for Cursor builders in Izmir and the western region, with the same focus on AI-native workflows, MCP, and shipping real projects.</span>
-      <span class="lang-tr">Our chapter on the Red Sea coast — meetups and workshops for Cursor builders in Izmir and the western region, with the same focus on AI-native workflows, MCP, and shipping real projects.</span></p>
+      <span class="lang-tr">Batı bölgesindeki üreticiler için İzmir merkezli şubemiz. AI-native iş akışları, MCP ve gerçek projeleri teslim etmeye odaklanan buluşma ve atölyeler düzenliyoruz.</span></p>
           <div class="flex items-center gap-2 text-xs text-[#999999] mb-4">
             {jeddahAmbassador ? (
               <>
@@ -193,7 +191,7 @@ function formatShortDate(date: Date) {
       <span class="lang-tr">{jeddahAmbassador.role}:</span>
                 <div class="flex items-center gap-2">
                   <span class="lang-en text-white font-medium">{jeddahAmbassador.name}</span>
-                  <span class="lang-tr text-white font-medium">{jeddahAmbassador.nameAr ?? jeddahAmbassador.name}</span>
+                  <span class="lang-tr text-white font-medium">{jeddahAmbassador.nameTr ?? jeddahAmbassador.name}</span>
                   {jeddahAmbassador.twitter && (
                     <a href={jeddahAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -209,20 +207,20 @@ function formatShortDate(date: Date) {
             ) : (
               <span class="text-white font-medium">
                 <span class="lang-en">To Be Announced</span>
-      <span class="lang-tr">To Be Announced</span>
+      <span class="lang-tr">Yakında duyurulacak</span>
               </span>
             )}
           </div>
           <div class="flex gap-4 mb-6">
             <div><div class="text-xl font-bold text-white">{jeddahPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span>
-      <span class="lang-tr">Completed</span></div></div>
+      <span class="lang-tr">Tamamlanan</span></div></div>
             <div><div class="text-xl font-bold text-white">{jeddahUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span>
-      <span class="lang-tr">Upcoming</span></div></div>
+      <span class="lang-tr">Yaklaşan</span></div></div>
           </div>
           {nextIzmir && (
             <div class="border-t border-[#252525] pt-4">
               <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span>
-      <span class="lang-tr">Next Event</span></div>
+      <span class="lang-tr">Sıradaki etkinlik</span></div>
               <div class="text-xs text-white font-medium">{nextIzmir.data.title}</div>
               <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextIzmir.data.date)}</div>
             </div>
@@ -230,7 +228,7 @@ function formatShortDate(date: Date) {
           {jeddahPartners.length > 0 && (
             <div class="border-t border-[#252525] pt-4 mt-4">
               <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span>
-      <span class="lang-tr">Chapter Partners</span></div>
+      <span class="lang-tr">Şube partnerleri</span></div>
               <div class="grid w-full min-w-0 grid-cols-2 gap-2 sm:grid-cols-3">
                 {jeddahPartners.map((partner) => (
                   <a
@@ -258,31 +256,31 @@ function formatShortDate(date: Date) {
             <div class="flex items-center gap-3 min-w-0">
               <span class="w-2.5 h-2.5 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.9)] animate-pulse"></span>
               <h3 class="text-xl font-semibold text-white min-w-0"><span class="lang-en">Istanbul Chapter</span>
-      <span class="lang-tr">Istanbul Chapter</span></h3>
+      <span class="lang-tr">İstanbul Şubesi</span></h3>
             </div>
             <div class="flex flex-col items-end gap-1 shrink-0 text-end">
               <span class="text-[10px] font-mono text-red-300 border border-red-500/35 bg-red-500/10 rounded px-2 py-0.5 leading-tight">
                 <span class="lang-en">Paused</span>
-      <span class="lang-tr">Paused</span>
+      <span class="lang-tr">Duraklatıldı</span>
               </span>
               <span class="text-[10px] font-mono text-red-400/90 leading-tight">
                 <span class="lang-en">Needs ambassador</span>
-      <span class="lang-tr">Needs ambassador</span>
+      <span class="lang-tr">Elçi aranıyor</span>
               </span>
             </div>
           </div>
           <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Chapter activity is on hold until a new ambassador steps in. We still want to reconnect engineers across Istanbul, Dammam, and Dhahran around AI-powered development — when leadership is back, programming resumes.</span>
-      <span class="lang-tr">Chapter activity is on hold until a new ambassador steps in. We still want to reconnect engineers across Istanbul, Dammam, and Dhahran around AI-powered development — when leadership is back, programming resumes.</span></p>
+      <span class="lang-tr">Yeni bir elçi göreve başlayana kadar şube faaliyetleri duraklatıldı. İstanbul çevresindeki geliştiricileri AI destekli geliştirme etrafında yeniden buluşturmak istiyoruz; liderlik oluştuğunda program yeniden başlayacak.</span></p>
           <div class="space-y-4 mb-4 text-xs text-[#999999]">
             <div>
               <div class="text-[10px] uppercase tracking-widest text-amber-500/90 font-medium mb-1">
                 <span class="lang-en">Former ambassador · Retired</span>
-      <span class="lang-tr">Former ambassador · Retired</span>
+      <span class="lang-tr">Eski elçi · Ayrıldı</span>
               </div>
               {khobarAmbassador ? (
                 <div class="flex flex-wrap items-center gap-2 text-[#999999]">
                   <span class="lang-en line-through decoration-white/25 text-white/70 font-medium">{khobarAmbassador.name}</span>
-                  <span class="lang-tr line-through decoration-white/25 text-white/70 font-medium">{khobarAmbassador.nameAr ?? khobarAmbassador.name}</span>
+                  <span class="lang-tr line-through decoration-white/25 text-white/70 font-medium">{khobarAmbassador.nameTr ?? khobarAmbassador.name}</span>
                   {khobarAmbassador.twitter && (
                     <a href={khobarAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -297,20 +295,20 @@ function formatShortDate(date: Date) {
               ) : (
                 <p class="text-sm text-[#6E6E6E]">
                   <span class="lang-en">No former ambassador on record.</span>
-      <span class="lang-tr">No former ambassador on record.</span>
+      <span class="lang-tr">Kayıtlarda eski elçi bulunmuyor.</span>
                 </p>
               )}
             </div>
             <div class="border-t border-[#252525] pt-4 flex gap-4">
               <div><div class="text-xl font-bold text-white">{khobarPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span>
-      <span class="lang-tr">Completed</span></div></div>
+      <span class="lang-tr">Tamamlanan</span></div></div>
               <div><div class="text-xl font-bold text-white">{khobarUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span>
-      <span class="lang-tr">Upcoming</span></div></div>
+      <span class="lang-tr">Yaklaşan</span></div></div>
             </div>
             <div class="border-t border-red-500/15 pt-3">
               <div class="text-[10px] uppercase tracking-widest text-red-400/95 font-medium mb-2">
                 <span class="lang-en">Looking for</span>
-      <span class="lang-tr">Looking for</span>
+      <span class="lang-tr">Aradığımız</span>
               </div>
               <p class="text-sm text-[#b0b0b0] leading-relaxed">
                 <span class="lang-en">
@@ -318,19 +316,19 @@ function formatShortDate(date: Date) {
                   meetups for builders in Istanbul, Dhahran, and Dammam.
                 </span>
                 <span class="lang-tr">
-                  Türkçe ElciTürkçe Türkçe Türkçe <strong class="text-white/90 font-medium">Türkçe Istanbul</strong> Türkçe Türkçe Türkçe Türkçe Istanbul Türkçe Türkçe.
+                  <strong class="text-white/90 font-medium">İstanbul şubesini</strong> yeniden başlatacak ve çevredeki geliştiriciler için buluşmaları büyütecek bir elçi arıyoruz.
                 </span>
               </p>
               <a href={localizedPath(pagePath, "/ambassadors/")} class="mt-3 text-xs font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
                 <span class="lang-en">Ambassador program &amp; how to apply →</span>
-      <span class="lang-tr">Ambassador program &amp; how to apply →</span>
+      <span class="lang-tr">Elçilik programı ve başvuru →</span>
               </a>
             </div>
           </div>
           {nextIstanbul && (
             <div class="border-t border-[#252525] pt-4">
               <div class="text-[9px] text-[#6E6E6E] uppercase tracking-widest mb-1"><span class="lang-en">Next Event</span>
-      <span class="lang-tr">Next Event</span></div>
+      <span class="lang-tr">Sıradaki etkinlik</span></div>
               <div class="text-xs text-white font-medium">{nextIstanbul.data.title}</div>
               <div class="text-[10px] text-[#999999] mt-0.5">{formatShortDate(nextIstanbul.data.date)}</div>
             </div>
@@ -338,7 +336,7 @@ function formatShortDate(date: Date) {
           {khobarPartners.length > 0 && (
             <div class="border-t border-[#252525] pt-4 mt-4">
               <div class="text-[10px] uppercase tracking-widest text-[#6E6E6E] font-medium mb-3"><span class="lang-en">Chapter Partners</span>
-      <span class="lang-tr">Chapter Partners</span></div>
+      <span class="lang-tr">Şube partnerleri</span></div>
               <div class="grid w-full min-w-0 grid-cols-2 gap-2 sm:grid-cols-3">
                 {khobarPartners.map((partner) => (
                   <a
@@ -367,11 +365,11 @@ function formatShortDate(date: Date) {
       <div class="text-center mb-12">
         <span class="text-xs font-mono text-[#999999] uppercase tracking-widest">
           <span class="lang-en">The People</span>
-      <span class="lang-tr">The People</span>
+      <span class="lang-tr">İnsanlar</span>
         </span>
         <SectionHeading id="team" class="text-3xl font-semibold text-white mt-3">
           <span class="lang-en">Our Team</span>
-      <span class="lang-tr">Our Team</span>
+      <span class="lang-tr">Ekibimiz</span>
         </SectionHeading>
       </div>
 
@@ -389,7 +387,7 @@ function formatShortDate(date: Date) {
               {ambassador.photo ? (
                 <div class:list={[
                   "avatar-deco",
-                  ambassador.name === "Abdullah Mosaibah" ? "deco-goat" : avatarDecorations[idx % avatarDecorations.length],
+                  avatarDecorations[idx % avatarDecorations.length],
                 ]}>
                   <img
                     src={ambassador.photo}
@@ -420,13 +418,15 @@ function formatShortDate(date: Date) {
                 {ambassador.status === "retired" ? (
                   <>
                     <span class="lang-en">Retired · {ambassador.city}</span>
-      <span class="lang-tr">Retired · {ambassador.city}</span>
+      <span class="lang-tr">Ayrıldı · {ambassador.city}</span>
                   </>
-                ) : (
+                ) : ambassador.role ? (
                   <>
                     <span class="lang-en">{ambassador.role} · {ambassador.city}</span>
       <span class="lang-tr">{ambassador.role} · {ambassador.city}</span>
                   </>
+                ) : (
+                  <span>&nbsp;</span>
                 )}
               </div>
               <h3
@@ -438,7 +438,7 @@ function formatShortDate(date: Date) {
                 <span class="lang-en">{ambassador.name}</span>
       <span class="lang-tr">{ambassador.name}</span>
               </h3>
-              {(ambassador.description || ambassador.descriptionAr) && (
+              {(ambassador.description || ambassador.descriptionTr) && (
                 <p class="text-sm text-[#999999] leading-relaxed mb-4">
                   <span class="lang-en">{ambassador.description}</span>
       <span class="lang-tr">{ambassador.description}</span>
@@ -475,20 +475,20 @@ function formatShortDate(date: Date) {
           <div class="px-6 pb-6 text-center flex flex-col flex-grow">
             <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-500/90 mb-2">
               <span class="lang-en">Open Role · Istanbul</span>
-      <span class="lang-tr">Open Role · Istanbul</span>
+      <span class="lang-tr">Açık Pozisyon · İstanbul</span>
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">
               <span class="lang-en">Ambassador Wanted</span>
-      <span class="lang-tr">Ambassador Wanted</span>
+      <span class="lang-tr">Elçi Aranıyor</span>
             </h3>
             <p class="text-sm text-[#999999] leading-relaxed mb-4">
               <span class="lang-en">Lead meetups for builders in Istanbul, Dhahran, and Dammam.</span>
-      <span class="lang-tr">Lead meetups for builders in Istanbul, Dhahran, and Dammam.</span>
+      <span class="lang-tr">İstanbul çevresindeki üreticiler için buluşmaları yönetecek bir elçi arıyoruz.</span>
             </p>
             <div class="mt-auto">
               <a href={localizedPath(pagePath, "/ambassadors/")} class="text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
                 <span class="lang-en">Apply →</span>
-      <span class="lang-tr">Apply →</span>
+      <span class="lang-tr">Başvur →</span>
               </a>
             </div>
           </div>
@@ -499,16 +499,16 @@ function formatShortDate(date: Date) {
       <div class="text-center mt-10">
         <p class="text-[#999999] text-sm mb-4">
           <span class="lang-en">Interested in leading a chapter or representing Cursor at your university?</span>
-      <span class="lang-tr">Interested in leading a chapter or representing Cursor at your university?</span>
+      <span class="lang-tr">Bir şubeyi yönetmek veya üniversitende Cursor’ı temsil etmek ister misin?</span>
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a href={localizedPath(pagePath, "/ambassadors/")} class="btn-accent px-5 py-2.5 rounded-full text-sm font-medium">
             <span class="lang-en">Become an Ambassador →</span>
-      <span class="lang-tr">Become an Ambassador →</span>
+      <span class="lang-tr">Elçi Ol →</span>
           </a>
           <a href="https://cursorai.notion.site/Cursor-on-Campus-215da74ef045808d805fd336f9a62a40" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full border border-[#333] text-sm text-[#999999] hover:text-white hover:border-white/25 transition-colors">
             <span class="lang-en">Cursor on Campus ↗</span>
-      <span class="lang-tr">Cursor on Campus ↗</span>
+      <span class="lang-tr">Kampüste Cursor ↗</span>
           </a>
         </div>
       </div>
@@ -524,10 +524,11 @@ function formatShortDate(date: Date) {
           <a href={config.social.twitter} target="_blank" rel="noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">X (@{config.social.twitterHandle})</a>.
         </span>
         <span class="lang-tr">
-          Türkçe Türkçe Türkçe{" "}
+          Soruların mı var?{" "}
           <a href={`mailto:${config.social.email}`} class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">{config.social.email}</a>
-          {" "}Türkçe Türkçe Türkçe Türkçe{" "}
-          <a href={config.social.twitter} target="_blank" rel="noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">Türkçe Cursor Türkiye Türkçe Türkçe (@{config.social.twitterHandle})</a>.
+          {" "}adresine e-posta gönderebilir veya{" "}
+          <a href={config.social.twitter} target="_blank" rel="noreferrer" class="text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2">X üzerinden (@{config.social.twitterHandle})</a>{" "}
+          bize ulaşabilirsin.
         </span>
       </p>
       <div class="inline-flex gap-6 text-sm">

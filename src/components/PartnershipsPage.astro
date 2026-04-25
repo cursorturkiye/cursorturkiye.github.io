@@ -10,9 +10,9 @@ const { luma, discord, twitter } = config.social;
 const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 
 const tocItems = [
-  { id: "support-community", labelEn: "Support the community", labelAr: "Topluluğu destekle" },
-  { id: "part-of-community", labelEn: "Be part of the community", labelAr: "Topluluğa katıl" },
-  { id: "we-offer", labelEn: "We offer", labelAr: "Sunduğumuz hizmetler" },
+  { id: "support-community", labelEn: "Support the community", labelTr: "Topluluğu destekle" },
+  { id: "part-of-community", labelEn: "Be part of the community", labelTr: "Topluluğa katıl" },
+  { id: "we-offer", labelEn: "We offer", labelTr: "Sunduğumuz hizmetler" },
 ];
 ---
 
@@ -50,7 +50,7 @@ const tocItems = [
       </p>
       <div class="space-y-4">
         <div class="bg-[#171717] border border-[#252525] rounded-xl p-5 md:p-6">
-          <h3 class="text-white font-medium mb-2"><span class="lang-en">Community partners</span><span class="lang-tr">Topluluk partnerleri</span></h3>
+          <h3 class="text-white font-medium mb-2"><span class="lang-en">Community partners</span><span class="lang-tr">Topluluk iş ortakları</span></h3>
           <p class="text-sm text-[#999999] leading-relaxed"><span class="lang-en">Support with operations, promotion, volunteer coordination, and outreach.</span><span class="lang-tr">Operasyon, tanıtım, gönüllü koordinasyonu ve erişim süreçlerinde destek sağlayın.</span></p>
         </div>
         <div class="bg-[#171717] border border-[#252525] rounded-xl p-5 md:p-6">
@@ -81,7 +81,7 @@ const tocItems = [
         </p>
         <a href={mail("Cursor Türkiye — speaker proposal")} class="inline-flex text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
           <span class="lang-en">Email your proposal →</span>
-          <span class="lang-tr">Önerini e-posta ile gönder →</span>
+        <span class="lang-tr">Önerini e-posta ile gönderin →</span>
         </a>
       </div>
     </div>

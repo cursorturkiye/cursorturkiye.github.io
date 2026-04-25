@@ -1,11 +1,11 @@
 ﻿---
 title: Introduction to Cursor
-titleAr: Introduction to Cursor
+titleTr: Introduction to Cursor
 date: 2025-08-05
 location: Istanbul
-locationAr: Istanbul
+locationTr: Istanbul
 description: Beginner-friendly introduction to Cursor core features and day-to-day usage patterns.
-descriptionAr: Beginner-friendly introduction to Cursor core features and day-to-day usage patterns.
+descriptionTr: Beginner-friendly introduction to Cursor core features and day-to-day usage patterns.
 type: meetup
 status: concluded
 venue: Istanbul Tech Hub

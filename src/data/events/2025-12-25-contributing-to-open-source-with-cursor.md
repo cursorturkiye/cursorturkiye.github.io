@@ -1,16 +1,16 @@
 ﻿---
 title: Contributing to Open Source with Cursor
-titleAr: Contributing to Open Source with Cursor
+titleTr: Contributing to Open Source with Cursor
 date: 2025-12-25
 location: Ankara
-locationAr: Ankara
+locationTr: Ankara
 description: Workshop on contributing to open source with Cursor — from picking a good first issue to shipping a review-friendly PR.
-descriptionAr: Workshop on contributing to open source with Cursor — from picking a good first issue to shipping a review-friendly PR.
+descriptionTr: Workshop on contributing to open source with Cursor — from picking a good first issue to shipping a review-friendly PR.
 type: meetup
 status: concluded
 venue: Mozn Office
 speakers: 
-  - Mazen Alotaibi
+  - Emre Özcan
   - Usman Siddique
 lumaUrl: "https://lu.ma/f41u8pty"
 slides: 

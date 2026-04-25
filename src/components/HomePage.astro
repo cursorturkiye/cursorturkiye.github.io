@@ -16,23 +16,23 @@ const allEvents = (await getSortedEvents()).filter((e: EventEntry) => isHostedCo
 const nextEvent = upcoming[0];
 const citiesCount = new Set(allEvents.map((e: EventEntry) => e.data.location)).size;
 
-function formatShortDate(date: Date): { en: string; ar: string } {
+function formatShortDate(date: Date): { en: string; tr: string } {
   return {
     en: date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-    ar: date.toLocaleDateString("ar-SA", { month: "short", day: "numeric" }),
+    tr: date.toLocaleDateString("tr-TR", { month: "short", day: "numeric" }),
   };
 }
 
 const homeTocItems = [
-  { id: "stats", labelEn: "Stats", labelAr: "Türkçe" },
-  { id: "featured", labelEn: "Featured", labelAr: "Türkçe" },
-  { id: "partners", labelEn: "Partners", labelAr: "Türkçe" },
-  { id: "external-collabs", labelEn: "External", labelAr: "Türkçe" },
+  { id: "stats", labelEn: "Stats", labelTr: "İstatistikler" },
+  { id: "featured", labelEn: "Featured", labelTr: "Öne Çıkanlar" },
+  { id: "partners", labelEn: "Partners", labelTr: "Partnerler" },
+  { id: "external-collabs", labelEn: "External", labelTr: "Dış İşbirlikleri" },
 ];
 
 interface ExternalCollabHost {
   name: string;
-  nameAr: string;
+  nameTr: string;
   url: string;
   logo: string;
 }
@@ -51,7 +51,7 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
     if (isPartnerOrg) continue;
     out.push({
       name: inv.invitedBy,
-      nameAr: inv.invitedByAr,
+      nameTr: inv.invitedByTr,
       url: inv.invitedByUrl,
       logo: inv.invitedByLogo,
     });
@@ -78,12 +78,12 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
 
         <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter mb-6 leading-[1.1] text-white">
           <span class="lang-en">The AI-Native<br><span class="text-[#8A8A8A]">Türkiye Community.</span></span>
-          <span class="lang-tr">AI-Native<br><span class="text-[#8A8A8A]">Türkiye Topluluğu.</span></span>
+          <span class="lang-tr">Yapay Zeka Odaklı<br><span class="text-[#8A8A8A]">Türkiye Topluluğu.</span></span>
         </h1>
 
         <p class="text-lg text-[#8A8A8A] leading-relaxed mb-8 max-w-lg">
           <span class="lang-en">Hands-on technical events focused on shipping faster with AI-native developer tools. Built by the community, for the community.</span>
-      <span class="lang-tr">AI-native geliştirici araçlarıyla daha hızlı üretmeye odaklanan uygulamalı teknik etkinlikler. Topluluk için, topluluk tarafından.</span>
+      <span class="lang-tr">Yapay zeka odaklı geliştirici araçlarıyla daha hızlı üretmeye yönelik uygulamalı teknik etkinlikler. Topluluk için, topluluk tarafından.</span>
         </p>
 
         <div class="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto">
@@ -131,9 +131,9 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
           <text x="392" y="266" text-anchor="middle" fill="#ededed" font-size="11" font-family="Inter, sans-serif" font-weight="600" class="lang-en">Ankara</text>
           <text x="392" y="266" text-anchor="middle" fill="#ededed" font-size="11" font-family="Inter, sans-serif" font-weight="600" class="lang-tr">Ankara</text>
           <text x="484" y="220" text-anchor="middle" fill="#ededed" font-size="11" font-family="Inter, sans-serif" font-weight="600" class="lang-en">Istanbul</text>
-          <text x="484" y="220" text-anchor="middle" fill="#ededed" font-size="11" font-family="Inter, sans-serif" font-weight="600" class="lang-tr">Istanbul</text>
+          <text x="484" y="220" text-anchor="middle" fill="#ededed" font-size="11" font-family="Inter, sans-serif" font-weight="600" class="lang-tr">İstanbul</text>
           <text x="195" y="345" text-anchor="middle" fill="#8A8A8A" font-size="10" font-family="Inter, sans-serif" font-weight="500" class="lang-en">Izmir</text>
-          <text x="195" y="345" text-anchor="middle" fill="#8A8A8A" font-size="10" font-family="Inter, sans-serif" font-weight="500" class="lang-tr">Izmir</text>
+          <text x="195" y="345" text-anchor="middle" fill="#8A8A8A" font-size="10" font-family="Inter, sans-serif" font-weight="500" class="lang-tr">İzmir</text>
         </svg>
       </div>
     </div>
@@ -151,7 +151,7 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
       <span class="lang-tr">{allEvents.length}</span>
         </div>
         <div class="text-xs text-[#8A8A8A] uppercase tracking-widest font-medium"><span class="lang-en">Events</span>
-      <span class="lang-tr">Etkinlik</span></div>
+      <span class="lang-tr">Etkinlikler</span></div>
       </div>
       <div class="group bg-[#0F0F0F] p-8 text-center hover:bg-[#161616] transition-colors">
         <div class="flex justify-center mb-3 text-[#5C5C5C] group-hover:text-[#7A7A7A] transition-colors" aria-hidden="true">
@@ -184,7 +184,7 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
       <span class="lang-tr">{citiesCount}</span>
         </div>
         <div class="text-xs text-[#8A8A8A] uppercase tracking-widest font-medium"><span class="lang-en">Cities</span>
-      <span class="lang-tr">Şehir</span></div>
+      <span class="lang-tr">Şehirler</span></div>
       </div>
     </div>
 
@@ -196,10 +196,10 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
           <div class="relative z-10 flex flex-col h-full">
             <div class="flex items-center justify-between mb-8">
               <span class="text-xs font-mono text-white bg-white/10 px-2 py-1 rounded border border-white/5"><span class="lang-en">NEXT EVENT</span>
-      <span class="lang-tr">SIRADAKİ ETKİNLİK</span></span>
+      <span class="lang-tr">Sıradaki Etkinlik</span></span>
               <span class="text-xs text-[#8A8A8A]">
                 <span class="lang-en">{formatShortDate(nextEvent.data.date).en} · {nextEvent.data.location}</span>
-      <span class="lang-tr">{formatShortDate(nextEvent.data.date).en} · {nextEvent.data.location}</span>
+      <span class="lang-tr">{formatShortDate(nextEvent.data.date).tr} · {nextEvent.data.location}</span>
               </span>
             </div>
             <h3 class="text-2xl md:text-3xl font-semibold mb-3 text-white">
@@ -224,10 +224,10 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
           <div class="relative z-10 flex flex-col h-full">
             <div class="flex items-center justify-between mb-8">
               <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20"><span class="lang-en">LATEST COMPLETED</span>
-      <span class="lang-tr">SON TAMAMLANAN</span></span>
+      <span class="lang-tr">Son Tamamlanan</span></span>
               <span class="text-xs text-[#8A8A8A]">
                 <span class="lang-en">{formatShortDate(past[0].data.date).en} · {past[0].data.location}</span>
-      <span class="lang-tr">{formatShortDate(past[0].data.date).en} · {past[0].data.location}</span>
+      <span class="lang-tr">{formatShortDate(past[0].data.date).tr} · {past[0].data.location}</span>
               </span>
             </div>
             <h3 class="text-2xl md:text-3xl font-semibold mb-3 text-white">
@@ -291,14 +291,14 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
           </span>
           <h2 class="text-xl md:text-2xl font-semibold text-white mb-3">
             <span class="lang-en">External collaborations</span>
-      <span class="lang-tr">Dış işbirlikleri</span>
+      <span class="lang-tr">Dış İşbirlikleri</span>
           </h2>
           <p class="text-sm text-[#8A8A8A] leading-relaxed">
             <span class="lang-en">
               Community members also join talks, interviews, and partner-hosted sessions with organizations and creators outside Cursor Türkiye's own event calendar.
             </span>
       <span class="lang-tr">
-              Community members also join talks, interviews, and partner-hosted sessions with organizations and creators outside Cursor Türkiye's own event calendar.
+              Topluluk üyeleri, Cursor Türkiye etkinlik takviminin dışında kalan kuruluşlar ve içerik üreticilerle söyleşi, röportaj ve partner oturumlarında da yer alıyor.
             </span>
           </p>
         </div>
@@ -322,7 +322,7 @@ const externalCollabHosts: ExternalCollabHost[] = (() => {
               />
               <span class="text-xs sm:text-sm font-semibold text-white/80 group-hover:text-white transition-colors tracking-tight leading-snug">
                 <span class="lang-en">{host.name}</span>
-      <span class="lang-tr">{host.name}</span>
+      <span class="lang-tr">{host.nameTr}</span>
               </span>
             </a>
           ))}
