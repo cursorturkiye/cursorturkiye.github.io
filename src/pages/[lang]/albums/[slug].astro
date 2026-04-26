@@ -39,7 +39,11 @@ const personLookup = new Map<string, PersonLookup>();
 
 type SpeakerLookupSource = { name: string; nameTr?: string; slug: string; aliases?: readonly string[] };
 for (const speaker of config.speakers as unknown as readonly SpeakerLookupSource[]) {
+<<<<<<< HEAD
   const entry: PersonLookup = { nameTr: speaker.nameTr ?? speaker.name, href: `/speakers/${speaker.slug}` };
+=======
+  const entry: PersonLookup = { nameTr: speaker.nameTr, href: `/speakers/${speaker.slug}` };
+>>>>>>> e9f9cb2c18163d5fff6a6ffa98e5b7d5220e0837
   personLookup.set(speaker.name, entry);
   for (const alias of speaker.aliases ?? []) personLookup.set(alias, entry);
 }
@@ -49,7 +53,11 @@ for (const partner of config.partners) {
   const contributors = "contributors" in partner ? (partner.contributors as readonly PartnerContributorSource[] | undefined) : undefined;
   for (const c of contributors ?? []) {
     if (personLookup.has(c.name)) continue;
+<<<<<<< HEAD
     personLookup.set(c.name, { nameTr: c.nameTr ?? c.name, href: `/partners/${partner.slug}` });
+=======
+    personLookup.set(c.name, { nameTr: c.nameTr, href: `/partners/${partner.slug}` });
+>>>>>>> e9f9cb2c18163d5fff6a6ffa98e5b7d5220e0837
   }
 }
 

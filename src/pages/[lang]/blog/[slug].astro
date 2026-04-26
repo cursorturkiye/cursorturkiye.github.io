@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿---
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
@@ -348,3 +349,355 @@ const typeLabels: Record<string, { en: string; tr: string }> = {
 
   <Footer />
 </Layout>
+=======
+﻿---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getAllBlogPosts } from "@/utils/blog";
+import { render } from "astro:content";
+import { getSpeakerNameMap, getAffiliationPartnerDisplay, getEventPartnersMap, getEventPartners, partnerRoleLabels } from "@/utils/people";
+import type { EventPartnerEntry } from "@/utils/people";
+import { SITE_LOCALES, localizedPath } from "@/utils/i18n-path";
+
+export async function getStaticPaths() {
+  const posts = await getAllBlogPosts();
+  const paths: { params: { lang: string; slug: string }; props: { post: (typeof posts)[number] } }[] = [];
+  for (const post of posts) {
+    for (const lang of SITE_LOCALES) {
+      paths.push({ params: { lang, slug: post.slug }, props: { post } });
+    }
+  }
+  return paths;
+}
+
+const { post } = Astro.props;
+const pagePath = Astro.url.pathname;
+const eventsPageHref = localizedPath(pagePath, "/events/");
+const { Content } = await render(post.entry);
+const eventAlbumHref = post.source === "event" ? localizedPath(pagePath, `/albums/${post.entry.id}/`) : null;
+const speakerMap = getSpeakerNameMap();
+const partnersMap = getEventPartnersMap();
+const eventEntry =
+  post.source === "event"
+    ? (post.entry as unknown as { id: string; data: { speakers?: string[]; venue?: string } })
+    : null;
+const eventSpeakerNames = eventEntry?.data.speakers ?? [];
+const eventPartners = eventEntry ? getEventPartners(eventEntry.id, eventEntry.data.venue, partnersMap) : [];
+const normalizedEventType = post.eventType?.trim().toLowerCase();
+const visibleTags = (post.tags ?? []).filter((tag, index, tags) => {
+  const normalizedTag = tag.trim().toLowerCase();
+  if (!normalizedTag) return false;
+  if (normalizedEventType && normalizedTag === normalizedEventType) return false;
+  return tags.findIndex((value) => value.trim().toLowerCase() === normalizedTag) === index;
+});
+
+const dateStr = post.date.toLocaleDateString("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+
+const dateStrTr = post.date.toLocaleDateString("tr-TR", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+
+const typeLabels: Record<string, { en: string; tr: string }> = {
+  meetup: { en: "Meetup", tr: "Türkçe" },
+  hackathon: { en: "Hackathon", tr: "Türkçe" },
+  workshop: { en: "Workshop", tr: "Türkçe Türkçe" },
+  build: { en: "Build", tr: "Türkçe" },
+  talk: { en: "Talk", tr: "Türkçe" },
+  interview: { en: "Interview", tr: "Türkçe" },
+};
+---
+
+<Layout title={`${post.title} — Cursor Türkiye`} description={post.description}>
+  <Header />
+
+  <main id="main-content" class="flex-grow pt-[72px] relative z-10">
+    <article class="max-w-4xl mx-auto px-6 md:px-10 py-12 md:py-20">
+      <!-- Back link -->
+      <a href={eventsPageHref} class="inline-flex items-center gap-2 text-sm text-[#6E6E6E] hover:text-white transition-colors mb-8">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 12L6 8l4-4"/>
+        </svg>
+        <span class="lang-en">Back to Events</span>
+      <span class="lang-tr">Back to Events</span>
+      </a>
+
+      {eventAlbumHref && (
+        <div class="mb-6">
+          <a
+            href={eventAlbumHref}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-[#252525] text-sm text-white hover:bg-white/10 hover:border-[#444] transition-colors"
+          >
+            <span class="lang-en">See album</span>
+      <span class="lang-tr">See album</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12l8-8m0 0H5m7 0v7"/>
+            </svg>
+          </a>
+        </div>
+      )}
+
+      <!-- Header -->
+      <header class="mb-10">
+        <!-- Badges -->
+        <div class="flex items-center gap-2 mb-4">
+          {post.source === "event" ? (
+            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <span class="lang-en">Event Recap</span>
+      <span class="lang-tr">Event Recap</span>
+            </span>
+          ) : (
+            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span class="lang-en">Article</span>
+      <span class="lang-tr">Article</span>
+            </span>
+          )}
+          {post.eventType && (
+            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-[#999] border border-[#252525] capitalize">
+              <span class="lang-en">{typeLabels[post.eventType]?.en ?? post.eventType}</span>
+      <span class="lang-tr">{typeLabels[post.eventType]?.en ?? post.eventType}</span>
+            </span>
+          )}
+        </div>
+
+        {eventSpeakerNames.length > 0 && (
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-[#6E6E6E] mb-3">
+            {eventSpeakerNames.map((name: string) => {
+              const info = speakerMap.get(name.toLowerCase().trim());
+              const displayNameEn = info?.name ?? name;
+              const displayNameTr = info?.nameTr ?? displayNameEn;
+              const partner = info?.affiliationPartnerSlug ? getAffiliationPartnerDisplay(info.affiliationPartnerSlug) : undefined;
+              return (
+                <a href={info ? localizedPath(pagePath, `/speakers/${info.slug}/`) : "#"} class="flex items-center gap-1.5 hover:text-white transition-colors group/speaker">
+                  {info?.photo ? (
+                    <img src={info.photo} alt="" class="w-5 h-5 rounded-full object-cover shrink-0 border border-[#252525]" width="20" height="20" loading="lazy" />
+                  ) : (
+                    <span class="w-5 h-5 rounded-full bg-[#252525] border border-[#333] shrink-0 flex items-center justify-center text-[7px] font-bold text-[#8A8A8A]">{info?.initials ?? name.slice(0, 2).toUpperCase()}</span>
+                  )}
+                  <span class="group-hover/speaker:text-white transition-colors">
+                    <span class="lang-en">{displayNameEn}</span>
+      <span class="lang-tr">{displayNameEn}</span>
+                  </span>
+                  {partner && (
+                    <img src={partner.logo} alt={partner.name} class="w-3.5 h-3.5 object-contain opacity-50 shrink-0" width="14" height="14" loading="lazy" />
+                  )}
+                </a>
+              );
+            })}
+          </div>
+        )}
+        {eventPartners.length > 0 && (
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            {eventPartners.map((p: EventPartnerEntry) => (
+              <a href={localizedPath(pagePath, `/partners/${p.slug}/`)} class="flex items-center gap-1.5 rounded-full bg-white/5 border border-[#252525] px-2.5 py-1 hover:border-[#444] transition-colors">
+                <img src={p.logo} alt={p.name} class="w-5 h-5 object-contain" width="20" height="20" loading="lazy" />
+                <span class="text-[10px] text-[#8b949e] leading-tight">
+                  <span class="lang-en">{partnerRoleLabels[p.role].en}</span>
+      <span class="lang-tr">{partnerRoleLabels[p.role].en}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        )}
+
+        <!-- Title -->
+        <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+          <span class="lang-tr">{post.titleTr}</span>
+          <span class="lang-en">{post.title}</span>
+        </h1>
+
+        <!-- Meta -->
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#6E6E6E]">
+          <time>
+            <span class="lang-en">{dateStr}</span>
+      <span class="lang-tr">{dateStr}</span>
+          </time>
+          {post.author && eventSpeakerNames.length === 0 && (
+            <span>
+              <span class="lang-en">by</span>
+      <span class="lang-tr">by</span>
+              {" "}{post.author}
+            </span>
+          )}
+          {post.eventLocation && (
+            <span>
+              <span class="lang-tr">{post.eventLocationTr}</span>
+              <span class="lang-en">{post.eventLocation}</span>
+            </span>
+          )}
+        </div>
+
+        {visibleTags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-4">
+            {visibleTags.map((tag) => (
+              <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-[#999] border border-[#252525]">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <!-- Content -->
+      <div class="blog-content" id="blog-content">
+        <Content />
+      </div>
+
+      <script is:inline>
+        (function () {
+          var container = document.getElementById('blog-content');
+          if (!container) return;
+
+          var children = Array.from(container.childNodes);
+          var sections = [];
+          var current = [];
+
+          // Split child nodes into groups at <hr> elements
+          children.forEach(function (node) {
+            if (node.nodeType === 1 && node.tagName === 'HR') {
+              if (current.length > 0) sections.push(current);
+              current = [];
+            } else {
+              current.push(node);
+            }
+          });
+          if (current.length > 0) sections.push(current);
+
+          // Single section or no HRs — leave content as-is (no splitting needed)
+          if (sections.length <= 1) return;
+
+          // Detect Arabic by checking Unicode character ratio
+          function isArabic(text) {
+            var arabicChars = (text.match(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g) || []).length;
+            var total = text.replace(/\s+/g, '').length;
+            if (total === 0) return false;
+            return arabicChars / total > 0.3;
+          }
+
+          // Check if a section is mostly images (Gallery)
+          function isImageSection(nodes) {
+            var imgCount = 0;
+            var textLen = 0;
+            nodes.forEach(function (n) {
+              if (n.nodeType === 1) {
+                if (n.tagName === 'IMG') imgCount++;
+                if (n.querySelectorAll) imgCount += n.querySelectorAll('img').length;
+                // Count meaningful text (exclude image alt text)
+                var t = (n.textContent || '').replace(/\s+/g, '');
+                textLen += t.length;
+              }
+            });
+            return imgCount > 0 && textLen < 50;
+          }
+
+          function stripImagesFromNode(node) {
+            if (!node) return;
+            if (node.nodeType === 1 && node.tagName === 'IMG') {
+              node.remove();
+              return;
+            }
+            if (node.nodeType !== 1) return;
+            node.querySelectorAll('img').forEach(function (img) { img.remove(); });
+            node.querySelectorAll('picture').forEach(function (el) { if (!el.querySelector('img')) el.remove(); });
+            node.querySelectorAll('figure').forEach(function (el) { if (!el.querySelector('img') && !(el.textContent || '').trim()) el.remove(); });
+            if (node.tagName === 'P' && !node.querySelector('*') && !(node.textContent || '').trim()) node.remove();
+          }
+
+          // Clear and rebuild with language wrappers
+          container.innerHTML = '';
+
+          sections.forEach(function (nodes) {
+            if (isImageSection(nodes)) return;
+
+            nodes.forEach(stripImagesFromNode);
+            nodes = nodes.filter(function (n) {
+              if (!n) return false;
+              if (n.nodeType === 3) return !!(n.textContent || '').trim();
+              if (n.nodeType !== 1) return true;
+              return n.tagName !== 'IMG';
+            });
+            if (nodes.length === 0) return;
+
+            var wrapper = document.createElement('div');
+            var text = nodes.map(function (n) { return n.textContent || ''; }).join('');
+
+            if (isImageSection(nodes)) {
+              wrapper.className = 'blog-lang-shared';
+            } else if (isArabic(text)) {
+              wrapper.className = 'blog-lang-tr';
+              wrapper.setAttribute('dir', 'rtl');
+            } else {
+              wrapper.className = 'blog-lang-en';
+            }
+
+            nodes.forEach(function (n) { wrapper.appendChild(n); });
+            container.appendChild(wrapper);
+          });
+        })();
+      </script>
+
+      <!-- Slides link for events -->
+      {post.eventSlides && post.eventSlides.length > 0 && (
+        <div class="mt-10 pt-6 border-t border-[#252525]">
+          <h3 class="text-sm font-semibold text-[#999] mb-3">
+            <span class="lang-en">Slides</span>
+      <span class="lang-tr">Slides</span>
+          </h3>
+          <div class="flex flex-wrap gap-3">
+            {post.eventSlides.map((slide, i) => (
+              <a
+                href={slide}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-[#252525] text-sm text-white hover:bg-white/10 hover:border-[#444] transition-colors"
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 12l8-8m0 0H5m7 0v7"/>
+                </svg>
+                <span class="lang-en">Slide {i + 1}</span>
+      <span class="lang-tr">Slide {i + 1}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {eventAlbumHref && (
+        <div class="mt-8">
+          <a
+            href={eventAlbumHref}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-[#252525] text-sm text-white hover:bg-white/10 hover:border-[#444] transition-colors"
+          >
+            <span class="lang-en">See album</span>
+      <span class="lang-tr">See album</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12l8-8m0 0H5m7 0v7"/>
+            </svg>
+          </a>
+        </div>
+      )}
+
+      <!-- Back link bottom -->
+      <div class="mt-12 pt-6 border-t border-[#252525]">
+        <a href={eventsPageHref} class="inline-flex items-center gap-2 text-sm text-[#6E6E6E] hover:text-white transition-colors">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 12L6 8l4-4"/>
+          </svg>
+          <span class="lang-en">Back to Events</span>
+      <span class="lang-tr">Back to Events</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+>>>>>>> e9f9cb2c18163d5fff6a6ffa98e5b7d5220e0837

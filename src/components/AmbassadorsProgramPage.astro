@@ -6,11 +6,11 @@ import SectionHeading from "@/components/SectionHeading.astro";
 
 const pagePath = Astro.url.pathname;
 const tocItems = [
-  { id: "how-ambassadors-contribute", labelEn: "How ambassadors contribute", labelAr: "Elçiler ne yapar?" },
-  { id: "program-benefits", labelEn: "Program benefits", labelAr: "Program avantajları" },
-  { id: "process", labelEn: "How the process works", labelAr: "Süreç nasıl işliyor?" },
-  { id: "faq", labelEn: "Q&A", labelAr: "Sık sorulan sorular" },
-  { id: "campus", labelEn: "Cursor on Campus", labelAr: "Kampüste Cursor" },
+  { id: "how-ambassadors-contribute", labelEn: "How ambassadors contribute", labelTr: "Elçiler ne yapar?" },
+  { id: "program-benefits", labelEn: "Program benefits", labelTr: "Program avantajları" },
+  { id: "process", labelEn: "How the process works", labelTr: "Süreç nasıl işliyor?" },
+  { id: "faq", labelEn: "Q&A", labelTr: "Sık sorulan sorular" },
+  { id: "campus", labelEn: "Cursor on Campus", labelTr: "Kampüste Cursor" },
 ];
 
 const leader = config.ambassadors.find((a) => a.city === "Ankara") ?? config.ambassadors[0];

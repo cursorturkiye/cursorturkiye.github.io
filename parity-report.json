@@ -1,0 +1,910 @@
+{
+  "HomePage.astro": [
+    {
+      "index": 1,
+      "en": "Active developer community in Türkiye",
+      "tr": "Türkiye'de aktif geliştirici topluluğu",
+      "same": false
+    },
+    {
+      "index": 2,
+      "en": "The AI-Native<br><span class=\"text-[#8A8A8A]\">Türkiye Community.",
+      "tr": "Yapay Zeka Odaklı<br><span class=\"text-[#8A8A8A]\">Türkiye Topluluğu.",
+      "same": false
+    },
+    {
+      "index": 3,
+      "en": "Hands-on technical events focused on shipping faster with AI-native developer tools. Built by the community, for the community.",
+      "tr": "Yapay zeka odaklı geliştirici araçlarıyla daha hızlı üretmeye yönelik uygulamalı teknik etkinlikler. Topluluk için, topluluk tarafından.",
+      "same": false
+    },
+    {
+      "index": 4,
+      "en": "Join Community",
+      "tr": "Topluluğa Katıl",
+      "same": false
+    },
+    {
+      "index": 5,
+      "en": "About Us",
+      "tr": "Hakkımızda",
+      "same": false
+    },
+    {
+      "index": 6,
+      "en": "Ankara",
+      "tr": "Ankara",
+      "same": true
+    },
+    {
+      "index": 7,
+      "en": "Istanbul",
+      "tr": "İstanbul",
+      "same": false
+    },
+    {
+      "index": 8,
+      "en": "Izmir",
+      "tr": "İzmir",
+      "same": false
+    },
+    {
+      "index": 9,
+      "en": "{allEvents.length}",
+      "tr": "{allEvents.length}",
+      "same": true
+    },
+    {
+      "index": 10,
+      "en": "Events",
+      "tr": "Etkinlikler",
+      "same": false
+    },
+    {
+      "index": 11,
+      "en": "{past.length}",
+      "tr": "{past.length}",
+      "same": true
+    },
+    {
+      "index": 12,
+      "en": "Completed",
+      "tr": "Tamamlanan",
+      "same": false
+    },
+    {
+      "index": 13,
+      "en": "{upcoming.length}",
+      "tr": "{upcoming.length}",
+      "same": true
+    },
+    {
+      "index": 14,
+      "en": "Upcoming",
+      "tr": "Yaklaşan",
+      "same": false
+    },
+    {
+      "index": 15,
+      "en": "{citiesCount}",
+      "tr": "{citiesCount}",
+      "same": true
+    },
+    {
+      "index": 16,
+      "en": "Cities",
+      "tr": "Şehirler",
+      "same": false
+    },
+    {
+      "index": 17,
+      "en": "NEXT EVENT",
+      "tr": "Sıradaki Etkinlik",
+      "same": false
+    },
+    {
+      "index": 18,
+      "en": "{formatShortDate(nextEvent.data.date).en} · {nextEvent.data.location}",
+      "tr": "{formatShortDate(nextEvent.data.date).tr} · {nextEvent.data.location}",
+      "same": false
+    },
+    {
+      "index": 19,
+      "en": "{nextEvent.data.title}",
+      "tr": "{nextEvent.data.title}",
+      "same": true
+    },
+    {
+      "index": 20,
+      "en": "{nextEvent.data.description}",
+      "tr": "{nextEvent.data.description}",
+      "same": true
+    },
+    {
+      "index": 21,
+      "en": "View Events",
+      "tr": "Etkinlikleri Gör",
+      "same": false
+    },
+    {
+      "index": 22,
+      "en": "LATEST COMPLETED",
+      "tr": "Son Tamamlanan",
+      "same": false
+    },
+    {
+      "index": 23,
+      "en": "{formatShortDate(past[0].data.date).en} · {past[0].data.location}",
+      "tr": "{formatShortDate(past[0].data.date).tr} · {past[0].data.location}",
+      "same": false
+    },
+    {
+      "index": 24,
+      "en": "{past[0].data.title}",
+      "tr": "{past[0].data.title}",
+      "same": true
+    },
+    {
+      "index": 25,
+      "en": "{past[0].data.description}",
+      "tr": "{past[0].data.description}",
+      "same": true
+    },
+    {
+      "index": 26,
+      "en": "View All Events",
+      "tr": "Tüm Etkinlikleri Gör",
+      "same": false
+    },
+    {
+      "index": 27,
+      "en": "Supported By",
+      "tr": "Destekleyenler",
+      "same": false
+    },
+    {
+      "index": 28,
+      "en": "{partner.name}",
+      "tr": "{partner.name}",
+      "same": true
+    },
+    {
+      "index": 29,
+      "en": "Beyond our meetups",
+      "tr": "Buluşmaların ötesi",
+      "same": false
+    },
+    {
+      "index": 30,
+      "en": "External collaborations",
+      "tr": "Dış İşbirlikleri",
+      "same": false
+    },
+    {
+      "index": 31,
+      "en": "Community members also join talks, interviews, and partner-hosted sessions with organizations and creators outside Cursor Türkiye's own event calendar.",
+      "tr": "Topluluk üyeleri, Cursor Türkiye etkinlik takviminin dışında kalan kuruluşlar ve içerik üreticilerle söyleşi, röportaj ve partner oturumlarında da yer alıyor.",
+      "same": false
+    },
+    {
+      "index": 32,
+      "en": "{host.name}",
+      "tr": "{host.nameTr}",
+      "same": false
+    },
+    {
+      "index": 33,
+      "en": "See all external invitations",
+      "tr": "Tüm dış davetleri gör",
+      "same": false
+    }
+  ],
+  "EventsPage.astro": [
+    {
+      "index": 1,
+      "en": "Events",
+      "tr": "Etkinlikler",
+      "same": false
+    },
+    {
+      "index": 2,
+      "en": "Meetups, hackathons, workshops, and build sessions we host—focused on AI-native development with Cursor. Invited talks and interviews are not listed here. Past hosted events may include recaps you can open like blog posts.",
+      "tr": "Cursor ile AI-native geliştirmeye odaklanan buluşma, hackathon, atölye ve build oturumlarını burada listeliyoruz. Dış davetli konuşma ve röportajlar bu bölümde yer almaz. Geçmiş etkinliklerin bazılarında blog formatında etkinlik özetleri bulunur.",
+      "same": false
+    },
+    {
+      "index": 3,
+      "en": "Planned dates",
+      "tr": "Planlanan tarihler",
+      "same": false
+    },
+    {
+      "index": 4,
+      "en": "Tentative slots — details and registration will be announced later.",
+      "tr": "Geçici takvimler — detaylar ve kayıt bilgisi daha sonra duyurulacaktır.",
+      "same": false
+    },
+    {
+      "index": 5,
+      "en": "{mEn}",
+      "tr": "{mTr}",
+      "same": false
+    },
+    {
+      "index": 6,
+      "en": "{dEn}",
+      "tr": "{dTr}",
+      "same": false
+    },
+    {
+      "index": 7,
+      "en": "{event.data.location}",
+      "tr": "{event.data.location}",
+      "same": true
+    },
+    {
+      "index": 8,
+      "en": "Upcoming",
+      "tr": "Yaklaşan",
+      "same": false
+    },
+    {
+      "index": 9,
+      "en": "{formatMonth(event.data.date)}",
+      "tr": "{formatMonthTr(event.data.date)}",
+      "same": false
+    },
+    {
+      "index": 10,
+      "en": "{formatDay(event.data.date)}",
+      "tr": "{formatDayTr(event.data.date)}",
+      "same": false
+    },
+    {
+      "index": 11,
+      "en": "{typeLabel(event.data.type).en}",
+      "tr": "{typeLabel(event.data.type).tr}",
+      "same": false
+    },
+    {
+      "index": 12,
+      "en": "{event.data.title}",
+      "tr": "{event.data.title}",
+      "same": true
+    },
+    {
+      "index": 13,
+      "en": "{displayNameEn}",
+      "tr": "{displayNameTr}",
+      "same": false
+    },
+    {
+      "index": 14,
+      "en": "{event.data.description}",
+      "tr": "{event.data.description}",
+      "same": true
+    },
+    {
+      "index": 15,
+      "en": "{partnerRoleLabels[p.role].en}",
+      "tr": "{partnerRoleLabels[p.role].tr}",
+      "same": false
+    },
+    {
+      "index": 16,
+      "en": "{event.data.location}{event.data.venue && <span class=\"text-[#6E6E6E]\"> · {event.data.venue}",
+      "tr": "{event.data.locationTr}{event.data.venue && <span class=\"text-[#6E6E6E]\"> · {event.data.venue}",
+      "same": false
+    },
+    {
+      "index": 17,
+      "en": "Share with others",
+      "tr": "Paylaş",
+      "same": false
+    },
+    {
+      "index": 18,
+      "en": "No confirmed upcoming events with full details yet — see planned dates above.",
+      "tr": "Detayları netleşmiş yaklaşan etkinlik henüz yok — yukarıdaki planlanan tarihlere göz atabilirsiniz.",
+      "same": false
+    },
+    {
+      "index": 19,
+      "en": "No upcoming events listed yet.",
+      "tr": "Henüz yaklaşan etkinlik listelenmedi.",
+      "same": false
+    },
+    {
+      "index": 20,
+      "en": "Past",
+      "tr": "Geçmiş",
+      "same": false
+    },
+    {
+      "index": 21,
+      "en": "Each recap is a full post with photos, takeaways, and links. Open “Read recap” to view it.",
+      "tr": "Her özet; fotoğraflar, çıkarımlar ve bağlantılar içeren tam bir yazıdır. Görmek için “Etkinlik özetini oku” butonunu kullanın.",
+      "same": false
+    },
+    {
+      "index": 22,
+      "en": "{formatMonth(event.data.date)}",
+      "tr": "{formatMonthTr(event.data.date)}",
+      "same": false
+    },
+    {
+      "index": 23,
+      "en": "{formatDay(event.data.date)}",
+      "tr": "{formatDayTr(event.data.date)}",
+      "same": false
+    },
+    {
+      "index": 24,
+      "en": "{typeLabel(event.data.type).en}",
+      "tr": "{typeLabel(event.data.type).tr}",
+      "same": false
+    },
+    {
+      "index": 25,
+      "en": "{event.data.title}",
+      "tr": "{event.data.title}",
+      "same": true
+    },
+    {
+      "index": 26,
+      "en": "{event.data.title}",
+      "tr": "{event.data.titleTr}",
+      "same": false
+    },
+    {
+      "index": 27,
+      "en": "{displayNameEn}",
+      "tr": "{displayNameTr}",
+      "same": false
+    },
+    {
+      "index": 28,
+      "en": "{event.data.description}",
+      "tr": "{event.data.description}",
+      "same": true
+    },
+    {
+      "index": 29,
+      "en": "{partnerRoleLabels[p.role].en}",
+      "tr": "{partnerRoleLabels[p.role].tr}",
+      "same": false
+    },
+    {
+      "index": 30,
+      "en": "{event.data.location}{event.data.venue && <span class=\"text-[#6E6E6E]\"> · {event.data.venue}",
+      "tr": "{event.data.locationTr}{event.data.venue && <span class=\"text-[#6E6E6E]\"> · {event.data.venue}",
+      "same": false
+    },
+    {
+      "index": 31,
+      "en": "Share with others",
+      "tr": "Paylaş",
+      "same": false
+    },
+    {
+      "index": 32,
+      "en": "Read full recap",
+      "tr": "Etkinlik özetini oku",
+      "same": false
+    },
+    {
+      "index": 33,
+      "en": "Written recap not published yet.",
+      "tr": "Yazılı etkinlik özeti henüz yayımlanmadı.",
+      "same": false
+    },
+    {
+      "index": 34,
+      "en": "No past events to show yet.",
+      "tr": "Gösterilecek geçmiş etkinlik henüz yok.",
+      "same": false
+    },
+    {
+      "index": 35,
+      "en": "External Invitations",
+      "tr": "Dış davetler",
+      "same": false
+    },
+    {
+      "index": 36,
+      "en": "Talks and interviews our community members were invited to by external organizations — not hosted by Cursor Türkiye.",
+      "tr": "Topluluk üyelerimizin, Cursor Türkiye dışında kurumlar tarafından davet edildiği konuşma ve röportajlar.",
+      "same": false
+    },
+    {
+      "index": 37,
+      "en": "{typeLabelEn}",
+      "tr": "{typeLabelTr}",
+      "same": false
+    },
+    {
+      "index": 38,
+      "en": "{inviteDate.en}",
+      "tr": "{inviteDate.tr}",
+      "same": false
+    },
+    {
+      "index": 39,
+      "en": "{invite.talkTitle}",
+      "tr": "{invite.talkTitle}",
+      "same": true
+    },
+    {
+      "index": 40,
+      "en": "{inviteSpeakerEn}",
+      "tr": "{inviteSpeakerTr}",
+      "same": false
+    },
+    {
+      "index": 41,
+      "en": "{invite.type === \"interview\" ? \"interviewed by \" : \"invited by \"} <a href={inviteInviterHref(invite.invitedByUrl)} class=\"text-[#58a6ff] hover:text-[#79c0ff] transition-colors\" {...(isSameSiteInviteUrl(invite.invitedByUrl) ? {} : { target: \"_blank\", rel: \"noreferrer\" })} > {invite.invitedBy} </a>",
+      "tr": "{invite.type === \"interview\" ? \"Röportaj: \" : \"Davet eden: \"} <a href={inviteInviterHref(invite.invitedByUrl)} class=\"text-[#58a6ff] hover:text-[#79c0ff] transition-colors\" {...(isSameSiteInviteUrl(invite.invitedByUrl) ? {} : { target: \"_blank\", rel: \"noreferrer\" })} > {invite.invitedByTr} </a>",
+      "same": false
+    },
+    {
+      "index": 42,
+      "en": "Post",
+      "tr": "Paylaşım",
+      "same": false
+    },
+    {
+      "index": 43,
+      "en": "Recording",
+      "tr": "Kayıt",
+      "same": false
+    },
+    {
+      "index": 44,
+      "en": "{inviteSlides.length > 1 ? `Slide ${i + 1}` : \"Slides\"}",
+      "tr": "{inviteSlides.length > 1 ? `Slayt ${i + 1}` : \"Slaytlar\"}",
+      "same": false
+    }
+  ],
+  "AboutPage.astro": [
+    {
+      "index": 1,
+      "en": "Our Chapters",
+      "tr": "Şubelerimiz",
+      "same": false
+    },
+    {
+      "index": 2,
+      "en": "Active Across Türkiye",
+      "tr": "Türkiye Genelinde Aktif",
+      "same": false
+    },
+    {
+      "index": 3,
+      "en": "Ankara Chapter",
+      "tr": "Ankara Şubesi",
+      "same": false
+    },
+    {
+      "index": 4,
+      "en": "The flagship chapter — home to one of the largest Cursor developer communities in Türkiye. Regular meetups, workshops, and build sprints covering AI-native development, MCP servers, prompt engineering, and more.",
+      "tr": "Amiral şubemiz — Türkiye’deki en geniş Cursor geliştirici topluluğunun buluşma noktası. AI-native geliştirme, MCP sunucuları, prompt mühendisliği ve daha fazlasına odaklanan düzenli buluşmalar, atölyeler ve build sprint’leri düzenliyoruz.",
+      "same": false
+    },
+    {
+      "index": 5,
+      "en": "{riyadhAmbassador.role}:",
+      "tr": "{riyadhAmbassador.roleTr || riyadhAmbassador.role}:",
+      "same": false
+    },
+    {
+      "index": 6,
+      "en": "{riyadhAmbassador.name}",
+      "tr": "{riyadhAmbassador.nameTr ?? riyadhAmbassador.name}",
+      "same": false
+    },
+    {
+      "index": 7,
+      "en": "To Be Announced",
+      "tr": "Yakında duyurulacak",
+      "same": false
+    },
+    {
+      "index": 8,
+      "en": "Completed",
+      "tr": "Tamamlanan",
+      "same": false
+    },
+    {
+      "index": 9,
+      "en": "Upcoming",
+      "tr": "Yaklaşan",
+      "same": false
+    },
+    {
+      "index": 10,
+      "en": "Next Event",
+      "tr": "Sıradaki etkinlik",
+      "same": false
+    },
+    {
+      "index": 11,
+      "en": "Chapter Partners",
+      "tr": "Şube partnerleri",
+      "same": false
+    },
+    {
+      "index": 12,
+      "en": "Izmir Chapter",
+      "tr": "İzmir Şubesi",
+      "same": false
+    },
+    {
+      "index": 13,
+      "en": "Our chapter on the Aegean coast — meetups and workshops for Cursor builders in Izmir and the western region, with the same focus on AI-native workflows, MCP, and shipping real projects.",
+      "tr": "Batı bölgesindeki üreticiler için İzmir merkezli şubemiz. AI-native iş akışları, MCP ve gerçek projeleri teslim etmeye odaklanan buluşma ve atölyeler düzenliyoruz.",
+      "same": false
+    },
+    {
+      "index": 14,
+      "en": "{jeddahAmbassador.role}:",
+      "tr": "{jeddahAmbassador.roleTr || jeddahAmbassador.role}:",
+      "same": false
+    },
+    {
+      "index": 15,
+      "en": "{jeddahAmbassador.name}",
+      "tr": "{jeddahAmbassador.nameTr ?? jeddahAmbassador.name}",
+      "same": false
+    },
+    {
+      "index": 16,
+      "en": "To Be Announced",
+      "tr": "Yakında duyurulacak",
+      "same": false
+    },
+    {
+      "index": 17,
+      "en": "Completed",
+      "tr": "Tamamlanan",
+      "same": false
+    },
+    {
+      "index": 18,
+      "en": "Upcoming",
+      "tr": "Yaklaşan",
+      "same": false
+    },
+    {
+      "index": 19,
+      "en": "Next Event",
+      "tr": "Sıradaki etkinlik",
+      "same": false
+    },
+    {
+      "index": 20,
+      "en": "Chapter Partners",
+      "tr": "Şube partnerleri",
+      "same": false
+    },
+    {
+      "index": 21,
+      "en": "Istanbul Chapter",
+      "tr": "İstanbul Şubesi",
+      "same": false
+    },
+    {
+      "index": 22,
+      "en": "Paused",
+      "tr": "Duraklatıldı",
+      "same": false
+    },
+    {
+      "index": 23,
+      "en": "Needs ambassador",
+      "tr": "Elçi aranıyor",
+      "same": false
+    },
+    {
+      "index": 24,
+      "en": "Chapter activity is on hold until a new ambassador steps in. We still want to reconnect builders across Istanbul and nearby regions around AI-powered development — when leadership is back, programming resumes.",
+      "tr": "Yeni bir elçi göreve başlayana kadar şube faaliyetleri duraklatıldı. İstanbul çevresindeki geliştiricileri AI destekli geliştirme etrafında yeniden buluşturmak istiyoruz; liderlik oluştuğunda program yeniden başlayacak.",
+      "same": false
+    },
+    {
+      "index": 25,
+      "en": "Former ambassador · Retired",
+      "tr": "Eski elçi · Ayrıldı",
+      "same": false
+    },
+    {
+      "index": 26,
+      "en": "{khobarAmbassador.name}",
+      "tr": "{khobarAmbassador.nameTr ?? khobarAmbassador.name}",
+      "same": false
+    },
+    {
+      "index": 27,
+      "en": "No former ambassador on record.",
+      "tr": "Kayıtlarda eski elçi bulunmuyor.",
+      "same": false
+    },
+    {
+      "index": 28,
+      "en": "Completed",
+      "tr": "Tamamlanan",
+      "same": false
+    },
+    {
+      "index": 29,
+      "en": "Upcoming",
+      "tr": "Yaklaşan",
+      "same": false
+    },
+    {
+      "index": 30,
+      "en": "Looking for",
+      "tr": "Aradığımız",
+      "same": false
+    },
+    {
+      "index": 31,
+      "en": "We need an ambassador to restart the <strong class=\"text-white/90 font-medium\">Istanbul chapter</strong> and grow meetups for builders in Istanbul and nearby regions.",
+      "tr": "<strong class=\"text-white/90 font-medium\">İstanbul şubesini</strong> yeniden başlatacak ve çevredeki geliştiriciler için buluşmaları büyütecek bir elçi arıyoruz.",
+      "same": false
+    },
+    {
+      "index": 32,
+      "en": "Ambassador program &amp; how to apply →",
+      "tr": "Elçilik programı ve başvuru →",
+      "same": false
+    },
+    {
+      "index": 33,
+      "en": "Next Event",
+      "tr": "Sıradaki etkinlik",
+      "same": false
+    },
+    {
+      "index": 34,
+      "en": "Chapter Partners",
+      "tr": "Şube partnerleri",
+      "same": false
+    },
+    {
+      "index": 35,
+      "en": "The People",
+      "tr": "İnsanlar",
+      "same": false
+    },
+    {
+      "index": 36,
+      "en": "Our Team",
+      "tr": "Ekibimiz",
+      "same": false
+    },
+    {
+      "index": 37,
+      "en": "Retired · {ambassador.city}",
+      "tr": "Ayrıldı · {ambassador.cityTr || ambassador.city}",
+      "same": false
+    },
+    {
+      "index": 38,
+      "en": "{ambassador.role} · {ambassador.city}",
+      "tr": "{(ambassador.roleTr || ambassador.role)} · {(ambassador.cityTr || ambassador.city)}",
+      "same": false
+    },
+    {
+      "index": 39,
+      "en": "{ambassador.name}",
+      "tr": "{ambassador.nameTr ?? ambassador.name}",
+      "same": false
+    },
+    {
+      "index": 40,
+      "en": "{ambassador.description}",
+      "tr": "{ambassador.descriptionTr ?? ambassador.description}",
+      "same": false
+    },
+    {
+      "index": 41,
+      "en": "Open Role · Istanbul",
+      "tr": "Açık Pozisyon · İstanbul",
+      "same": false
+    },
+    {
+      "index": 42,
+      "en": "Ambassador Wanted",
+      "tr": "Elçi Aranıyor",
+      "same": false
+    },
+    {
+      "index": 43,
+      "en": "Lead meetups for builders in Istanbul and nearby regions.",
+      "tr": "İstanbul çevresindeki üreticiler için buluşmaları yönetecek bir elçi arıyoruz.",
+      "same": false
+    },
+    {
+      "index": 44,
+      "en": "Apply →",
+      "tr": "Başvur →",
+      "same": false
+    },
+    {
+      "index": 45,
+      "en": "Interested in leading a chapter or representing Cursor at your university?",
+      "tr": "Bir şubeyi yönetmek veya üniversitende Cursor’ı temsil etmek ister misin?",
+      "same": false
+    },
+    {
+      "index": 46,
+      "en": "Become an Ambassador →",
+      "tr": "Elçi Ol →",
+      "same": false
+    },
+    {
+      "index": 47,
+      "en": "Cursor on Campus ↗",
+      "tr": "Kampüste Cursor ↗",
+      "same": false
+    },
+    {
+      "index": 48,
+      "en": "Questions? Email{\" \"} <a href={`mailto:${config.social.email}`} class=\"text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2\">{config.social.email}</a> {\" \"}or contact us on{\" \"} <a href={config.social.twitter} target=\"_blank\" rel=\"noreferrer\" class=\"text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2\">X (@{config.social.twitterHandle})</a>.",
+      "tr": "Soruların mı var?{\" \"} <a href={`mailto:${config.social.email}`} class=\"text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2\">{config.social.email}</a> {\" \"}adresine e-posta gönderebilir veya{\" \"} <a href={config.social.twitter} target=\"_blank\" rel=\"noreferrer\" class=\"text-[#58a6ff] hover:text-[#79c0ff] underline underline-offset-2\">X üzerinden (@{config.social.twitterHandle})</a>{\" \"} bize ulaşabilirsin.",
+      "same": false
+    }
+  ],
+  "PartnershipsPage.astro": [
+    {
+      "index": 1,
+      "en": "Organizations &amp; builders",
+      "tr": "Kurumlar ve üreticiler",
+      "same": false
+    },
+    {
+      "index": 2,
+      "en": "Work with us",
+      "tr": "Bizimle çalışın",
+      "same": false
+    },
+    {
+      "index": 3,
+      "en": "Whether you are a company, venue, community, or individual contributor, this page explains how to support Cursor Türkiye and collaborate with us.",
+      "tr": "Şirket, etkinlik mekanı, topluluk ya da bireysel üretici olmanız fark etmez; bu sayfada Cursor Türkiye ile nasıl işbirliği yapabileceğinizi bulabilirsiniz.",
+      "same": false
+    },
+    {
+      "index": 4,
+      "en": "Support the community",
+      "tr": "Topluluğu destekleyin",
+      "same": false
+    },
+    {
+      "index": 5,
+      "en": "Help us run meetups, workshops, and hackathons across Türkiye.",
+      "tr": "Türkiye genelinde buluşmalar, atölyeler ve hackathonlar düzenlememize destek olun.",
+      "same": false
+    },
+    {
+      "index": 6,
+      "en": "Community partners",
+      "tr": "Topluluk iş ortakları",
+      "same": false
+    },
+    {
+      "index": 7,
+      "en": "Support with operations, promotion, volunteer coordination, and outreach.",
+      "tr": "Operasyon, tanıtım, gönüllü koordinasyonu ve erişim süreçlerinde destek sağlayın.",
+      "same": false
+    },
+    {
+      "index": 8,
+      "en": "Venue hosts",
+      "tr": "Mekan ev sahipleri",
+      "same": false
+    },
+    {
+      "index": 9,
+      "en": "Provide venue capacity, Wi‑Fi, and basic AV setup for community events.",
+      "tr": "Topluluk etkinlikleri için mekan, internet ve temel AV altyapısı sağlayın.",
+      "same": false
+    },
+    {
+      "index": 10,
+      "en": "Sponsors",
+      "tr": "Sponsorlar",
+      "same": false
+    },
+    {
+      "index": 11,
+      "en": "Help cover event costs such as logistics, food, and production.",
+      "tr": "Lojistik, ikram ve üretim gibi etkinlik maliyetlerine katkı sağlayın.",
+      "same": false
+    },
+    {
+      "index": 12,
+      "en": "Be part of the community",
+      "tr": "Topluluğun parçası olun",
+      "same": false
+    },
+    {
+      "index": 13,
+      "en": "Share your ideas, sessions, and practical experiences with local builders.",
+      "tr": "Fikirlerinizi, oturum önerilerinizi ve pratik deneyimlerinizi toplulukla paylaşın.",
+      "same": false
+    },
+    {
+      "index": 14,
+      "en": "Speaker requests",
+      "tr": "Konuşmacı başvuruları",
+      "same": false
+    },
+    {
+      "index": 15,
+      "en": "Propose a talk, workshop, or panel topic. We prioritize practical, inclusive, and production-focused sessions.",
+      "tr": "Konuşma, atölye veya panel önerisi gönderebilirsiniz. Pratik, kapsayıcı ve üretime dönük içerikleri önceliklendiriyoruz.",
+      "same": false
+    },
+    {
+      "index": 16,
+      "en": "Email your proposal →",
+      "tr": "Önerini e-posta ile gönderin →",
+      "same": false
+    },
+    {
+      "index": 17,
+      "en": "We offer",
+      "tr": "Sunduğumuz hizmetler",
+      "same": false
+    },
+    {
+      "index": 18,
+      "en": "In-person training",
+      "tr": "Yüz yüze eğitim",
+      "same": false
+    },
+    {
+      "index": 19,
+      "en": "We provide corporate and team training on AI-native software development with Cursor.",
+      "tr": "Cursor ile AI-native yazılım geliştirme konusunda kurumlara ve ekiplere yüz yüze eğitim veriyoruz.",
+      "same": false
+    },
+    {
+      "index": 20,
+      "en": "Start by email →",
+      "tr": "E-posta ile başlat →",
+      "same": false
+    },
+    {
+      "index": 21,
+      "en": "Media &amp; interviews",
+      "tr": "Medya ve röportajlar",
+      "same": false
+    },
+    {
+      "index": 22,
+      "en": "Invite us to your podcast, panel, stream, or publication and share your audience/context.",
+      "tr": "Podcast, panel, yayın veya medya içeriğinize davet etmek için format ve hedef kitlenizi paylaşın.",
+      "same": false
+    },
+    {
+      "index": 23,
+      "en": "Invite us →",
+      "tr": "Bizi davet et →",
+      "same": false
+    },
+    {
+      "index": 24,
+      "en": "Email {email}",
+      "tr": "E-posta gönder: {email}",
+      "same": false
+    },
+    {
+      "index": 25,
+      "en": "← About the community",
+      "tr": "← Topluluk hakkında",
+      "same": false
+    }
+  ]
+}

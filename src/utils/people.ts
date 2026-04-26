@@ -18,10 +18,10 @@ export type EventEntry = CollectionEntry<"events">;
 export interface ConfigSpeaker {
   slug: string;
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   initials: string;
   bio?: string;
-  bioAr?: string;
+  bioTr?: string;
   photo?: string;
   twitter?: string;
   twitterHandle?: string;
@@ -36,10 +36,10 @@ export interface ConfigSpeaker {
 export interface Speaker {
   slug: string;
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   initials: string;
   bio?: string;
-  bioAr?: string;
+  bioTr?: string;
   photo?: string;
   twitter?: string;
   twitterHandle?: string;
@@ -55,15 +55,15 @@ export interface Speaker {
 
 export interface PartnerParentCompany {
   name: string;
-  nameAr: string;
+  nameTr: string;
   url: string;
 }
 
 export interface PartnerContributor {
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   role: string;
-  roleAr?: string;
+  roleTr?: string;
   twitter?: string;
   twitterHandle?: string;
   linkedin?: string;
@@ -76,12 +76,12 @@ export interface PartnerContributor {
 export interface PartnerWithEvents {
   slug: string;
   name: string;
-  nameAr: string;
+  nameTr: string;
   role: "official" | "community-partner" | "venue-host" | "past-community-partner";
   logo: string;
   url: string;
   description: string;
-  descriptionAr: string;
+  descriptionTr: string;
   cities: readonly string[];
   events: EventEntry[];
   /** When set, Thank You / partner page skip event counts and listings (e.g. official product backer). */
@@ -96,11 +96,11 @@ export interface PartnerWithEvents {
 
 export interface Supporter {
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   role: string;
-  roleAr?: string;
+  roleTr?: string;
   contribution: string;
-  contributionAr?: string;
+  contributionTr?: string;
   twitter?: string;
   twitterHandle?: string;
   linkedin?: string;
@@ -146,10 +146,10 @@ function buildSpeakerNameIndex(): Map<string, ConfigSpeaker> {
 
 interface ConfigAmbassador {
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   photo?: string;
   description?: string;
-  descriptionAr?: string;
+  descriptionTr?: string;
   email?: string;
   twitter?: string;
   twitterHandle?: string;
@@ -170,10 +170,10 @@ const ambassadorByName = new Map(
  * `config.speakers` (the speaker config wins).
  */
 function applyAmbassadorEnrichment(speaker: Speaker, amb: ConfigAmbassador) {
-  speaker.nameAr ??= amb.nameAr;
+  speaker.nameTr ??= amb.nameTr;
   speaker.photo ??= amb.photo;
   speaker.bio ??= amb.description;
-  speaker.bioAr ??= amb.descriptionAr;
+  speaker.bioTr ??= amb.descriptionTr;
   speaker.twitter ??= amb.twitter;
   speaker.twitterHandle ??= amb.twitterHandle;
   speaker.linkedin ??= amb.linkedin;
@@ -197,10 +197,10 @@ export async function getAllSpeakers(): Promise<Speaker[]> {
     const entry: Speaker = {
       slug: s.slug,
       name: s.name,
-      nameAr: s.nameAr,
+      nameTr: s.nameTr,
       initials: s.initials || getInitials(s.name),
       bio: s.bio,
-      bioAr: s.bioAr,
+      bioTr: s.bioTr,
       photo: s.photo,
       twitter: s.twitter,
       twitterHandle: s.twitterHandle,
@@ -251,7 +251,7 @@ export async function getAllSpeakers(): Promise<Speaker[]> {
 export interface SpeakerLookupEntry {
   slug: string;
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   initials: string;
   photo?: string;
   affiliationPartnerSlug?: string;
@@ -267,7 +267,7 @@ export function getSpeakerNameMap(): Map<string, SpeakerLookupEntry> {
     const entry: SpeakerLookupEntry = {
       slug: s.slug,
       name: s.name,
-      nameAr: s.nameAr,
+      nameTr: s.nameTr,
       initials: s.initials || getInitials(s.name),
       photo: s.photo && publicAssetExists(s.photo) ? s.photo : undefined,
       affiliationPartnerSlug: s.affiliationPartnerSlug,
@@ -283,7 +283,7 @@ export function getSpeakerNameMap(): Map<string, SpeakerLookupEntry> {
     map.set(key, {
       slug: slugify(a.name),
       name: a.name,
-      nameAr: a.nameAr,
+      nameTr: a.nameTr,
       initials: getInitials(a.name),
       photo: a.photo && publicAssetExists(a.photo) ? a.photo : undefined,
     });
@@ -308,9 +308,9 @@ export async function getNonAmbassadorSpeakers(): Promise<Speaker[]> {
 
 interface ConfigPartnerContributor {
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   role: string;
-  roleAr?: string;
+  roleTr?: string;
   twitter?: string;
   twitterHandle?: string;
   linkedin?: string;
@@ -321,12 +321,12 @@ interface ConfigPartnerContributor {
 const partnerCfg = config.partners as readonly {
   slug: string;
   name: string;
-  nameAr: string;
+  nameTr: string;
   role: "official" | "community-partner" | "venue-host" | "past-community-partner";
   logo: string;
   url: string;
   description: string;
-  descriptionAr: string;
+  descriptionTr: string;
   cities: readonly string[];
   eventVenues: readonly string[];
   events: readonly string[];
@@ -359,9 +359,9 @@ async function resolvePartnerEvents(
 function speakerToContributor(s: ConfigSpeaker): PartnerContributor {
   return {
     name: s.name,
-    nameAr: s.nameAr,
+    nameTr: s.nameTr,
     role: "Engineer",
-    roleAr: "Türkçe",
+    roleTr: "Türkçe",
     twitter: s.twitter,
     twitterHandle: s.twitterHandle,
     linkedin: s.linkedin,
@@ -374,9 +374,9 @@ function speakerToContributor(s: ConfigSpeaker): PartnerContributor {
 function supporterToContributor(s: ConfigSupporter): PartnerContributor {
   return {
     name: s.name,
-    nameAr: s.nameAr,
+    nameTr: s.nameTr,
     role: s.role,
-    roleAr: s.roleAr,
+    roleTr: s.roleTr,
     twitter: s.twitter,
     twitterHandle: s.twitterHandle,
     linkedin: s.linkedin,
@@ -413,12 +413,12 @@ export async function getAllPartnersWithEvents(): Promise<PartnerWithEvents[]> {
     out.push({
       slug: p.slug,
       name: p.name,
-      nameAr: p.nameAr,
+      nameTr: p.nameTr,
       role: p.role,
       logo: p.logo,
       url: p.url,
       description: p.description,
-      descriptionAr: p.descriptionAr,
+      descriptionTr: p.descriptionTr,
       cities: p.cities,
       events: await resolvePartnerEvents(p),
       omitEventStats: p.omitEventStats,
@@ -432,11 +432,11 @@ export async function getAllPartnersWithEvents(): Promise<PartnerWithEvents[]> {
 
 interface ConfigSupporter {
   name: string;
-  nameAr?: string;
+  nameTr?: string;
   role: string;
-  roleAr?: string;
+  roleTr?: string;
   contribution: string;
-  contributionAr?: string;
+  contributionTr?: string;
   twitter?: string;
   twitterHandle?: string;
   linkedin?: string;
@@ -462,21 +462,21 @@ export function getAllSupporters(): Supporter[] {
 
 export type PartnerRole = "official" | "community-partner" | "venue-host" | "past-community-partner";
 
-export const partnerRoleLabels: Record<PartnerRole, { en: string; ar: string }> = {
-  "official": { en: "Official Partner", ar: "Resmi Is Ortagi" },
-  "community-partner": { en: "Community Partner", ar: "Topluluk Ortagi" },
-  "venue-host": { en: "Venue Host", ar: "Mekan Ev Sahibi" },
-  "past-community-partner": { en: "Community Partner", ar: "Topluluk Ortagi" },
+export const partnerRoleLabels: Record<PartnerRole, { en: string; tr: string }> = {
+  "official": { en: "Official Partner", tr: "Resmi Is Ortagi" },
+  "community-partner": { en: "Community Partner", tr: "Topluluk Ortagi" },
+  "venue-host": { en: "Venue Host", tr: "Mekan Ev Sahibi" },
+  "past-community-partner": { en: "Community Partner", tr: "Topluluk Ortagi" },
 };
 
-export type EventPartnerEntry = { logo: string; slug: string; name: string; nameAr: string; role: PartnerRole };
+export type EventPartnerEntry = { logo: string; slug: string; name: string; nameTr: string; role: PartnerRole };
 
 /** Map venue names (from event frontmatter) to the hosting partner's logo and profile link. */
 export function getVenueLogoMap(): Map<string, EventPartnerEntry> {
   const map = new Map<string, EventPartnerEntry>();
   for (const p of partnerCfg) {
     for (const venue of p.eventVenues) {
-      map.set(venue, { logo: p.logo, slug: p.slug, name: p.name, nameAr: p.nameAr, role: p.role as PartnerRole });
+      map.set(venue, { logo: p.logo, slug: p.slug, name: p.name, nameTr: p.nameTr, role: p.role as PartnerRole });
     }
   }
   return map;
@@ -492,7 +492,7 @@ export function getEventPartnersMap(): Map<string, EventPartnerEntry[]> {
 
   for (const p of partnerCfg) {
     if (p.role === "official") continue;
-    const entry: EventPartnerEntry = { logo: p.logo, slug: p.slug, name: p.name, nameAr: p.nameAr, role: p.role as PartnerRole };
+    const entry: EventPartnerEntry = { logo: p.logo, slug: p.slug, name: p.name, nameTr: p.nameTr, role: p.role as PartnerRole };
 
     for (const venue of p.eventVenues) {
       venueToPartner.set(venue, entry);
@@ -540,7 +540,7 @@ export function getEventPartners(
 
 /** Resolve logo + partner page link for a `config.partners` slug (e.g. speaker employer badge). */
 export function getAffiliationPartnerDisplay(partnerSlug: string):
-  | { logo: string; href: string; name: string; nameAr: string }
+  | { logo: string; href: string; name: string; nameTr: string }
   | undefined {
   const p = config.partners.find((x) => x.slug === partnerSlug);
   if (!p) return undefined;
@@ -548,7 +548,7 @@ export function getAffiliationPartnerDisplay(partnerSlug: string):
     logo: p.logo,
     href: `/partners/${p.slug}/`,
     name: p.name,
-    nameAr: p.nameAr,
+    nameTr: p.nameTr,
   };
 }
 
