@@ -1,0 +1,147 @@
+{
+  "$ref": "#/definitions/events",
+  "definitions": {
+    "events": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "titleTr": {
+          "type": "string"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "location": {
+          "type": "string"
+        },
+        "locationTr": {
+          "type": "string"
+        },
+        "lumaUrl": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "descriptionTr": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "meetup",
+            "hackathon",
+            "workshop",
+            "build",
+            "talk",
+            "interview"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "backlog",
+            "informed",
+            "venue-pending",
+            "register-open",
+            "register-closed",
+            "concluded",
+            "canceled"
+          ]
+        },
+        "speakers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "slides": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "venue": {
+          "type": "string"
+        },
+        "photos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "videos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "coverPhoto": {
+          "type": "string"
+        },
+        "photographers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "communityPosts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "author": {
+                "type": "string"
+              },
+              "authorTr": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "labelTr": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "url",
+              "author"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "date",
+        "location",
+        "description",
+        "type",
+        "status"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
