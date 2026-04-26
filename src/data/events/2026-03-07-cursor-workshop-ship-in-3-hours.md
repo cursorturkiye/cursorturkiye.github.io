@@ -1,16 +1,16 @@
 ﻿---
 title: "Ship in 3 Hours with Cursor: From Idea to Working Demo"
-titleAr: "Ship in 3 Hours with Cursor: From Idea to Working Demo"
+titleTr: "Ship in 3 Hours with Cursor: From Idea to Working Demo"
 date: 2026-03-07
 location: Ankara
-locationAr: Ankara
+locationTr: Ankara
 description: "A 3-hour interactive workshop where participants ship real software using Cursor. Features a shipping loop demo, Choose-Your-Path Build Lab with missions, and Cursor CLI agent exploration."
-descriptionAr: "A 3-hour interactive workshop where participants ship real software using Cursor. Features a shipping loop demo, Choose-Your-Path Build Lab with missions, and Cursor CLI agent exploration."
+descriptionTr: "A 3-hour interactive workshop where participants ship real software using Cursor. Features a shipping loop demo, Choose-Your-Path Build Lab with missions, and Cursor CLI agent exploration."
 type: build
 status: concluded
 venue: Leqaa hall
 speakers: 
-  - Mazen Alotaibi
+  - Emre Özcan
   - Nick Miller
   - Abdullah Mosaibah
 lumaUrl: "https://lu.ma/cwbemd5n"
@@ -19,9 +19,9 @@ slides:
 communityPosts:
   - url: "https://x.com/Al_Mushdaq/status/2030625772734439789"
     author: "Al Mushdaq"
-    authorAr: "Türkçe"
+    authorTr: "Türkçe"
     label: "Vlog"
-    labelAr: "Türkçe"
+    labelTr: "Türkçe"
 photos:
   - "/images/events/2026-03-07-cursor-workshop-ship-in-3-hours/HDc4OQRXQAABlmU.jpg"
   - "/images/events/2026-03-07-cursor-workshop-ship-in-3-hours/HDc4Ms7WAAA-77I.jpg"
@@ -47,7 +47,7 @@ A 3-hour interactive workshop where participants built and deployed real softwar
 - **Venue**: Leqaa Hall, Ankara
 - **Co-organizer**: DAL | Türkçe
 - **Duration**: 11:00 PM – 2:00 AM (3 hours)
-- **Speakers**: 3 ([Mazen Alotaibi](https://x.com/ma7dev), [Nick Miller](https://x.com/nickwm), [Abdullah Moasibah](https://www.linkedin.com/in/abdullah-mosaibah-67814312b/))
+- **Speakers**: 3 ([Emre Özcan](https://x.com/buildermare), [Nick Miller](https://x.com/nickwm), [Abdullah Moasibah](https://www.linkedin.com/in/abdullah-mosaibah-67814312b/))
 - **Structure**: Introduction → Guest speaker (Nick Miller) → Tricks & Tips → Build Time (1 hour)
 - **Audience**: 70 in-person + 10 online (out of 110 accepted, 320+ registrations)
 

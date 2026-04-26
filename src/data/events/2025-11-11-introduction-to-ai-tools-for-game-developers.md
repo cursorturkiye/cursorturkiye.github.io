@@ -1,16 +1,16 @@
 ﻿---
 title: Introduction to AI Tools for Game Developers
-titleAr: Introduction to AI Tools for Game Developers
+titleTr: Introduction to AI Tools for Game Developers
 date: 2025-11-11
 location: Ankara
-locationAr: Ankara
+locationTr: Ankara
 description: "Introduction to Cursor at the AI Game Hackathon 2025, covering AI tools for game development workflows."
-descriptionAr: "Introduction to Cursor at the AI Game Hackathon 2025, covering AI tools for game development workflows."
+descriptionTr: "Introduction to Cursor at the AI Game Hackathon 2025, covering AI tools for game development workflows."
 type: talk
 status: concluded
 venue: Virtual
 speakers: 
-  - Mazen Alotaibi
+  - Emre Özcan
 slides: 
   - "https://github.com/cursorturkiye/events-slides/blob/main/2025-11-riyadh-ai-game.pdf"
 ---

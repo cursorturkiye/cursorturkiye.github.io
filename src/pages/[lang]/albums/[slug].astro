@@ -33,36 +33,36 @@ const shareText = `${event.data.title} — Cursor Türkiye`;
 const xShareUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`;
 const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
 
-type PersonLookup = { nameAr: string; href: string | null };
-type PhotoCreditRow = { nameEn: string; nameAr: string; href: string | null };
+type PersonLookup = { nameTr: string; href: string | null };
+type PhotoCreditRow = { nameEn: string; nameTr: string; href: string | null };
 const personLookup = new Map<string, PersonLookup>();
 
-type SpeakerLookupSource = { name: string; nameAr?: string; slug: string; aliases?: readonly string[] };
+type SpeakerLookupSource = { name: string; nameTr?: string; slug: string; aliases?: readonly string[] };
 for (const speaker of config.speakers as unknown as readonly SpeakerLookupSource[]) {
-  const entry: PersonLookup = { nameAr: speaker.nameAr, href: `/speakers/${speaker.slug}` };
+  const entry: PersonLookup = { nameTr: speaker.nameTr ?? speaker.name, href: `/speakers/${speaker.slug}` };
   personLookup.set(speaker.name, entry);
   for (const alias of speaker.aliases ?? []) personLookup.set(alias, entry);
 }
 
-type PartnerContributorSource = { name: string; nameAr?: string };
+type PartnerContributorSource = { name: string; nameTr?: string };
 for (const partner of config.partners) {
   const contributors = "contributors" in partner ? (partner.contributors as readonly PartnerContributorSource[] | undefined) : undefined;
   for (const c of contributors ?? []) {
     if (personLookup.has(c.name)) continue;
-    personLookup.set(c.name, { nameAr: c.nameAr, href: `/partners/${partner.slug}` });
+    personLookup.set(c.name, { nameTr: c.nameTr ?? c.name, href: `/partners/${partner.slug}` });
   }
 }
 
 function resolvePerson(name: string): PersonLookup {
-  return personLookup.get(name) ?? { nameAr: name, href: null };
+  return personLookup.get(name) ?? { nameTr: name, href: null };
 }
 
 function formatDate(date: Date) {
   return date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 }
 
-function formatDateAr(date: Date) {
-  return date.toLocaleDateString("ar-SA", { year: "numeric", month: "short", day: "numeric" });
+function formatDateTr(date: Date) {
+  return date.toLocaleDateString("tr-TR", { year: "numeric", month: "short", day: "numeric" });
 }
 
 function getAllMedia(ev: { data: { photos?: string[]; videos?: string[] } }) {
@@ -75,7 +75,7 @@ function joinerEn(idx: number, total: number) {
   return ", ";
 }
 
-function joinerAr(idx: number, total: number) {
+function joinerTr(idx: number, total: number) {
   if (idx === 0) return "";
   if (idx === total - 1) return " Türkçe";
   return "Türkçe ";
@@ -169,11 +169,11 @@ const photographers: PhotoCreditRow[] = (event.data.photographers ?? []).map((na
               Türkçe:{" "}
               {photographers.map((p: PhotoCreditRow, i: number) => (
                 <>
-                  {joinerAr(i, photographers.length)}
+                  {joinerTr(i, photographers.length)}
                   {p.href ? (
-                    <a href={localizedPath(pagePath, p.href)} class="text-[#58a6ff] hover:text-[#79c0ff] transition-colors">{p.nameAr}</a>
+                    <a href={localizedPath(pagePath, p.href)} class="text-[#58a6ff] hover:text-[#79c0ff] transition-colors">{p.nameTr}</a>
                   ) : (
-                    <span>{p.nameAr}</span>
+                    <span>{p.nameTr}</span>
                   )}
                 </>
               ))}

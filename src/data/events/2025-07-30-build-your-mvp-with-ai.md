@@ -1,27 +1,27 @@
 ﻿---
 title: "Build your MVP with AI!"
-titleAr: "Build your MVP with AI!"
+titleTr: "Build your MVP with AI!"
 date: 2025-07-30
 location: Ankara
-locationAr: Ankara
+locationTr: Ankara
 description: "A hands-on BUILD session for devs and non-devs. Bring your laptop, choose a problem, and ship a working MVP in under 3 hours using AI tools like Cursor and Replit."
-descriptionAr: "A hands-on BUILD session for devs and non-devs. Bring your laptop, choose a problem, and ship a working MVP in under 3 hours using AI tools like Cursor and Replit."
+descriptionTr: "A hands-on BUILD session for devs and non-devs. Bring your laptop, choose a problem, and ship a working MVP in under 3 hours using AI tools like Cursor and Replit."
 type: build
 status: concluded
 venue: CODE
 speakers: 
   - Faris Hijazi
-  - Mazen Alotaibi
+  - Emre Özcan
 lumaUrl: "https://lu.ma/4w52ko64"
 slides: 
   - "https://github.com/cursorturkiye/events-slides/blob/main/2025-07-riyadh-workshop.pdf"
 communityPosts:
   - url: "https://x.com/Al_Mushdaq/status/1950639301680886220"
     author: "Al Mushdaq"
-    authorAr: "Türkçe"
+    authorTr: "Türkçe"
   - url: "https://x.com/theeFaris/status/1950805628332499182"
     author: "Faris Hijazi"
-    authorAr: "Türkçe Türkçe"
+    authorTr: "Türkçe Türkçe"
 photos:
   - GxIyD30WUAAGUyP.jpg
   - GxIyNxRXgAQ5vLB.jpg

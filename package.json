@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "cursorturkiye-com",
   "version": "0.1.0",
   "private": true,
@@ -15,8 +15,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.0.0",
-"tailwindcss": "^4.0.0",
+    "tailwindcss": "^4.0.0",
     "typescript": "^5.8.0"
   }
 }
-

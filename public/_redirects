@@ -1,13 +1,12 @@
-﻿# Legacy unprefixed URLs → Arabic (default locale)
-/   /tr/   302
-/events   /tr/events   302
-/about   /tr/about   302
-/albums   /tr/albums   302
-/ambassadors   /tr/ambassadors   302
-/partnerships   /tr/partnerships   302
-/thankyou   /tr/thankyou   302
-/blog/*   /tr/blog/:splat   302
-/albums/*   /tr/albums/:splat   302
-/speakers/*   /tr/speakers/:splat   302
-/partners/*   /tr/partners/:splat   302
+﻿/ /tr/ 302
+/events /tr/events 302
+/about /tr/about 302
+/albums /tr/albums 302
+/ambassadors /tr/ambassadors 302
+/partnerships /tr/partnerships 302
+/thankyou /tr/thankyou 302
+/blog/* /tr/blog/:splat 302
+/albums/* /tr/albums/:splat 302
+/speakers/* /tr/speakers/:splat 302
+/partners/* /tr/partners/:splat 302
 
