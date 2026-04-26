@@ -250,37 +250,26 @@ function formatShortDate(date: Date) {
           )}
         </div>
 
-        <!-- Istanbul Chapter (side column — red “stopped”, recruiting) -->
-        <div id="khobar-chapter" class="bg-[#171717] border border-red-500/20 rounded-2xl p-8 h-full flex flex-col">
-          <div class="flex items-center justify-between gap-3 mb-6">
-            <div class="flex items-center gap-3 min-w-0">
-              <span class="w-2.5 h-2.5 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.9)] animate-pulse"></span>
-              <h3 class="text-xl font-semibold text-white min-w-0"><span class="lang-en">Istanbul Chapter</span>
+        <!-- Istanbul Chapter -->
+        <div id="khobar-chapter" class="bg-[#171717] border border-[#252525] rounded-2xl p-8 h-full flex flex-col">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
+              <h3 class="text-xl font-semibold text-white"><span class="lang-en">Istanbul Chapter</span>
       <span class="lang-tr">İstanbul Şubesi</span></h3>
             </div>
-            <div class="flex flex-col items-end gap-1 shrink-0 text-end">
-              <span class="text-[10px] font-mono text-red-300 border border-red-500/35 bg-red-500/10 rounded px-2 py-0.5 leading-tight">
-                <span class="lang-en">Paused</span>
-      <span class="lang-tr">Duraklatıldı</span>
-              </span>
-              <span class="text-[10px] font-mono text-red-400/90 leading-tight">
-                <span class="lang-en">Needs ambassador</span>
-      <span class="lang-tr">Elçi aranıyor</span>
-              </span>
-            </div>
+            <span class="text-xs font-mono text-[#999999] border border-[#252525] rounded px-2 py-1">EST. 2025</span>
           </div>
-          <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Chapter activity is on hold until a new ambassador steps in. We still want to reconnect builders across Istanbul and nearby regions around AI-powered development — when leadership is back, programming resumes.</span>
-      <span class="lang-tr">Yeni bir elçi göreve başlayana kadar şube faaliyetleri duraklatıldı. İstanbul çevresindeki geliştiricileri AI destekli geliştirme etrafında yeniden buluşturmak istiyoruz; liderlik oluştuğunda program yeniden başlayacak.</span></p>
-          <div class="space-y-4 mb-4 text-xs text-[#999999]">
-            <div>
-              <div class="text-[10px] uppercase tracking-widest text-amber-500/90 font-medium mb-1">
-                <span class="lang-en">Former ambassador · Retired</span>
-      <span class="lang-tr">Eski elçi · Ayrıldı</span>
-              </div>
-              {khobarAmbassador ? (
-                <div class="flex flex-wrap items-center gap-2 text-[#999999]">
-                  <span class="lang-en line-through decoration-white/25 text-white/70 font-medium">{khobarAmbassador.name}</span>
-                  <span class="lang-tr line-through decoration-white/25 text-white/70 font-medium">{khobarAmbassador.nameTr ?? khobarAmbassador.name}</span>
+          <p class="text-sm text-[#999999] mb-4"><span class="lang-en">Our Istanbul chapter runs meetups and workshops for builders in Istanbul and nearby regions, with a focus on AI-native workflows, MCP, and shipping real projects.</span>
+      <span class="lang-tr">İstanbul şubemiz, İstanbul ve çevresindeki üreticiler için AI-native iş akışları, MCP ve gerçek projeleri teslim etmeye odaklanan buluşma ve atölyeler düzenliyor.</span></p>
+          <div class="flex items-center gap-2 text-xs text-[#999999] mb-4">
+            {khobarAmbassador ? (
+              <>
+                <span class="lang-en">{khobarAmbassador.role}:</span>
+                <span class="lang-tr">{khobarAmbassador.roleTr || khobarAmbassador.role}:</span>
+                <div class="flex items-center gap-2">
+                  <span class="lang-en text-white font-medium">{khobarAmbassador.name}</span>
+                  <span class="lang-tr text-white font-medium">{khobarAmbassador.nameTr ?? khobarAmbassador.name}</span>
                   {khobarAmbassador.twitter && (
                     <a href={khobarAmbassador.twitter} target="_blank" rel="noreferrer" class="text-[#6E6E6E] hover:text-white transition-colors" title="X / Twitter">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -292,38 +281,19 @@ function formatShortDate(date: Date) {
                     </a>
                   )}
                 </div>
-              ) : (
-                <p class="text-sm text-[#6E6E6E]">
-                  <span class="lang-en">No former ambassador on record.</span>
-      <span class="lang-tr">Kayıtlarda eski elçi bulunmuyor.</span>
-                </p>
-              )}
-            </div>
-            <div class="border-t border-[#252525] pt-4 flex gap-4">
-              <div><div class="text-xl font-bold text-white">{khobarPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span>
+              </>
+            ) : (
+              <span class="text-white font-medium">
+                <span class="lang-en">To Be Announced</span>
+      <span class="lang-tr">Yakında duyurulacak</span>
+              </span>
+            )}
+          </div>
+          <div class="flex gap-4 mb-6">
+            <div><div class="text-xl font-bold text-white">{khobarPast}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Completed</span>
       <span class="lang-tr">Tamamlanan</span></div></div>
-              <div><div class="text-xl font-bold text-white">{khobarUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span>
+            <div><div class="text-xl font-bold text-white">{khobarUpcoming}</div><div class="text-[10px] text-[#999999] uppercase tracking-wider"><span class="lang-en">Upcoming</span>
       <span class="lang-tr">Yaklaşan</span></div></div>
-            </div>
-            <div class="border-t border-red-500/15 pt-3">
-              <div class="text-[10px] uppercase tracking-widest text-red-400/95 font-medium mb-2">
-                <span class="lang-en">Looking for</span>
-      <span class="lang-tr">Aradığımız</span>
-              </div>
-              <p class="text-sm text-[#b0b0b0] leading-relaxed">
-                <span class="lang-en">
-                  We need an ambassador to restart the <strong class="text-white/90 font-medium">Istanbul chapter</strong> and grow
-                  meetups for builders in Istanbul and nearby regions.
-                </span>
-                <span class="lang-tr">
-                  <strong class="text-white/90 font-medium">İstanbul şubesini</strong> yeniden başlatacak ve çevredeki geliştiriciler için buluşmaları büyütecek bir elçi arıyoruz.
-                </span>
-              </p>
-              <a href={localizedPath(pagePath, "/ambassadors/")} class="mt-3 text-xs font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
-                <span class="lang-en">Ambassador program &amp; how to apply →</span>
-      <span class="lang-tr">Elçilik programı ve başvuru →</span>
-              </a>
-            </div>
           </div>
           {nextIstanbul && (
             <div class="border-t border-[#252525] pt-4">
@@ -465,34 +435,6 @@ function formatShortDate(date: Date) {
           </div>
         ))}
 
-        <!-- Open Role: Istanbul -->
-        <div class="bg-[#171717] border border-dashed border-cyan-500/25 rounded-2xl overflow-hidden flex flex-col">
-          <div class="flex justify-center pt-8 pb-4">
-            <div class="w-24 h-24 rounded-full bg-[#252525] border-2 border-dashed border-cyan-500/25 flex items-center justify-center">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-cyan-500/50"><path d="M12 5v14M5 12h14"/></svg>
-            </div>
-          </div>
-          <div class="px-6 pb-6 text-center flex flex-col flex-grow">
-            <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-500/90 mb-2">
-              <span class="lang-en">Open Role · Istanbul</span>
-      <span class="lang-tr">Açık Pozisyon · İstanbul</span>
-            </div>
-            <h3 class="text-lg font-semibold text-white mb-2">
-              <span class="lang-en">Ambassador Wanted</span>
-      <span class="lang-tr">Elçi Aranıyor</span>
-            </h3>
-            <p class="text-sm text-[#999999] leading-relaxed mb-4">
-              <span class="lang-en">Lead meetups for builders in Istanbul and nearby regions.</span>
-      <span class="lang-tr">İstanbul çevresindeki üreticiler için buluşmaları yönetecek bir elçi arıyoruz.</span>
-            </p>
-            <div class="mt-auto">
-              <a href={localizedPath(pagePath, "/ambassadors/")} class="text-sm font-medium text-[#58a6ff] hover:text-[#79c0ff] transition-colors">
-                <span class="lang-en">Apply →</span>
-      <span class="lang-tr">Başvur →</span>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Become an Ambassador CTA -->

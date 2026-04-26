@@ -9,8 +9,7 @@ descriptionTr: Beginner-friendly introduction to Cursor core features and day-to
 type: meetup
 status: concluded
 venue: Istanbul Tech Hub
-speakers: 
-  - Abdulhakeem Almidan
+speakers: []
 photos:
   - 01-evolution-of-ai-in-coding.png
   - 02-documentation-indexing.png
@@ -58,7 +57,7 @@ The first CursorTürkiye event in the Eastern Province, bringing Cursor educatio
 
 ## Resources
 
-- Event organized by Abdulhakeem Almidan for the Istanbul tech community
+- Event organized for the Istanbul tech community
 
 ---
 

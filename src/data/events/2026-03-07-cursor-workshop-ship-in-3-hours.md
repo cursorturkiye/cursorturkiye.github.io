@@ -12,7 +12,6 @@ venue: Leqaa hall
 speakers: 
   - Emre Özcan
   - Nick Miller
-  - Abdullah Mosaibah
 lumaUrl: "https://lu.ma/cwbemd5n"
 slides: 
   - "https://github.com/cursorturkiye/events-slides/blob/main/2026-03-07-cursor-workshop-ship-in-3-hours.pdf"
@@ -47,7 +46,7 @@ A 3-hour interactive workshop where participants built and deployed real softwar
 - **Venue**: Leqaa Hall, Ankara
 - **Co-organizer**: DAL | Türkçe
 - **Duration**: 11:00 PM – 2:00 AM (3 hours)
-- **Speakers**: 3 ([Emre Özcan](https://x.com/buildermare), [Nick Miller](https://x.com/nickwm), [Abdullah Moasibah](https://www.linkedin.com/in/abdullah-mosaibah-67814312b/))
+- **Speakers**: 2 ([Emre Özcan](https://x.com/buildermare), [Nick Miller](https://x.com/nickwm))
 - **Structure**: Introduction → Guest speaker (Nick Miller) → Tricks & Tips → Build Time (1 hour)
 - **Audience**: 70 in-person + 10 online (out of 110 accepted, 320+ registrations)
 
