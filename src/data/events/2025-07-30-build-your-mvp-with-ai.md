@@ -10,7 +10,6 @@ type: build
 status: concluded
 venue: CODE
 speakers: 
-  - Faris Hijazi
   - Emre Özcan
 lumaUrl: "https://lu.ma/4w52ko64"
 slides: 
@@ -19,9 +18,6 @@ communityPosts:
   - url: "https://x.com/Al_Mushdaq/status/1950639301680886220"
     author: "Al Mushdaq"
     authorTr: "Türkçe"
-  - url: "https://x.com/theeFaris/status/1950805628332499182"
-    author: "Faris Hijazi"
-    authorTr: "Türkçe Türkçe"
 photos:
   - GxIyD30WUAAGUyP.jpg
   - GxIyNxRXgAQ5vLB.jpg
