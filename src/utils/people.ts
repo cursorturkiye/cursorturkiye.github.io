@@ -89,7 +89,7 @@ export interface PartnerWithEvents {
   /** Parent org (e.g. Anysphere for Cursor). */
   parentCompany?: PartnerParentCompany;
   /** Extra body copy for /partners/{slug}/ only. */
-  detailParagraphs?: { en: readonly string[]; ar: readonly string[] };
+  detailParagraphs?: { en: readonly string[]; tr: readonly string[] };
   /** People from this partner who actively helped at events (photographers, organizers, etc.). */
   contributors?: readonly PartnerContributor[];
 }
@@ -332,7 +332,7 @@ const partnerCfg = config.partners as readonly {
   events: readonly string[];
   omitEventStats?: boolean;
   parentCompany?: PartnerParentCompany;
-  detailParagraphs?: { en: readonly string[]; ar: readonly string[] };
+  detailParagraphs?: { en: readonly string[]; tr: readonly string[] };
   contributors?: readonly ConfigPartnerContributor[];
 }[];
 

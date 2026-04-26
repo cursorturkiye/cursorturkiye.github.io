@@ -6,7 +6,7 @@ const navItems = [
   { id: "home", href: "/", en: "Home", tr: "Ana Sayfa" },
   { id: "events", href: "/events", en: "Events", tr: "Etkinlikler" },
   { id: "albums", href: "/albums", en: "Albums", tr: "Albümler" },
-  { id: "about", href: "/about", en: "About", tr: "Hakkında" },
+  { id: "about", href: "/about", en: "About", tr: "Hakkımızda" },
   { id: "ambassadors", href: "/ambassadors", en: "Become an ambassador", tr: "Elçi Ol" },
   { id: "partnerships", href: "/partnerships", en: "Work with us", tr: "Bizimle Çalışın" },
   { id: "thankyou", href: "/thankyou", en: "Thank You", tr: "Teşekkürler" },
@@ -40,7 +40,7 @@ function isActive(href: string) {
           id={`nav-${item.id}`}
           {...(isActive(item.href) ? { "aria-current": "page" } : {})}
         >
-          <span class="lang-tr">{item.ar}</span>
+          <span class="lang-tr">{item.tr}</span>
           <span class="lang-en">{item.en}</span>
         </a>
       ))}
@@ -81,7 +81,7 @@ function isActive(href: string) {
           class={`mobile-nav-link nav-link text-start py-3 px-4 rounded-xl text-base font-medium ${isActive(item.href) ? "active text-white" : "text-[#999999]"} hover:text-white hover:bg-white/5 transition-colors`}
           {...(isActive(item.href) ? { "aria-current": "page" } : {})}
         >
-          <span class="lang-tr">{item.ar}</span>
+          <span class="lang-tr">{item.tr}</span>
           <span class="lang-en">{item.en}</span>
         </a>
       ))}
